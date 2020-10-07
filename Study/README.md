@@ -1,7 +1,11 @@
 ---
-sort: 2
+sort: 3
 ---
 
-# JSP Study
+# This is an incredibly long caption for a long menu
+
+```
+{% include list.liquid all=true %}
+```
 
 {% include list.liquid all=true %}
