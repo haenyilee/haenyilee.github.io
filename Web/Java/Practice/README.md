@@ -1,7 +1,7 @@
 ---
-sort: 2
+sort: 3
 ---
 
-# Web
+# Java Practice
 
 {% include list.liquid all=true %}
