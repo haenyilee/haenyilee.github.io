@@ -2,6 +2,6 @@
 sort: 2
 ---
 
-# Study Record
+# JSP Study
 
 {% raw %}{% include list.liquid all=true %}{% endraw %}
