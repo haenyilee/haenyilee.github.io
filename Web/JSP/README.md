@@ -1,11 +1,8 @@
 ---
-sort: 2
+sort: 1
 ---
 
-# JSP Study
+# JSP
 
-```
-{% raw %}{% include list.liquid all=true %}{% endraw %}
-```
 
 {% include list.liquid all=true %}
