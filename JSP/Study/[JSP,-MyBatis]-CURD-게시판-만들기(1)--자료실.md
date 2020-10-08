@@ -330,10 +330,10 @@ function send()
 ```
 - 사용자가 입력한 비밀번호 출력은 하지 않고, 내부적으로 데이터만 전송하도록 한다.(hidden사용)
 ```
-비밀번호:`<input type=password name=pwd size=15 class="input-sm">`
+비밀번호:<input type=패스워드 name=pwd size=15 class="input-sm">
 				<input type=hidden name=no value=<%=no %>>
 ```
-- <form method=post action="../board/delete_ok.jsp">
+- `<form method=post action="../board/delete_ok.jsp">`
 
 ## delete_ok.jsp만들기
 - detail.jsp에서 게시물 번호와 비밀번호 데이터를 전송하므로, 이 두 값을 받아줘야 한다.
