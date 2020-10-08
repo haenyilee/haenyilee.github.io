@@ -330,7 +330,7 @@ function send()
 ```
 - 사용자가 입력한 비밀번호 출력은 하지 않고, 내부적으로 데이터만 전송하도록 한다.(hidden사용)
 ```
-비밀번호:<input type=패스워드 name=pwd size=15 class="input-sm">
+비밀번호:<input type=password name=pwd size=15 class="input-sm">
 				<input type=hidden name=no value=<%=no %>>
 ```
 - `<form method=post action="../board/delete_ok.jsp">`
@@ -425,7 +425,7 @@ vo.setName(name);
 ## update_ok.jsp
 - dao에서 비밀번호 확인한 결과 받아서 처리하기
 - 비밀번호 맞으면 처리해서 detail.jsp로 보내기, 틀리면 처리x
-```
+```console
 <%
 boolean bCheck=DataBoardDAO.boardUpdate(vo)
      if(bCheck==true)
