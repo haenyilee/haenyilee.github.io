@@ -137,7 +137,7 @@ JAXB : 빅데이터, 데이터값을 자바에 채운다 , binding
 
 
 
-# 3. 새글 작성하는 기능 추가하기
+# 3. 새글 작성하는 기능 추가하기
 
 ## (1) insert.jsp 제작하기
 - 파일 업로드는 프로토콜이 달라서 form태그에 enctype을 주어야 한다.
@@ -436,7 +436,7 @@ boolean bCheck=DataBoardDAO.boardUpdate(vo)
      {
 %>
          <script>
-         alert("비밀번호가 틀립니다");
+         alerrt("비밀번호가 틀립니다");
          history.back();
          </script>
 <%
