@@ -330,7 +330,7 @@ function send()
 ```
 - 사용자가 입력한 비밀번호 출력은 하지 않고, 내부적으로 데이터만 전송하도록 한다.(hidden사용)
 ```
-비밀번호:<input type=password name=pwd size=15 class="input-sm">
+비밀번호:`<input type=password name=pwd size=15 class="input-sm">`
 				<input type=hidden name=no value=<%=no %>>
 ```
 - <form method=post action="../board/delete_ok.jsp">
@@ -444,5 +444,3 @@ boolean bCheck=DataBoardDAO.boardUpdate(vo)
 %>
 ```
 
-# 
-##
