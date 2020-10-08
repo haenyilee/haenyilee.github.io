@@ -1,0 +1,68 @@
+# session VS cookie
+- session : 서버측에 저장(일부 정보를 저장) / 각 접속마다 session공간에 한 개만 생성됨
+- cookie : 클라이언트에 저장하기 때문에 보안 문제가 있어서 세션을 더욱 사용한다
+
+## session
+- 로그인 처리에 사용한다.
+  - 서버에 id, 이름, 어드민, 주소
+  - 임시 저장(예매정보, 장바구니)
+- 장점 : session은 서버에 존재하는 모든 jsp에서 사용이 가능하다.
+```
+<request의 단점>
+request는 각 jsp마다 다른 request를 가지고 있어서, 화면 변경이 되면 request가 초기화된다는 단점이 있다. 
+```
+- 단점 : 지우기 전까지는 데이터가 남아있다.
+
+## cookie
+- 찜하기 
+- 최근 방문기록
+- 최근 상세보기
+
+# session의 주요 메서드
+- session은 내장객체이기 때문에 request를 통해서 값을 받는다
+- 본인 세션값 받아오기 : ```request.getSession()```
+
+## 1. 서버에 저장 : setAttribute("키",값)
+- ```setAttribute("id","hong")```
+- ```setAttribute("name","홍길동")```
+- Map방식으로 저장되어 있음
+- 게시판, 댓글 같은 경우에는 세션값을 읽어서 id를 출력해준다.
+
+## 2. 서버에 저장된 데이터를 가지고 오는 방법 : getAttribute("키")
+- 저장되는 것이 Object이다 => ArrayList로 저장해서 받을 수 있다. 
+- cookie : 문자열만 저장 가능하다
+- 한 공간 안에서 키가 중복되면 안된다.
+
+
+## 3. 삭제하는 방법 
+- 일부를 삭제할 때 : ```removeAttribute("키")```
+- 전체를 삭제할 때 : ```invalidate```
+  - 로그아웃 시, 사용함 
+
+
+## 4. 저장기간 설정하는 방법 : ```setMaxInactiveInterval(1/1000초 단위)```
+- 기본 디폴트 : 1800초(=30분)
+
+<br>
+# cookie의 주요 메서드
+
+## 쿠키 저장하기 : ```Cookie cookie = new Cookie(키,값);```
+- cookie는 내장객체가 아니기 때문에 new를 통해 생성한다.
+- 쿠키는 키와 값을 저장함
+  - 키 : 중복 불가 , 문자로 시작
+  - 쿠키에 key를 줄 때, 반드시 문자로 시작해야한다.(숫자로 시작불가)
+  - 값 : 문자열만 저장 가능함
+
+## 저장기간 설정하기 : ```setMaxAge(초 단위)```
+
+
+## 저장된 쿠키를 클라이언트의 컴퓨터로 전송하기 : ```response.addCookie(쿠키명)```
+
+## 저장된 쿠키 값 받기 : ```request.getCookies()```
+
+## 키를 읽어오는 메서드 : ```cookie명.getName()```
+## 값을 읽어오는 메서드 : ```cookie명.getValue()```
+## 쿠키 전송범위 지정하기 : ```setPath("/")```
+- `/` 에 저장하면 전체 url에 전송된다.
+
+## 쿠키 삭제하기 : ```cookie명.setAge(0)```
