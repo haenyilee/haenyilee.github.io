@@ -1,7 +1,7 @@
 ---
-sort: 2
+sort: 8
 ---
 
-# Web
+# Others
 
 {% include list.liquid all=true %}

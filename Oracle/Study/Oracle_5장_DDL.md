@@ -1,13 +1,10 @@
-## 목차
-1. CREATE - 새로 생성하라
-2. ALTER 명령
-3. TRUNCATE 명령
-4. DROP 명령
-5. DELETE, TRUNCATE, DROP 명령어의 차이점 비교
-6. 11g에서 추가된 기능 소개
-7. Data Dictionary(데이터 딕셔너리)
+---
+sort: 9
+---
 
-# SQL의 종류
+# DDL
+
+## SQL의 종류
 <html>
 <table>
 <tr>
@@ -50,7 +47,7 @@ ROLLBACK<br>
 </html>
 
 
-# CREATE
+## CREATE
 - TABLE, VIEW , SEQUENCE , INDEX , PL/SQL
 - PL/SQL => PROCEDURE , FUNCTION , TRIGGER
 - COMMIT을 날릴 필요없음 (Auto Commit)
@@ -88,13 +85,13 @@ CREATE TABLE table_name(
 
 
 
-# DROP : 삭제, table 자체를 삭제
+## DROP : 삭제, table 자체를 삭제
 - 복구 불가하기 때문에 항상 백업해두어야함
 ```
 DROP TABLE 삭제할 테이블명;
 ```
 
-# ALTER : 수정, 삭제, 추가 (컬럼 관련된 것들만)
+## ALTER : 수정, 삭제, 추가 (컬럼 관련된 것들만)
 - 컬럼 추가
 ```
 ALTER TABLE table_name ADD 컬럼명 데이터형;
@@ -117,17 +114,17 @@ ALTER TABLE MODIFY COLUMN 컬럼명 데이터형;
 ```
 
 
-# TRUNCATE : 데이터만 삭제 ,  복구불가
+## TRUNCATE : 데이터만 삭제 ,  복구불가
 ```
 TRUNCATE TABLE table_name;
 ``` 
 
-# RENAME : 테이블 이름 변경
+## RENAME : 테이블 이름 변경
 ```
 RENAME 이전 테이블명 TO 변경할 테이블명;
 ```
 
-# read only : 읽기 전용으로 변경 
+## read only : 읽기 전용으로 변경 
 - SELECT만 이용 가능
 ```
 ALTER TABLE table_name read only
@@ -135,10 +132,10 @@ ALTER TABLE table_name read only
 
 
 
-# 서브쿼리
+## 서브쿼리
 SELECT ename,sal FROM emp WHERE sal<(SELECT AVG(sal) FROM emp);
 
-# 테이블 제작 방식
+## 테이블 제작 방식
 #### 1. 테이블 복사
 - 복사
 ```
@@ -284,7 +281,7 @@ name VARCHAR2(10)
 
 
 
-# ```ALTER``` 수정
+## ```ALTER``` 수정
 
 #### 필요없는 컬럼 삭제
 ```ALTER TABLE movie DROP COLUMN address;```
@@ -303,7 +300,7 @@ name VARCHAR2(10)
 
 ```ALTER TABLE 테이블명 CHANGE 기존컬럼명 변경할컬럼명 컬럼타입;```
 
-# 삭제
+## 삭제
 #### ```DELETE``` 
 - 복구 가능, 데이터 내용만 삭제(칼럼유지)
 ```

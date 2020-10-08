@@ -1,4 +1,8 @@
-6장 
+---
+sort: 10
+---
+
+# DML
 
 - 자바에서 DML은 AutoCommit
 

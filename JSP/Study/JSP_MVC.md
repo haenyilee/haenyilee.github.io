@@ -1,4 +1,9 @@
-## MVC 구조란?
+---
+sort: 2
+---
+
+# MVC 구조란?
+
 ![](https://t1.daumcdn.net/cfile/tistory/995D11335A1BB0C603)
 
 - 자바 : Model

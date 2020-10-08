@@ -1,5 +1,9 @@
+---
+sort: 2
+---
 
-## URI
+# URI
+
 - 방법1 : http://localhost/mvc/(list).do
 - 방법2 : http://localhost/mvc/Controller?cmd=list
 

@@ -2,7 +2,6 @@
 sort: 2
 ---
 
-# JSP
-
+# HTML CSS Study
 
 {% include list.liquid all=true %}

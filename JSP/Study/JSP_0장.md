@@ -1,4 +1,9 @@
+---
+sort: 2
+---
+
 # JSP란
+
 - Java Server Page : 서버에서 실행되는 자바파일
 - Java + HTML : HTML 기반에 Java가 첨부되는 것
 

@@ -1,15 +1,9 @@
-## 목차
-1. [Cartesian Product(카티션 곱)](# Cartesian-Product(카티션-곱))
-2. [EQUI Join(등가 조인)]
-3. Non-Equi Join(비등가 조인)
-4. OUTER Join(아우터 조인)
-5. SELF Join
-
-
-
-
+---
+sort: 8
+---
 
 # JOIN
+
 - 하나의 SQL 명령문에 의해 디스크의 여러개의 테이블에서 사용자가 요청한 데이터를 메모리로 복사해서 가지고 와 조회도 하고 변경도 할 수 있는 기능
 - 메모리는 작업을 하는 공간, 디스크는 저장을 하는 공간
 

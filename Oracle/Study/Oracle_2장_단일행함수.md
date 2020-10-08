@@ -1,42 +1,8 @@
-## 목차
-1. [단일행함수 VS 복수행함수](#단일행함수-vs-복수행함수)
-2. [단일행함수](#단일행함수)
-3. [문자 함수](#문자-함수)
-LENGTH, 
-SUBSTR, 
-RPAD, 
-INSTR
-1) [변환함수](#변환함수)
-UPPER, LOWER, INITCAP, REPLACE
+---
+sort: 6
+---
 
-2) [제어함수](#제어함수)
-CONCAT, SUBSTR, INSTR
-
-3) [기타함수](#기타함수)
-LENGTH, LENGTHB, LPAD, RPLAD, TRIM, RTRIM, LTRIM
-
-
-4. [숫자함수](#숫자함수)
-ROUND, TRUNC, 
-CEIL, MOD
-
-5. [날짜함수](#날짜함수)
-SYSDATE, 
-MONTH_BETWEEN
-
-6. [변환함수](#변환함수)
-TO_CHAR
-
-
-
-7. [기타함수](#기타함수)
-NVL, 
-
-[]()
-8. [정규식(Regular Expression) 함수](#정규식(Regular Expression)-함수)
-
-
-
+# 단일행 함수
 
 ## 단일행함수 VS 복수행함수
 - 단일행함수 : 한줄씩(ROW) 바꿔나가는 함수

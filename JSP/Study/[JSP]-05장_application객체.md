@@ -1,4 +1,9 @@
-## application객체
+---
+sort: 2
+---
+
+# application객체
+
 - ServletContext의 객체명
 - 서버와 관련된 서버에 대한 정보를 가지고 있음
 

@@ -1,4 +1,9 @@
-## MVC구조
+---
+sort: 2
+---
+
+# MVC구조
+
 - M : JAVA
 - V : JSP
 - C : Servlet

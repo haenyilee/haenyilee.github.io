@@ -1,4 +1,9 @@
+---
+sort: 5
+---
+
 # SQL언어
+
 ![](https://media.geeksforgeeks.org/wp-content/uploads/sql-commands.jpg)
 
 ### DCL : 데이터 제어 , 접근권한 주고 뺏기(DBA들의 권한)

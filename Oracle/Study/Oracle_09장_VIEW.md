@@ -1,12 +1,9 @@
-## 목차
-1. 단순 뷰(Simple View)
-2. 복합 뷰(Complex View)
-3. Inline View(인라인 뷰)
-4. View 조회 및 삭제하기
-5. Materialized View(MVIEW) - 구체화된 뷰
-
+---
+sort: 12
+---
 
 # VIEW
+
 - 보여만 주는 상태
 - 테이블을 새롭게 생성하는 것이 아니라 기존의 테이블에서 필요한 데이터를 모아서 관리하는 것
 - 필수 요건 : 테이블

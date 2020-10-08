@@ -1,3 +1,9 @@
+---
+sort: 14
+---
+
+# ROLL UP-GROUP BY-CUBE
+
 ### ```GROUP BY``` : 단순히 모아서 출력
 ```
 SQL> SELECT deptno,sal,COUNT(*) FROM emp GROUP BY deptno,sal ORDER BY deptno,sal;

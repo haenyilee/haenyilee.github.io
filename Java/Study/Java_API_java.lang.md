@@ -1,4 +1,9 @@
+---
+sort: 2
+---
+
 # 1. java.lang
+
 ![](https://t1.daumcdn.net/cfile/tistory/2255EF495696F9372F)
 
 - 자바모든 클래스가 상속받는 클래스이기 때문에 import붙이지 않음

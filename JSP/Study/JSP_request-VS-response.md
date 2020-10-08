@@ -1,4 +1,9 @@
-request VS response
+---
+sort: 2
+---
+
+# request VS response
+
 #### 1. request(내장객체 => 미리 생성된 객체)
 = HttpServletRequest request
 = 주요기능

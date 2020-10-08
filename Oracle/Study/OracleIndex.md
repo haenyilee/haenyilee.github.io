@@ -1,3 +1,7 @@
+---
+sort: 2
+---
+
 # Oracle_SQL과 PL SQL
 
 ## [0장](https://github.com/haenyilee/Oracle-Study/wiki/Oracle_00%EC%9E%A5_%EA%B0%9C%EC%9A%94-%EB%B0%8F-%ED%8A%B9%EC%A7%95) 공부를 시작하기 전에 미리 알아두세요

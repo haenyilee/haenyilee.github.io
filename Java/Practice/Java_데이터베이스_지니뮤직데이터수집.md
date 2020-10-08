@@ -1,4 +1,9 @@
+---
+sort: 3
+---
+
 # 지니 뮤직차트200 데이터 수집하기
+
 - 사이트 주소 : https://www.genie.co.kr/chart/top200
 - 외부라이브러리 : jsoup사용
 

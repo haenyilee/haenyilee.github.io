@@ -1,3 +1,9 @@
+---
+sort: 2
+---
+
+# STATIC
+
 [static면접질문](https://vaert.tistory.com/101)
 
 # 면접관 : static키워드에 대해서 설명해보세요.

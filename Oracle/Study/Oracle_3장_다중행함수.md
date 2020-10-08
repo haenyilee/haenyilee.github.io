@@ -1,18 +1,10 @@
-## 목차
-1. [집합합수](#집합합수)
-2. [GROUP 함수의 종류](#GROUP함수의-종류)
-COUNT, 
-MAX, 
-ROLLUP, 
-CUBE, 
-REGEXP_LIKE
+---
+sort: 7
+---
 
-3. [GROUP BY절을 통한 세부적 그룹화](#GROUP-BY절을-통한-세부적-그룹화)
-4. [HAVING절을 통한 그룹핑 조건 검색](#HAVING절을-통한-그룹핑-조건-검색)
-5. [반드시 알아야 하는 다양한 분석 함수들](#)
+# 다중행 함수
 
-
-# 집합함수
+## 집합함수
 - 세로 COLUMN으로만 계산함(다중행함수)
 - 가로는 직접 연산 처리해야함(단일행함수)
 - 컬럼이나 단일행 함수를 같이 사용하면 안된다.
@@ -27,7 +19,7 @@ SUM(sal) "급여 총합", AVG(sal) "급여평균" FROM emp;
 
 
 
-# GROUP함수의 종류
+## GROUP함수의 종류
 
 #### ```COUNT``` : 갯수
 - 로그인, ID 중복 체크에 주로 쓰임
@@ -196,7 +188,7 @@ SQL> SELECT rownum,ename,sal FROM (SELECT ename,sal FROM emp ORDER BY sal DESC) 
 
 
 
-# GROUP BY절을 통한 세부적 그룹화
+## GROUP BY절을 통한 세부적 그룹화
 - 형식 : ```GROUP BY 컬럼명```
 - 뒤에 적힌 컬럼을 기준으로 값을 먼저 모아두고 SELECT 절에 적혀 있는 그룹함수를 적용함
 
@@ -250,7 +242,7 @@ SELECT COUNT(*),SUM(sal),AVG(sal) FROM emp GRUOP BY SUBSTR(hiredate,1,2);
 ```
 
 
-# HAVING절을 통한 그룹핑 조건 검색
+## HAVING절을 통한 그룹핑 조건 검색
 
 - WHERE절은 그룹함수의 비교 조건으로 쓸 수 없음
   - WHERE문장 뒤에는 집합함수(그룹함수)가 아닌 단일행조건만 올 수 있음
