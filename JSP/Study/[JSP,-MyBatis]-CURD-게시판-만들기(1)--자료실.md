@@ -424,7 +424,7 @@ vo.setName(name);
 
 ## update_ok.jsp
 - dao에서 비밀번호 확인한 결과 받아서 처리하기
-- 비밀번호 맞으면 처리해서 detail.jsp로 보내기, 틀리면 처리x
+- 비밀번호 맞으면 처리해서 detail.jsp로 보내기
 ```jsp
 <%
 boolean bCheck=DataBoardDAO.boardUpdate(vo)
@@ -433,7 +433,7 @@ boolean bCheck=DataBoardDAO.boardUpdate(vo)
     	 response.sendRedirect("../main/main.jsp?mode=3&no="+no);// detail로 이동 
      }
 ```
-
+-  틀리면 처리x
 ```jsp
      else
      {
