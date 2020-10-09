@@ -151,7 +151,9 @@ JAXB : 빅데이터, 데이터값을 자바에 채운다 , binding
   - 이때, form태그를 사용한다.
 ```
 {% raw %}
+{{
 <form method="post" action="../board/insert_ok.jsp" enctype="multipart/form-data">
+}}
 {% endraw %}
 ```
 
@@ -255,6 +257,8 @@ DataBoardDAO.boardInsert(vo);
 - submit을 주게 되면 값이 입력 안되어도 검색이 가능하기 때문에 <br>
 buttom으로 처리한 뒤, 자바스크립트로 기능을 설정해야함
 ```
+{% raw %}
+{{ 
 <script type="text/javascript">
 function send()
 {
@@ -268,6 +272,8 @@ function send()
 		
 }
 </script>
+}}
+{% endraw %}
 ```
 
 ## (5) find.jsp에서 검색 기능 처리하기
@@ -431,6 +437,7 @@ vo.setName(name);
 - 비밀번호 맞으면 처리해서 detail.jsp로 보내기, 틀리면 처리x
 ```
 {% raw %}
+{{ 
 <%
 boolean bCheck=DataBoardDAO.boardUpdate(vo)
      if(bCheck==true)
@@ -447,6 +454,7 @@ boolean bCheck=DataBoardDAO.boardUpdate(vo)
 <%
      }
 %>
+}}
 {% endraw %}
 ```
 

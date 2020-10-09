@@ -500,8 +500,9 @@ boolean bCheck= BoardDAO.freeBoardUpdate(vo);
 %>
 ```
 - 비밀번호 틀리면 update.jsp로 다시 이동하기
-```jsp
+```
 {% raw %}
+{{
 <%
 	else
 	{
@@ -511,6 +512,7 @@ boolean bCheck= BoardDAO.freeBoardUpdate(vo);
 		</script>
 	}
 %>
+}}
 {% endraw %}
 ```
 
@@ -536,6 +538,7 @@ boolean bCheck= BoardDAO.freeBoardUpdate(vo);
 - 삭제하기 버튼 클릭하면 보이고, 클릭안하면 안보이도록 자바스크립트 작성하기
 ```jsp
 {% raw %}
+{{
 <script type="text/javascript" srs="http://code.jquery.com/jquery.js"></script>
 <script>
 var i=0;
@@ -556,6 +559,7 @@ $(function(){
 	})
 });
 </script>
+}}
 {% endraw %}
 ```
 
