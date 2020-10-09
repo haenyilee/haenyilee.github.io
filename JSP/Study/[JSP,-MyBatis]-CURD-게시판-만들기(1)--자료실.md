@@ -103,7 +103,7 @@ Cf.<객체 지향의 3대 특성>
 - resources를 사용해서 config.xml에 있는 모든 xml문장을 읽어서 reader에 저장한다.
 - xml을 파싱하면 마이바티스 라이브러리가 읽어간다.
 - 태그를 한개씩 읽어와서 필요데이터를 저장하는 방식을 sax방식이라고 한다.
-```
+```note
 JAXP : 1. DOM(수정,추가,삭제 가능/메모리에 저장하기 때문에 속도 느림), 2. SAX(읽기만해서 속도가 빠름)
 JAXB : 빅데이터, 데이터값을 자바에 채운다 , binding
 ```
@@ -118,7 +118,7 @@ JAXB : 빅데이터, 데이터값을 자바에 채운다 , binding
 
 ## (1) mapper에서 저장된 게시글 불러오고, 페이지 나누는 sql문장 작성하기
 
-## (2) DAO에서 boardListData, boardTotalPage 클래스 제작
+## (2) DAO에서 boardListData, boardTotalPage 클래스 제작
 - 커넥션 사용한 다음에 반드시 반환해야 한다. 이때 sql세션이 커넥션과 동일한 기능을 수행한다.
 - 컴파일 예외 처리는 없다. 하지만 초반에는 에러처리 위해서 반드시 예외처리해주는 것이 좋다.
 
@@ -148,7 +148,9 @@ JAXB : 빅데이터, 데이터값을 자바에 채운다 , binding
   - 글작성 완료 버튼을 눌러야만 db에 데이터를 넘겨주도록 설정해야하기 때문에 ok.jsp가 필요하다.
   - 이때, form태그를 사용한다.
 ```
+{% raw %}
 <form method="post" action="../board/insert_ok.jsp" enctype="multipart/form-data">
+{% endraw %}
 ```
 
 ## (2) insert_ok.jsp 만들기
@@ -167,6 +169,7 @@ JAXB : 빅데이터, 데이터값을 자바에 채운다 , binding
   - 마이바티스에서 제공하는 기능으로 자동증가값을 설정하여 값을 INSERT할 때 주로 사용한다.
   - 참고 : [selectKey](https://yookeun.github.io/java/2014/07/11/mybatis-selectkey/)
 ```
+{% raw %}
 <insert id="boardInsert" parameterType="DataBoardVO">
     <!-- Sequence 
          SELECT NVL(MAX(no)+1,1) FROM databoard을 먼저 수행한 후에
@@ -188,6 +191,7 @@ JAXB : 빅데이터, 데이터값을 자바에 채운다 , binding
       #{filesize}
     )
 </insert>
+{% endraw %}
 ```
 
 ## (4) sql문장을 실행하도록 dao에 내용 추가하기
@@ -200,8 +204,10 @@ JAXB : 빅데이터, 데이터값을 자바에 채운다 , binding
 
 ## (5) insert_ok.jsp에서 boardInsert dao호출하기 
 ```
+{% raw %}
 //데이터베이스 연결하기 : dao호출해서 insert요청하는데 sql문장은 mapper에 있다.
 DataBoardDAO.boardInsert(vo);
+{% endraw %}
 ```
 ## (6) main.jsp에 include하기
 - mode=2일때 insert.jsp로 화면이 넘어가도록 설정한다.
@@ -251,6 +257,7 @@ DataBoardDAO.boardInsert(vo);
 - submit을 주게 되면 값이 입력 안되어도 검색이 가능하기 때문에 <br>
 buttom으로 처리한 뒤, 자바스크립트로 기능을 설정해야함
 ```
+{% raw %}
 <script type="text/javascript">
 function send()
 {
@@ -264,11 +271,13 @@ function send()
 		
 }
 </script>
+{% endraw %}
 ```
 
 ## (5) find.jsp에서 검색 기능 처리하기
 - 자바로 사용자 입력값 받아두기
 ```
+{% raw %}
 <%
      request.setCharacterEncoding("UTF-8");//utf-8
      String fd=request.getParameter("fd");
@@ -276,6 +285,7 @@ function send()
      System.out.println("fd:"+fd);
      System.out.println("ss:"+ss);
 %>
+{% endraw %}
 ```
 
 ## (6) mapper에서 검색한 내용 가지고 오는 SQL문장 작성하기
@@ -283,6 +293,7 @@ function send()
   - ${} : 컬럼명, 테이블명
   - #{} : 일반 데이터
 ```
+{% raw %}
 <select id="boardFindData" resultType="DataBoardVO" parameterType="hashmap">
 		SELECT no,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday, hit
 		FROM databoard
@@ -293,6 +304,7 @@ function send()
 		FROM databoard4
 		WHERE ${fd} LIKE '%'||#{ss}||'%'
 	</select>
+{% endraw %}
 ```
 
 ## (7) dao에서 sql문장 실행 후 결과값 받기
@@ -313,25 +325,33 @@ function send()
 ## detail.jsp에 추가
 - 삭제 버튼 누르면 넘어가는 링크가 delete.jsp가 되도록 추가하기
 ```jsp
+{% raw %}
 <a href="../main/main.jsp?mode=5" class="btn btn-xs btn-success">삭제</a>
+{% endraw %}
 ```
 - 특정 글번호의 글만 삭제하도록 no추가
 ```
+{% raw %}
 <a href="../main/main.jsp?mode=5&no=<%=vo.getNo() %>" class="btn btn-xs btn-success">삭제</a>
+{% endraw %}
 ```
 
 ## delete.jsp
 - 특정 클번호 no받아오기
 ```
+{% raw %}
 <%
 	String no = request.getParameter("no");
 
 %>
+{% endraw %}
 ```
 - 사용자가 입력한 비밀번호 출력은 하지 않고, 내부적으로 데이터만 전송하도록 한다.(hidden사용)
 ```
+{% raw %}
 비밀번호:<input type=password name=pwd size=15 class="input-sm">
 				<input type=hidden name=no value=<%=no %>>
+{% endraw %}
 ```
 - `<form method=post action="../board/delete_ok.jsp">`
 
@@ -366,8 +386,10 @@ function send()
 ## detail.jsp의 수정하기 버튼과 연동하기
 - 수정하기 버튼이 클릭된 글의 no값 넘겨주기
 ```
+{% raw %}
 <a href="../main/main.jsp?mode=6&no=<%=vo.getNo() %>" 
-class="btn btn-xs btn-primary">수정</a>       
+class="btn btn-xs btn-primary">수정</a>
+{% endraw %}
 ```
 
 ## update.jsp
@@ -388,28 +410,30 @@ class="btn btn-xs btn-primary">수정</a>
 
 - update_ok.jsp에 no값 보내주기
 ```jsp
+{% raw %}
 <input type=hidden name=no value=<%=no %>>
+{% endraw %}
 ```
 
 ## update_ok.jsp만들기
 - 화면 출력 기능은 없고, 데이터 처리해주고 화면 이동해주는 기능만 있음
 - update.jsp에서 보내준 no 디코딩해주기
-  - 전송할때는 인코딩해야함
-```
-request.setCharacterEncoding("utf-8");
-```
+  - 전송할때는 인코딩해야함 : `request.setCharacterEncoding("utf-8");`
 - 사용자가 수정한 데이터 받아서 vo에 값 채우기
 ```
+{% raw %}
 <%
 String name=request.getParameter("name");
 DataBoardVO vo=new DataBoardVO();
 vo.setName(name);
 %>
+{% endraw %}
 ```
 
 
 ## mapper에서 sql문장 작성하기
 ```
+{% raw %}
 <update id="boardUpdate" parameterType="DataBoardVO">
     UPDATE databoard SET
     name=#{name},
@@ -417,6 +441,7 @@ vo.setName(name);
     content=#{content}
     <include refid="where-no"/><!-- WHERE no=#{no} -->
 </update>
+{% endraw %}
 ```
 ## DAO에서 sql문장 실행하기
 #### boardUpdate
@@ -424,16 +449,20 @@ vo.setName(name);
 
 ## update_ok.jsp
 - dao에서 비밀번호 확인한 결과 받아서 처리하기
-- 비밀번호 맞으면 처리해서 detail.jsp로 보내기```jsp
+- 비밀번호 맞으면 처리해서 detail.jsp로 보내기
+```jsp
+{% raw %}
 <%
 boolean bCheck=DataBoardDAO.boardUpdate(vo)
      if(bCheck==true)
      {
     	 response.sendRedirect("../main/main.jsp?mode=3&no="+no);// detail로 이동 
      }
+{% endraw %}
 ```
 -  틀리면 처리x
 ```jsp
+{% raw %}
      else
      {
 %>
@@ -444,5 +473,6 @@ boolean bCheck=DataBoardDAO.boardUpdate(vo)
 <%
      }
 %>
+{% endraw %}
 ```
 
