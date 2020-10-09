@@ -2,6 +2,6 @@
 sort: 3
 ---
 
-# Github
+# Git
 
 {% include list.liquid all=true %}

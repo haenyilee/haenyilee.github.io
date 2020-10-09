@@ -501,6 +501,7 @@ boolean bCheck= BoardDAO.freeBoardUpdate(vo);
 ```
 - 비밀번호 틀리면 update.jsp로 다시 이동하기
 ```jsp
+{% raw %}
 <%
 	else
 	{
@@ -510,6 +511,7 @@ boolean bCheck= BoardDAO.freeBoardUpdate(vo);
 		</script>
 	}
 %>
+{% endraw %}
 ```
 
 
