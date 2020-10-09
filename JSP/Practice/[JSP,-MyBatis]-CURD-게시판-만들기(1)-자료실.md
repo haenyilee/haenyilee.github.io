@@ -166,7 +166,7 @@ JAXB : 빅데이터, 데이터값을 자바에 채운다 , binding
 - Element : selectKey
   - 마이바티스에서 제공하는 기능으로 자동증가값을 설정하여 값을 INSERT할 때 주로 사용한다.
   - 참고 : [selectKey](https://yookeun.github.io/java/2014/07/11/mybatis-selectkey/)
-```
+`
 <insert id="boardInsert" parameterType="DataBoardVO">
     <!-- Sequence 
          SELECT NVL(MAX(no)+1,1) FROM databoard을 먼저 수행한 후에
@@ -188,7 +188,7 @@ JAXB : 빅데이터, 데이터값을 자바에 채운다 , binding
       #{filesize}
     )
 </insert>
-```
+`
 
 ## (4) sql문장을 실행하도록 dao에 내용 추가하기
 - 작성한 데이터를 넘겨줄 뿐 받아올 값이 없으니까 void이다.
@@ -199,10 +199,11 @@ JAXB : 빅데이터, 데이터값을 자바에 채운다 , binding
 
 
 ## (5) insert_ok.jsp에서 boardInsert dao호출하기 
-```
+`
 //데이터베이스 연결하기 : dao호출해서 insert요청하는데 sql문장은 mapper에 있다.
 DataBoardDAO.boardInsert(vo);
-```
+`
+
 ## (6) main.jsp에 include하기
 - mode=2일때 insert.jsp로 화면이 넘어가도록 설정한다.
 
@@ -233,11 +234,11 @@ DataBoardDAO.boardInsert(vo);
 
 ## (1) list.jsp에서 찾기 기능 추가
 - 검색하는 부분에 form태그 주기
-- post방식이니까 ```input type=hidden```으로 주기
+- post방식이니까 `input type=hidden`으로 주기
     - post방식은 내부 네트워크를 이용해서 숨겨서 전송하는 방식임
     - Get방식은 url뒤에 값을 노출하는 방식임
-    - ```데이터를 받을 파일명?변수명=값``` 형식으로 넘겨준다
-    - 값이 여러개라면 ```변수명=값&변수명=값&변수명=값```
+    - `데이터를 받을 파일명?변수명=값` 형식으로 넘겨준다
+    - 값이 여러개라면 `변수명=값&변수명=값&변수명=값`
 
 ## (2) find.jsp 생성하기
 - 모양만 잡기 (list.jsp와 비슷)
@@ -250,7 +251,7 @@ DataBoardDAO.boardInsert(vo);
   - var데이터형 주면 알아서 인식함
 - submit을 주게 되면 값이 입력 안되어도 검색이 가능하기 때문에 <br>
 buttom으로 처리한 뒤, 자바스크립트로 기능을 설정해야함
-```
+`
 <script type="text/javascript">
 function send()
 {
@@ -264,7 +265,7 @@ function send()
 		
 }
 </script>
-```
+`
 
 ## (5) find.jsp에서 검색 기능 처리하기
 - 자바로 사용자 입력값 받아두기
@@ -329,11 +330,10 @@ function send()
 %>
 ```
 - 사용자가 입력한 비밀번호 출력은 하지 않고, 내부적으로 데이터만 전송하도록 한다.(hidden사용)
-```
+`
 비밀번호:<input type=password name=pwd size=15 class="input-sm">
 				<input type=hidden name=no value=<%=no %>>
-```
-- <form method=post action="../board/delete_ok.jsp">
+<form method=post action="../board/delete_ok.jsp">`
 
 ## delete_ok.jsp만들기
 - detail.jsp에서 게시물 번호와 비밀번호 데이터를 전송하므로, 이 두 값을 받아줘야 한다.
@@ -425,7 +425,7 @@ vo.setName(name);
 ## update_ok.jsp
 - dao에서 비밀번호 확인한 결과 받아서 처리하기
 - 비밀번호 맞으면 처리해서 detail.jsp로 보내기, 틀리면 처리x
-```
+`
 <%
 boolean bCheck=DataBoardDAO.boardUpdate(vo)
      if(bCheck==true)
@@ -442,7 +442,7 @@ boolean bCheck=DataBoardDAO.boardUpdate(vo)
 <%
      }
 %>
-```
+`
 
 # 
 ##
