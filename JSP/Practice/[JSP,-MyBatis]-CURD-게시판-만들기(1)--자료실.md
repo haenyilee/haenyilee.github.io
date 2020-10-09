@@ -152,7 +152,7 @@ JAXB : 빅데이터, 데이터값을 자바에 채운다 , binding
 ```
 {% raw &}
 <form method="post" action="../board/insert_ok.jsp" enctype="multipart/form-data">
-{% endraw %
+{% endraw %}
 ```
 
 ## (2) insert_ok.jsp 만들기
