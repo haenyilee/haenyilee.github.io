@@ -148,10 +148,8 @@ JAXB : 빅데이터, 데이터값을 자바에 채운다 , binding
   - 하지만 번호를 외울 수는 없으니까 명칭을 다 준것임
 - 글 작성을 완료하면 바로 list.jsp로 넘어가면 안된다.
   - 글작성 완료 버튼을 눌러야만 db에 데이터를 넘겨주도록 설정해야하기 때문에 ok.jsp가 필요하다.
-  - 이때, form태그를 사용한다.
-```
-<form method="post" action="../board/insert_ok.jsp" enctype="multipart/form-data">
-```
+  - 이때, form태그를 사용한다. : `<form method="post" action="../board/insert_ok.jsp" enctype="multipart/form-data">`
+
 
 ## (2) insert_ok.jsp 만들기
 - 글작성 완료하면 글목록으로 돌아가야한다 : list.jsp(mode=1)로 화면 전환
