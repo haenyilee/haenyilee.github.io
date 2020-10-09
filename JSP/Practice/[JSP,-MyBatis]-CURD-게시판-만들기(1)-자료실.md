@@ -166,7 +166,8 @@ JAXB : 빅데이터, 데이터값을 자바에 채운다 , binding
 - Element : selectKey
   - 마이바티스에서 제공하는 기능으로 자동증가값을 설정하여 값을 INSERT할 때 주로 사용한다.
   - 참고 : [selectKey](https://yookeun.github.io/java/2014/07/11/mybatis-selectkey/)
-`
+  
+```oracle
 <insert id="boardInsert" parameterType="DataBoardVO">
     <!-- Sequence 
          SELECT NVL(MAX(no)+1,1) FROM databoard을 먼저 수행한 후에
@@ -188,7 +189,7 @@ JAXB : 빅데이터, 데이터값을 자바에 채운다 , binding
       #{filesize}
     )
 </insert>
-`
+```
 
 ## (4) sql문장을 실행하도록 dao에 내용 추가하기
 - 작성한 데이터를 넘겨줄 뿐 받아올 값이 없으니까 void이다.
@@ -199,10 +200,11 @@ JAXB : 빅데이터, 데이터값을 자바에 채운다 , binding
 
 
 ## (5) insert_ok.jsp에서 boardInsert dao호출하기 
-`
+
+```java
 //데이터베이스 연결하기 : dao호출해서 insert요청하는데 sql문장은 mapper에 있다.
 DataBoardDAO.boardInsert(vo);
-`
+```
 
 ## (6) main.jsp에 include하기
 - mode=2일때 insert.jsp로 화면이 넘어가도록 설정한다.
@@ -251,7 +253,7 @@ DataBoardDAO.boardInsert(vo);
   - var데이터형 주면 알아서 인식함
 - submit을 주게 되면 값이 입력 안되어도 검색이 가능하기 때문에 <br>
 buttom으로 처리한 뒤, 자바스크립트로 기능을 설정해야함
-`
+```scss
 <script type="text/javascript">
 function send()
 {
@@ -265,7 +267,7 @@ function send()
 		
 }
 </script>
-`
+```
 
 ## (5) find.jsp에서 검색 기능 처리하기
 - 자바로 사용자 입력값 받아두기
@@ -323,17 +325,21 @@ function send()
 
 ## delete.jsp
 - 특정 클번호 no받아오기
-```
+
+```jsp
 <%
 	String no = request.getParameter("no");
 
 %>
 ```
+
 - 사용자가 입력한 비밀번호 출력은 하지 않고, 내부적으로 데이터만 전송하도록 한다.(hidden사용)
-`
+
+```jsp
 비밀번호:<input type=password name=pwd size=15 class="input-sm">
 				<input type=hidden name=no value=<%=no %>>
-<form method=post action="../board/delete_ok.jsp">`
+<form method=post action="../board/delete_ok.jsp">
+```
 
 ## delete_ok.jsp만들기
 - detail.jsp에서 게시물 번호와 비밀번호 데이터를 전송하므로, 이 두 값을 받아줘야 한다.
@@ -365,7 +371,8 @@ function send()
 
 ## detail.jsp의 수정하기 버튼과 연동하기
 - 수정하기 버튼이 클릭된 글의 no값 넘겨주기
-```
+
+```jsp
 <a href="../main/main.jsp?mode=6&no=<%=vo.getNo() %>" 
 class="btn btn-xs btn-primary">수정</a>       
 ```
@@ -387,6 +394,7 @@ class="btn btn-xs btn-primary">수정</a>
   - form태그에 enctype도 지워주기
 
 - update_ok.jsp에 no값 보내주기
+
 ```jsp
 <input type=hidden name=no value=<%=no %>>
 ```
@@ -395,11 +403,14 @@ class="btn btn-xs btn-primary">수정</a>
 - 화면 출력 기능은 없고, 데이터 처리해주고 화면 이동해주는 기능만 있음
 - update.jsp에서 보내준 no 디코딩해주기
   - 전송할때는 인코딩해야함
+  
 ```
 request.setCharacterEncoding("utf-8");
 ```
+
 - 사용자가 수정한 데이터 받아서 vo에 값 채우기
-```
+
+```jsp
 <%
 String name=request.getParameter("name");
 DataBoardVO vo=new DataBoardVO();
@@ -409,7 +420,8 @@ vo.setName(name);
 
 
 ## mapper에서 sql문장 작성하기
-```
+
+```oracle
 <update id="boardUpdate" parameterType="DataBoardVO">
     UPDATE databoard SET
     name=#{name},
@@ -418,14 +430,16 @@ vo.setName(name);
     <include refid="where-no"/><!-- WHERE no=#{no} -->
 </update>
 ```
+
 ## DAO에서 sql문장 실행하기
 #### boardUpdate
 - 비밀번호 일치 여부 체크하기
 
 ## update_ok.jsp
 - dao에서 비밀번호 확인한 결과 받아서 처리하기
-- 비밀번호 맞으면 처리해서 detail.jsp로 보내기, 틀리면 처리x
-`
+- 비밀번호 맞으면 처리해서 detail.jsp로 보내기, 틀리면 처리하지 않는다.
+
+```jsp
 <%
 boolean bCheck=DataBoardDAO.boardUpdate(vo)
      if(bCheck==true)
@@ -442,7 +456,7 @@ boolean bCheck=DataBoardDAO.boardUpdate(vo)
 <%
      }
 %>
-`
+```
 
 # 
 ##
