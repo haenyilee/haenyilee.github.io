@@ -12,7 +12,8 @@ sort: 3
 - 경로 : [com.sist.dao] - BoardVO
 
 #### BoardVO
-- 데이터형, 변수명 선언?
+- 데이터형, 변수명 선언
+
 ```java
 package com.sist.dao;
 
@@ -28,7 +29,9 @@ public class BoardVO {
 	private int hit;
 }
 ```
+
 - 캡슐화
+
 ```java
 package com.sist.dao;
 
@@ -92,6 +95,7 @@ public class BoardVO {
 - 경로 : [com.sist.dao] - [BoardDAO] - BoardDAO() , getConnection() , disConnection()
 
 #### BoardDAO()
+
 ```java
 package com.sist.dao;
 
@@ -123,7 +127,9 @@ public class BoardDAO {
 
 }
 ```
+
 #### getConnection()
+
 ```java
 package com.sist.dao;
 
@@ -150,6 +156,7 @@ public class BoardDAO {
 ```
 
 #### disConnection()
+
 ```java
 package com.sist.dao;
 
@@ -398,6 +405,7 @@ public class BoardList extends HttpServlet {
 ```
 
 #### 추가 버튼 생성
+
 ```java
 package com.sist.board;
 
@@ -459,6 +467,7 @@ public class BoardList extends HttpServlet {
 - 경로 : [com.sist.board] - [BoardInsert] - doGet() , doPost()
 #### doGet()
 - 화면 출력 폼
+
 ```java
 package com.sist.board;
 
@@ -617,6 +626,7 @@ public class BoardInsert extends HttpServlet {
 - 경로 : [com.sist.dao] - [BoardDAO] - boardInsert(BoardVO vo)
 
 #### boardInsert(BoardVO vo)
+
 ```java
 package com.sist.dao;
 
