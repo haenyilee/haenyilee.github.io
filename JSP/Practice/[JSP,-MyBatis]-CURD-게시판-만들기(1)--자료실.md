@@ -430,6 +430,7 @@ vo.setName(name);
 - dao에서 비밀번호 확인한 결과 받아서 처리하기
 - 비밀번호 맞으면 처리해서 detail.jsp로 보내기, 틀리면 처리x
 ```
+{% raw %}
 <%
 boolean bCheck=DataBoardDAO.boardUpdate(vo)
      if(bCheck==true)
@@ -446,6 +447,7 @@ boolean bCheck=DataBoardDAO.boardUpdate(vo)
 <%
      }
 %>
+{% endraw %}
 ```
 
 # 
