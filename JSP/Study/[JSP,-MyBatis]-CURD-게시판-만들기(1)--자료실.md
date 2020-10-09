@@ -467,7 +467,7 @@ boolean bCheck=DataBoardDAO.boardUpdate(vo)
      {
 %>
          <script>
-         alert("비밀번호가 틀립니다77777");
+         alert("비밀번호가 틀립니다");
          history.back();
          </script>
 <%
