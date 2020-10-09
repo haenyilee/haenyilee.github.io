@@ -103,7 +103,7 @@ Cf.<객체 지향의 3대 특성>
 - resources를 사용해서 config.xml에 있는 모든 xml문장을 읽어서 reader에 저장한다.
 - xml을 파싱하면 마이바티스 라이브러리가 읽어간다.
 - 태그를 한개씩 읽어와서 필요데이터를 저장하는 방식을 sax방식이라고 한다.
-```
+```note
 JAXP : 1. DOM(수정,추가,삭제 가능/메모리에 저장하기 때문에 속도 느림), 2. SAX(읽기만해서 속도가 빠름)
 JAXB : 빅데이터, 데이터값을 자바에 채운다 , binding
 ```
@@ -147,6 +147,7 @@ JAXB : 빅데이터, 데이터값을 자바에 채운다 , binding
 - 글 작성을 완료하면 바로 list.jsp로 넘어가면 안된다.
   - 글작성 완료 버튼을 눌러야만 db에 데이터를 넘겨주도록 설정해야하기 때문에 ok.jsp가 필요하다.
   - 이때, form태그를 사용한다.
+  
 ```
 <form method="post" action="../board/insert_ok.jsp" enctype="multipart/form-data">
 ```
