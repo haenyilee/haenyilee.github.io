@@ -7,7 +7,8 @@ sort: 2
 # 1. 환경설정 및 셋팅
 
 ## (1) 테이블 생성
-```
+
+```oracle
 CREATE TABLE databoard4(
    no NUMBER,
    name VARCHAR2(34) CONSTRAINT db4_name_nn NOT NULL,
@@ -57,7 +58,7 @@ VALUES(1,'홍길동','마이바티스 curd이용법','JSP include가 있는 경�
 
 ## (4) db.properties 제작하기
 - db접근 정보 미리 작성해두고 재사용하기 위함이다.
-- ```변수=값```형식으로 이루어져 있음
+- `변수=값`형식으로 이루어져 있음
 - 마이바티스나 스프링은 기본 디폴트 폴더가 src이기 때문에 이곳에 파일을 넣어주면 자동으로 인식할 수 있음
 
 ## (5) VO 제작
@@ -65,7 +66,8 @@ VALUES(1,'홍길동','마이바티스 curd이용법','JSP include가 있는 경�
   - BFILE , BLOB은 경로명만 주고 경로를 읽을 수 있게 한다.
   - Inputstream(IO)
 - 데이터 보호 : 캡슐화 방식 , 변수 은닉화 , 외부 연결시에 getter/setter활용
-```
+
+```note
 Cf.<객체 지향의 3대 특성>
 1. 캡슐화,은닉화
 2. 상속 , 포함
@@ -93,7 +95,7 @@ Cf.<객체 지향의 3대 특성>
 ## (7) DAO
 - xml파싱 후에 실행된 결과를 받는 위치이다.
 - DAO에서 메소드 호출
-- import java.io.*; // xml파일 읽는 용도
+- `import java.io.*;`는 xml파일 읽는 용도이다.
   - IO(INPUT,OUTPUT) : 데이터 입출력
     - 1byte씩 읽어들이는 것을 bytestream이라고 한다.(파일 업로드와 다운로드)
       - inputstream,outputstream
@@ -106,7 +108,9 @@ Cf.<객체 지향의 3대 특성>
 - xml을 파싱하면 마이바티스 라이브러리가 읽어간다.
 - 태그를 한개씩 읽어와서 필요데이터를 저장하는 방식을 sax방식이라고 한다.
 ```note
-JAXP : 1. DOM(수정,추가,삭제 가능/메모리에 저장하기 때문에 속도 느림), 2. SAX(읽기만해서 속도가 빠름)
+JAXP : 
+1. DOM(수정,추가,삭제 가능/메모리에 저장하기 때문에 속도 느림)
+2. SAX(읽기만해서 속도가 빠름)
 JAXB : 빅데이터, 데이터값을 자바에 채운다 , binding
 ```
 
@@ -253,7 +257,8 @@ DataBoardDAO.boardInsert(vo);
   - var데이터형 주면 알아서 인식함
 - submit을 주게 되면 값이 입력 안되어도 검색이 가능하기 때문에 <br>
 buttom으로 처리한 뒤, 자바스크립트로 기능을 설정해야함
-```scss
+
+```jsp
 <script type="text/javascript">
 function send()
 {
@@ -271,7 +276,8 @@ function send()
 
 ## (5) find.jsp에서 검색 기능 처리하기
 - 자바로 사용자 입력값 받아두기
-```
+
+```jsp
 <%
      request.setCharacterEncoding("UTF-8");//utf-8
      String fd=request.getParameter("fd");
@@ -285,7 +291,8 @@ function send()
 - ${} 와 #{}의 차이점은?
   - ${} : 컬럼명, 테이블명
   - #{} : 일반 데이터
-```
+
+```xml
 <select id="boardFindData" resultType="DataBoardVO" parameterType="hashmap">
 		SELECT no,subject,name,TO_CHAR(regdate,'YYYY-MM-DD') as dbday, hit
 		FROM databoard
@@ -315,11 +322,14 @@ function send()
 
 ## detail.jsp에 추가
 - 삭제 버튼 누르면 넘어가는 링크가 delete.jsp가 되도록 추가하기
+
 ```jsp
 <a href="../main/main.jsp?mode=5" class="btn btn-xs btn-success">삭제</a>
 ```
+
 - 특정 글번호의 글만 삭제하도록 no추가
-```
+
+```jsp
 <a href="../main/main.jsp?mode=5&no=<%=vo.getNo() %>" class="btn btn-xs btn-success">삭제</a>
 ```
 
@@ -404,7 +414,7 @@ class="btn btn-xs btn-primary">수정</a>
 - update.jsp에서 보내준 no 디코딩해주기
   - 전송할때는 인코딩해야함
   
-```
+```jsp
 request.setCharacterEncoding("utf-8");
 ```
 
@@ -457,6 +467,3 @@ boolean bCheck=DataBoardDAO.boardUpdate(vo)
      }
 %>
 ```
-
-# 
-##
