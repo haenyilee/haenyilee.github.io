@@ -2,6 +2,8 @@
 sort: 2
 ---
 
+# CURD게시판 (3) 자유게시판
+
 # 자유게시판 셋팅
 
 ## table 생성하기
@@ -531,6 +533,7 @@ boolean bCheck= BoardDAO.freeBoardUpdate(vo);
 
 - 삭제하기 버튼 클릭하면 보이고, 클릭안하면 안보이도록 자바스크립트 작성하기
 ```jsp
+{% raw %}
 <script type="text/javascript" srs="http://code.jquery.com/jquery.js"></script>
 <script>
 var i=0;
@@ -551,6 +554,7 @@ $(function(){
 	})
 });
 </script>
+{% endraw %}
 ```
 
 

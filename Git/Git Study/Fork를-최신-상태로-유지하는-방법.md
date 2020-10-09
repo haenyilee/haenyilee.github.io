@@ -2,7 +2,7 @@
 sort: 3
 ---
 
-# FORK
+# Fork를 최신 상태로 유지하기
 
 [Fork한 내용을 최신 버전으로 유지하기](https://blog.naver.com/tinymin/220188550992)
 

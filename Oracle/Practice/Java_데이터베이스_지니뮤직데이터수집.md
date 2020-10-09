@@ -2,6 +2,8 @@
 sort: 3
 ---
 
+# 지니 뮤직 차트 만들기
+
 # 지니 뮤직차트200 데이터 수집하기
 
 - 사이트 주소 : https://www.genie.co.kr/chart/top200

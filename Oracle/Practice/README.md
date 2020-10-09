@@ -2,7 +2,7 @@
 sort: 3
 ---
 
-# JSP Practice
+# Oracle Practice
 
 ```
 {% raw %}{% include list.liquid all=true %}{% endraw %}

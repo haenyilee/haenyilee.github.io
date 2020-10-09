@@ -1,7 +1,7 @@
 ---
-sort: 3
+sort: 2
 ---
 
-# HTML CSS Practice
+# Git Study
 
 {% include list.liquid all=true %}

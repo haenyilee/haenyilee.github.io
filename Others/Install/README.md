@@ -1,7 +1,7 @@
 ---
-sort: 3
+sort: 1
 ---
 
-# HTML CSS Practice
+#   Install
 
 {% include list.liquid all=true %}

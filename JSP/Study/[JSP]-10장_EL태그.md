@@ -2,13 +2,8 @@
 sort: 2
 ---
 
-# MVC구조
-
-- M : JAVA
-- V : JSP
-- C : Servlet
-
 # EL태그
+
 - el : Express Language
 - 화면을 출력할때 사용한다.
 - 실무에서는 자바와 HTML을 분리해서 사용한다.

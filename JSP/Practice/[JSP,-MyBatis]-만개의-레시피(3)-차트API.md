@@ -2,7 +2,7 @@
 sort: 2
 ---
 
-# 차트 API
+# 만개의 레시피 (3) 차트 API
 
 ## google visualization
 - Chart-gallery : https://developers.google.com/chart/interactive/docs/gallery
