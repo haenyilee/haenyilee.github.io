@@ -3,6 +3,7 @@ sort: 2
 ---
 
 # Cannot find class: oracle.jdbc.driver.OracleDriver
+
 - 해결방법 : 라이브러리에 odbc6를 추가한다.
 - 출처 : [java.lang.ClassNotFoundException: oracle.jdbc.driver.OracleDriver 해결방법](https://wakestand.tistory.com/101)
 

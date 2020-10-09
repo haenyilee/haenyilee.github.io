@@ -1,7 +1,7 @@
 ---
-sort: 1
+sort: 2
 ---
 
-#   Install
+# Install
 
 {% include list.liquid all=true %}

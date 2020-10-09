@@ -150,7 +150,7 @@ JAXB : 빅데이터, 데이터값을 자바에 채운다 , binding
   - 글작성 완료 버튼을 눌러야만 db에 데이터를 넘겨주도록 설정해야하기 때문에 ok.jsp가 필요하다.
   - 이때, form태그를 사용한다.
 ```
-{% raw &}
+{% raw %}
 <form method="post" action="../board/insert_ok.jsp" enctype="multipart/form-data">
 {% endraw %}
 ```
