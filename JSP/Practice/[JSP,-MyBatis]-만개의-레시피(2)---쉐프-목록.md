@@ -7,8 +7,8 @@ sort: 2
 ## RecipeModel.java
 
 - import
-```
-java
+
+```java
 import com.sist.dao.*;
 import java.util.*;
 ```
@@ -41,14 +41,16 @@ import java.util.*;
 
 # 쉐프 이름 클릭하면 레시피 출력하기
 ## server.xml
-- ```URIEncoding="UTF-8"```추가하기
+- `URIEncoding="UTF-8"`추가하기
+
 ```xml
 <Connector connectionTimeout="20000" port="8080" protocol="HTTP/1.1" redirectPort="8443" URIEncoding="UTF-8"/>
 ```
 
 ## mapper.xml
-- ```>```는 태그로 인식하기 때문에 ```&lt;```로 작성해야한다.
-```
+- `>`는 태그로 인식하기 때문에 `&lt;`로 작성해야한다.
+
+```oracle
 SELECT no,title,poster,chef,rownumm
 FROM chef
 WHERE chef=#{chef}
@@ -65,6 +67,7 @@ WHERE chef=#{chef}
 ## chef_detail.jsp
 - full화면으로 출력하기(여백x)
 - 제목이 너무 기니까 fn활용해서 글자 20글자로 자르기
+
 ```jsp
 <p>${fn:length(vo.title)>20?fn:substring(vo.title,0,20)+="...":vo.title }</p>
 ```
