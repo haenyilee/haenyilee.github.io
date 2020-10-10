@@ -2,7 +2,9 @@
 sort: 2
 ---
 
-# 액션태그
+# 자바빈과 액션태그
+
+## 액션태그
 
 - 자바 문법을 태그형으로 제작한 것이 액션태그이다.
 - 형식 : ```<jsp: >```
@@ -13,13 +15,13 @@ sort: 2
 
 
 
-## 1. ```<jsp:include page="첨부할 jsp파일명">```
+#### 1. ```<jsp:include page="첨부할 jsp파일명">```
 
 
 
 
 
-## 2. ```<jsp:useBean id="dao" class="MemberDAO">```
+#### 2. ```<jsp:useBean id="dao" class="MemberDAO">```
 - id는 객체명이 된다.
 - 자바에서의 코딩으로 구현하면 아래와 같으며, 메모리 할당을 하는 용도로 사용된다.
 
@@ -40,7 +42,7 @@ MemberVO vo=new MemberVO();
 ```
 
 
-## 3. ```<jsp:setProperty name="객체명" property="변수명" value="값">```
+#### 3. ```<jsp:setProperty name="객체명" property="변수명" value="값">```
 - name : id명칭
 - property : 변수명
 - setProperty는 setXxx()에 값을 채워주는 역할을 담당한다.
