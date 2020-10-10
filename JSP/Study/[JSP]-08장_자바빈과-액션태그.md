@@ -4,17 +4,17 @@ sort: 2
 
 # 자바빈과 액션태그
 
-## 액션태그
+## 액션태그란?
 
 - 자바 문법을 태그형으로 제작한 것이 액션태그이다.
 - 형식 : ```<jsp: >```
 - 아래 3가지 종류만 기억하면 된다. <br>
 (1) ```<jsp:include page="첨부할 jsp파일명">``` <br>
-  (2) ```<jsp:useBean id="dao" class="MemberDAO">``` <br>
-  (3) ```<jsp:setProperty name="객체명" property="">```
+(2) ```<jsp:useBean id="dao" class="MemberDAO">``` <br>
+(3) ```<jsp:setProperty name="객체명" property="">```
 
 
-
+## 액션태그의 종류
 #### 1. ```<jsp:include page="첨부할 jsp파일명">```
 
 
