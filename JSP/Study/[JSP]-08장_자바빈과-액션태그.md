@@ -22,17 +22,19 @@ sort: 2
 ## 2. ```<jsp:useBean id="dao" class="MemberDAO">```
 - id는 객체명이 된다.
 - 자바에서의 코딩으로 구현하면 아래와 같으며, 메모리 할당을 하는 용도로 사용된다.
+
 ```JAVA
 MemberDAO dao = new MemberDAO();
-
 ```
 
 - 아래 자바코딩처럼 메모리 할당하지 말고, 
+
 ```java
 MemberVO vo=new MemberVO();
 ```
 
 - 아래 JSP 액션 태그를 써야 한다.
+
 ```jsp
 <jsp:useBean id="vo" class="MemberVO">
 ```
@@ -45,17 +47,20 @@ MemberVO vo=new MemberVO();
 
 
 - 자바에서의 아래 코딩이
+
 ```java
 vo.setName("홍길동");
 vo.setNo(1);
 ```
 - jsp에서는 아래 액션태그로 대체된다.
+
 ```jsp
 <jsp:setProperty name="vo" property="no" value="1">
 <jsp:setProperty name="vo" property="name" value="홍길동">
 ```
 
 - *을 주게 되면 전체 변수에 값을 한 번에 채울 수 있다.
+
 ```jsp
 <jsp:setProperty name="vo" property="no" value="*">
 ```
@@ -68,7 +73,7 @@ vo.setNo(1);
 - 싱글턴
 - ```<% %>``` 형식의 자바 코딩을 제거하기 위함이다.
 
-```
+```jsp
 	String name=request.getParameter("name");
 	String no = request.getParameter("no");
 	String subject=request.getParameter("subject");
@@ -82,6 +87,7 @@ vo.setNo(1);
 	vo.setContent(content);
 	vo.setPwd(pwd);
 ```
+
 - 위의 코딩과 같이 vo에 값을 채워주는 과정을 하나로 줄여주기 위해 사용한다.
 
 
@@ -96,7 +102,8 @@ vo.setNo(1);
 
 ## input.jsp만들기
 - form태그에 담아서 output.jsp로 보내기
-```
+
+```jsp
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -119,12 +126,14 @@ vo.setNo(1);
 </body>
 </html>
 ```
+
 ## output.jsp
 - 기존에 배웠던 방식으로 값을 받는 방식임
 - 사용자가 보내준 데이터 받기
   - 받은 데이터 한글로 변환하기 
 - 받은 데이터 한 개의 클래스로 묶어서 관리하기
-```
+
+```jsp
 <%@page import="com.sist.temp.MemberBean"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -162,6 +171,7 @@ vo.setNo(1);
 </body>
 </html>
 ```
+
 ## input.jsp만들기
 - form태그에 담아서 output2.jsp로 보내는 것으로 변경하기
 
@@ -172,6 +182,7 @@ vo.setNo(1);
   - 정수가 있는 경우, 자동으로 Integer.parseInt() 를 한다. 
 - 값을 모아서 받는 것이 아니라 한 개의 데이터를 받는 경우에는 request를 이용해서 받는 것이 좋다.
   - 액션태그는 사용자가 보내주는 데이터가 많은 경우에 사용한다.
+  
 ```jsp
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.sist.temp.*"%>
