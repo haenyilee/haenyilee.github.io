@@ -98,11 +98,11 @@ vo.setNo(1);
 
 
 
-# useBean/setProperty 액션 태그 연습하기
+## useBean/setProperty 액션 태그 연습하기
 
-## MemberBeans.java 만들기
+#### MemberBeans.java 만들기
 
-## input.jsp만들기
+#### input.jsp만들기
 - form태그에 담아서 output.jsp로 보내기
 
 ```jsp
@@ -129,7 +129,7 @@ vo.setNo(1);
 </html>
 ```
 
-## output.jsp
+#### output.jsp
 - 기존에 배웠던 방식으로 값을 받는 방식임
 - 사용자가 보내준 데이터 받기
   - 받은 데이터 한글로 변환하기 
@@ -174,10 +174,10 @@ vo.setNo(1);
 </html>
 ```
 
-## input.jsp만들기
+#### input.jsp만들기
 - form태그에 담아서 output2.jsp로 보내는 것으로 변경하기
 
-## output2.jsp
+#### output2.jsp
 - 새로운 방식으로 값을 받기
 - jsp:useBean : 메모리 할당하는 기능을 함
 - jsp:setProperty : 값을 채우는 역할을 한다.
