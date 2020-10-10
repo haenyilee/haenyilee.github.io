@@ -7,8 +7,8 @@ sort: 2
 # RecipeModel.java
 
 ## import
-```
-java
+
+```java
 import com.sist.dao.*;
 import java.util.*;
 ```
@@ -27,10 +27,13 @@ import java.util.*;
 
 ## css/html
 - 여백 화면
+
 ```html
 <div class="container">
 ```
+
 - 풀화면
+
 ```html
 <div class="container-fluid">
 ```
