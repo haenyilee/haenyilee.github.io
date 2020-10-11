@@ -100,9 +100,9 @@ vo.setNo(1);
 
 ## 4. useBean/setProperty 액션 태그 연습하기
 
-## 4.1 MemberBeans.java 만들기
+### 4.1 MemberBeans.java 만들기
 
-## 4.2 input.jsp만들기
+### 4.2 input.jsp만들기
 - form태그에 담아서 output.jsp로 보내기
 
 ```jsp
@@ -129,7 +129,7 @@ vo.setNo(1);
 </html>
 ```
 
-## 4.3 output.jsp
+### 4.3 output.jsp
 - 기존에 배웠던 방식으로 값을 받는 방식임
 - 사용자가 보내준 데이터 받기
   - 받은 데이터 한글로 변환하기 
