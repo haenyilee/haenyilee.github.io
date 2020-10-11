@@ -28,8 +28,8 @@ sort: 9
 
 
 
-### 3.1 core
-#### 3.1.1 변수 선언
+## 3.1 core
+### 3.1.1 변수 선언
 
 - ```<c:set var="키" value="값">```
 - ```request.setAttribute("키",값)```와 같은 코딩이다.
@@ -37,14 +37,14 @@ sort: 9
 
 
 
-#### 3.1.2 제어문
-##### 3.1.2.1 ```<c:if test="조건문">결과값</c:if>``` <br>
+### 3.1.2 제어문
+#### 3.1.2.1 ```<c:if test="조건문">결과값</c:if>``` <br>
 - test : 조건을 저장하는 속성
 - XML은 없는 속성을 사용하면 error발생한다.
 - else를 나타내는 속성이 없다.
   - 일반적으로 다중 if문, 선택조건문을 사용할 때는 <c:choose>를 사용한다.
 
-##### 3.1.2.2 ```<c:for var="i" begin="1" end="10" step="1">```
+#### 3.1.2.2 ```<c:for var="i" begin="1" end="10" step="1">```
 - ```for(int i=1;i<=10;i++)```와 같은 코딩이다.
 - var : 변수명
 - begin : 초기값
@@ -55,7 +55,7 @@ sort: 9
     - 즉, 증가는 가능하지만, 감소는 불가능 하다.
   - step=1은 생략이 가능하다.
 
-##### 3.1.2.3 ```<c:forEach var="vo" items="list">```
+#### 3.1.2.3 ```<c:forEach var="vo" items="list">```
 - items : 배열이나 컬렉션이 사용된다.
 
 ```
@@ -84,13 +84,13 @@ ${status.end}        <!- 끝 값 ->
 ${status.step}        <!- 증가 값 ->
 ```
 
-##### 3.1.2.4 ```<c:forTokens var="s" values="red,green,blue,black,yellow" delims=",">```
+#### 3.1.2.4 ```<c:forTokens var="s" values="red,green,blue,black,yellow" delims=",">```
 - values : 자를 문자열
 - delims : 구분 문자
 
 
 
-##### 3.1.2.5 switch문장
+#### 3.1.2.5 switch문장
 ```
 <c:choose>
 	<c:when test=="조건">처리문장</c:when>
@@ -101,11 +101,11 @@ ${status.step}        <!- 증가 값 ->
 
 
 
-#### 3.1.3 파일이동
-##### 3.1.3.1 ```<c:redirect url="이동할 주소">``` <br>
+### 3.1.3 파일이동
+#### 3.1.3.1 ```<c:redirect url="이동할 주소">``` <br>
 - ```response.sendRedirect("")```
 
-##### 3.1.3.2 ```<c:import>``` <br>
+#### 3.1.3.2 ```<c:import>``` <br>
 - ```<c:set>```
 - ```<c:forEach>```
 - ```<c:if>``` : ```<c:else>```는 없다.
@@ -113,8 +113,8 @@ ${status.step}        <!- 증가 값 ->
 - ```<c:redirect>```
 
 
-#### 3.1.4 출력
-##### 3.1.4.1 ```<c:out value="">```
+### 3.1.4 출력
+#### 3.1.4.1 ```<c:out value="">```
 - 출력용이다.
 
 
