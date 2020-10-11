@@ -4,53 +4,6 @@ sort: 6
 
 # 자바빈과 액션태그
 
-## server.xml
-- 경로 : 
-- ```<Context>```뒤에 ``` / ```를 지우고 ```</Context>```를 추가한다
-- ```<Resource>```태그를 활용해서 DBCP을 작성한다.
-
-## 커넥션 풀이란?
-- DBCP = DataBase Connection Pool
-- 데이터베이스와 연결된 커넥션을 미리 만들어서 풀 속에 저장해 두고 있다가 <br>
-필요할 때에 커넥션을 풀에서 가져다 쓰고 다시 풀에 반환하는 기법
-- 커넥션을 생성하는데 드는 연결 시간이 소비되지 않는다.
-- 커넥션을 재사용하기 때문에 생성되는 커넥션 수가 많지 않다.
-- maxActive="10" : Connection의 총 갯수
-- maxIdle="10" : 현재 사용 중에 있는 Connection
-- maxWait="-1" : 10명이 동시에 사용할 Connection
-  - 10명이 동시에 사용할 때, 사용이 가능할때까지 기다리는 시간
-  - -1은 무한대 기다리라는 의미임
-- ConnectionPool을 활용하면 Connection 객체를 열때만 달라지게 된다
-  - 기존 : 직접 생성
-  - 변경 후 : 미리 만들어져 있기 때문에 만들어진 주소(name)만 얻어오면 된다. ==> jdbc/oracle
-
-```xml
-<Resource 
-           driverClassName="oracle.jdbc.driver.OracleDriver"
-           username="hr"
-           password="happy"
-           url="jdbc:oracle:thin:@211.238.142.181:1521:XE"
-           // 윗부분은 데이터베이스 정보임 : 오라클과의 연결을 시도하는 것임
-           auth="Container"
-           name="jdbc/oracle"
-           type="javax.sql.DataSource"
-           maxActive="10"
-           maxIdle="10"
-           maxWait="-1"
-/>
-```
-
-##
-- - 웹프로그램은 항상 오라클 연결해서 데이터를 가지고 온다
-- 방식 : JDBC , DBCP , ORM(MyBatis)
-
-
-#### ORM
-- 마이바티스와 하이버네이트같은 프레임워크를 ORM이라고 한다.
-- Connection
-- PreparedStatement , Resultset
- 
-
 ## 1. 액션태그란?
 
 - 자바 문법을 태그형으로 제작한 것이 액션태그이다.
