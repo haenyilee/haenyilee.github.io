@@ -4,6 +4,53 @@ sort: 6
 
 # 자바빈과 액션태그
 
+## server.xml
+- 경로 : 
+- ```<Context>```뒤에 ``` / ```를 지우고 ```</Context>```를 추가한다
+- ```<Resource>```태그를 활용해서 DBCP을 작성한다.
+
+## 커넥션 풀이란?
+- DBCP = DataBase Connection Pool
+- 데이터베이스와 연결된 커넥션을 미리 만들어서 풀 속에 저장해 두고 있다가 <br>
+필요할 때에 커넥션을 풀에서 가져다 쓰고 다시 풀에 반환하는 기법
+- 커넥션을 생성하는데 드는 연결 시간이 소비되지 않는다.
+- 커넥션을 재사용하기 때문에 생성되는 커넥션 수가 많지 않다.
+- maxActive="10" : Connection의 총 갯수
+- maxIdle="10" : 현재 사용 중에 있는 Connection
+- maxWait="-1" : 10명이 동시에 사용할 Connection
+  - 10명이 동시에 사용할 때, 사용이 가능할때까지 기다리는 시간
+  - -1은 무한대 기다리라는 의미임
+- ConnectionPool을 활용하면 Connection 객체를 열때만 달라지게 된다
+  - 기존 : 직접 생성
+  - 변경 후 : 미리 만들어져 있기 때문에 만들어진 주소(name)만 얻어오면 된다. ==> jdbc/oracle
+
+```xml
+<Resource 
+           driverClassName="oracle.jdbc.driver.OracleDriver"
+           username="hr"
+           password="happy"
+           url="jdbc:oracle:thin:@211.238.142.181:1521:XE"
+           // 윗부분은 데이터베이스 정보임 : 오라클과의 연결을 시도하는 것임
+           auth="Container"
+           name="jdbc/oracle"
+           type="javax.sql.DataSource"
+           maxActive="10"
+           maxIdle="10"
+           maxWait="-1"
+/>
+```
+
+##
+- - 웹프로그램은 항상 오라클 연결해서 데이터를 가지고 온다
+- 방식 : JDBC , DBCP , ORM(MyBatis)
+
+
+#### ORM
+- 마이바티스와 하이버네이트같은 프레임워크를 ORM이라고 한다.
+- Connection
+- PreparedStatement , Resultset
+ 
+
 ## 1. 액션태그란?
 
 - 자바 문법을 태그형으로 제작한 것이 액션태그이다.
@@ -17,12 +64,15 @@ sort: 6
 ## 2. 액션태그의 종류
 ### 2.1 ```<jsp:include page="첨부할 jsp파일명">```
 
-
-
-
-
 ### 2.2 ```<jsp:useBean id="dao" class="MemberDAO">```
 - id는 객체명이 된다.
+
+```note
+- JSP : 새로운 데이터형 만들기 , 여러 데이터를 모아서 관리 (Bean)
+- MyBatis : 데이터를 모아서 전송하는 것을 목적으로 함 (DTO)
+- Spring : 값을 저장하는 클래스 (~VO)
+```
+
 - 자바에서의 코딩으로 구현하면 아래와 같으며, 메모리 할당을 하는 용도로 사용된다.
 
 ```JAVA
@@ -129,8 +179,8 @@ vo.setNo(1);
 </html>
 ```
 
-### 4.3 output.jsp
-- 기존에 배웠던 방식으로 값을 받는 방식임
+### 4.3 output.jsp : 액션태그 사용하지 않고 값 받기
+- jsp파일에 자바코딩을 구현하여 값을 받는 방식이다.
 - 사용자가 보내준 데이터 받기
   - 받은 데이터 한글로 변환하기 
 - 받은 데이터 한 개의 클래스로 묶어서 관리하기
@@ -177,8 +227,7 @@ vo.setNo(1);
 ### 4.4 input.jsp만들기
 - form태그에 담아서 output2.jsp로 보내는 것으로 변경하기
 
-### 4.5 output2.jsp
-- 새로운 방식으로 값을 받기
+### 4.5 output2.jsp : 액션태그로 값 받기
 - jsp:useBean : 메모리 할당하는 기능을 함
 - jsp:setProperty : 값을 채우는 역할을 한다.
   - 정수가 있는 경우, 자동으로 Integer.parseInt() 를 한다. 
