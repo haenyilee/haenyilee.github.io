@@ -15,7 +15,7 @@ sort: 7
 - 단점 : 지우기 전까지는 데이터가 남아있다.
 
 ```note
-**request의 단점** <br>
+**request의 단점** : 
 request는 각 jsp마다 다른 request를 가지고 있어서, 화면 변경이 되면 request가 초기화된다는 단점이 있다. 
 ```
 
