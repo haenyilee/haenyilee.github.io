@@ -54,6 +54,7 @@ sort: 2
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*,java.text.*"%> 
 ```
+
 - contentType
   - 브라우저에 HTML을 전송한다. (브라우저에서 HTML 파싱 준비)
   - contentType="text/html" => 화면에 출력
@@ -67,6 +68,7 @@ sort: 2
 - import
   - 이미 만들어진 클래스를 읽어올 때 사용 (라이브러리 로드)
   - pageEncoding 뒤에 써도 되고, 아래처럼 page 태그 뒤에 써도 됨
+
 ```jsp
 <%@ page import="java.util.*" %>
 <%@ page import="java.text.*" %>
@@ -74,6 +76,7 @@ sort: 2
 
 - errorPage="jsp파일 등록"
   - 에러가 나면 이동하는 파일임
+
 ```jsp
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*,java.text.*" errorPage="error.jsp"%> 
@@ -87,6 +90,7 @@ sort: 2
 
 #### tablib : 태그로 자바의 문법을 만들어줌 
   - 제어문 : ```<c:forEach>``` , ```<c:if>```
+
 ```jsp
 <html>
   <body>
@@ -99,6 +103,7 @@ sort: 2
   </body>
 </html>
 ```
+
 - include : 특정 JSP안에 JSP를 첨부
 
 
