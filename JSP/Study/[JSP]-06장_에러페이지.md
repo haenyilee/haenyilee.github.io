@@ -12,6 +12,7 @@ sort: 2
 2. 종류별로 처리하기
 - web.xml 파일을 여러개 만들어서 오류코드(500, 404)별로 다르게 처리한다.
 - ```<welcome-file-list>```위에 작성한다.
+
 ```xml
 <error-page>
   	<error-code>404</error-code>
@@ -28,4 +29,4 @@ sort: 2
 - 404 : 파일이 존재하지 않는 경우
 - 500 : 소스에 컴파일, 인터프리터에러
 - 415 : 한글 변환 코드 오류
-- 400 : 
+- 기타 : [https://olsh1108o.tistory.com/m/entry/JSP-에러-종류]
