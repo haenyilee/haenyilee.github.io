@@ -2,7 +2,9 @@
 sort: 2
 ---
 
-# JSP란
+# JSP의 기본 구성
+
+## JSP란
 
 - Java Server Page : 서버에서 실행되는 자바파일
 - Java + HTML : HTML 기반에 Java가 첨부되는 것
@@ -43,7 +45,7 @@ sort: 2
 ```
 
 
-# JSP의 구성요소
+## JSP의 구성요소
 ### 1. 지시자
 - JSP의 시작부분
 
