@@ -41,11 +41,9 @@ sort: 2
 2. ```<form action="">``` : 한번에 전송
   - get방식 : URL 뒤에 보이게
   - post방식 : URL 뒤에 안보이게
-
-
   - form태그 액션 수행하는 버튼들(데이터 전송하는 버튼들)
      1. ```<input type=submit>```
      2. ```<button>```
      3. ```<input type=image>```
 
-- 파라미터 읽기
+  - 파라미터 읽기
