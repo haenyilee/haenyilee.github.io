@@ -1,10 +1,10 @@
 ---
-sort: 2
+sort: 6
 ---
 
 # 자바빈과 액션태그
 
-## 액션태그란?
+## 1. 액션태그란?
 
 - 자바 문법을 태그형으로 제작한 것이 액션태그이다.
 - 형식 : ```<jsp: >```
@@ -14,14 +14,14 @@ sort: 2
 (3) ```<jsp:setProperty name="객체명" property="">```
 
 
-## 액션태그의 종류
-#### 1. ```<jsp:include page="첨부할 jsp파일명">```
+## 2. 액션태그의 종류
+### 2.1 ```<jsp:include page="첨부할 jsp파일명">```
 
 
 
 
 
-#### 2. ```<jsp:useBean id="dao" class="MemberDAO">```
+### 2.2 ```<jsp:useBean id="dao" class="MemberDAO">```
 - id는 객체명이 된다.
 - 자바에서의 코딩으로 구현하면 아래와 같으며, 메모리 할당을 하는 용도로 사용된다.
 
@@ -42,7 +42,7 @@ MemberVO vo=new MemberVO();
 ```
 
 
-#### 3. ```<jsp:setProperty name="객체명" property="변수명" value="값">```
+### 2.3 ```<jsp:setProperty name="객체명" property="변수명" value="값">```
 - name : id명칭
 - property : 변수명
 - setProperty는 setXxx()에 값을 채워주는 역할을 담당한다.
@@ -71,7 +71,7 @@ vo.setNo(1);
 
 
 
-## 액션태그의 목적은?
+## 3. 액션태그의 목적은?
 - 싱글턴
 - ```<% %>``` 형식의 자바 코딩을 제거하기 위함이다.
 
@@ -98,11 +98,11 @@ vo.setNo(1);
 
 
 
-## useBean/setProperty 액션 태그 연습하기
+## 4. useBean/setProperty 액션 태그 연습하기
 
-#### MemberBeans.java 만들기
+## 4.1 MemberBeans.java 만들기
 
-#### input.jsp만들기
+## 4.2 input.jsp만들기
 - form태그에 담아서 output.jsp로 보내기
 
 ```jsp
@@ -129,7 +129,7 @@ vo.setNo(1);
 </html>
 ```
 
-#### output.jsp
+## 4.3 output.jsp
 - 기존에 배웠던 방식으로 값을 받는 방식임
 - 사용자가 보내준 데이터 받기
   - 받은 데이터 한글로 변환하기 
@@ -174,10 +174,10 @@ vo.setNo(1);
 </html>
 ```
 
-#### input.jsp만들기
+### 4.4 input.jsp만들기
 - form태그에 담아서 output2.jsp로 보내는 것으로 변경하기
 
-#### output2.jsp
+### 4.5 output2.jsp
 - 새로운 방식으로 값을 받기
 - jsp:useBean : 메모리 할당하는 기능을 함
 - jsp:setProperty : 값을 채우는 역할을 한다.
