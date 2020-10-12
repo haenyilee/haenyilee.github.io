@@ -4,6 +4,7 @@ sort: 2
 
 # MVC
 
+## MVC란?
 - Model
 - View
 - Controller
@@ -32,7 +33,7 @@ sort: 2
 |**모델2**|컨트롤러 서블릿에서 <br> 집중적인 작업 처리가 가능하고 확장이 용이하다|작업량이 많다.|
 
 
-# 초기 셋팅
+## MVC 구조로 웹페이지 만들기
 - M/C : Java로 구성할 예정이다.
   - Controller를 Spring처럼 제작해서 사용할 예정이다.
 - V : JSP로 구성할 예정이다.
@@ -102,13 +103,13 @@ sort: 2
 
 
 ```note
-** 톰캣의 역할 **
+**톰캣의 역할**
 - 서블릿 구동
 - 에러처리
 ```
 
 ```note
-** URL의 역할 **
+**URL의 역할**
 - Controller가 사용자 요청을 받는다.
 - Controller가 요청을 처리하기 위해서 Model을 찾는다.
 - Model에서 요청처리 결과값을 Controller가 받는다.
@@ -118,6 +119,7 @@ sort: 2
 ```
 
 1. 서블릿 등록
+
 ```xml
   <servlet>
   	<servlet-name>mvc</servlet-name>
@@ -129,6 +131,7 @@ sort: 2
   	<url-pattern>*.do</url-pattern>
   </servlet-mapping>
 ```
+
 - MVC에서는 Controller를 찾아야 결과값을 받을 수 있기 때문에 이를 찾는 과정이 중요하다.
 - 다른 서블릿과 URL 충돌을 막기 위해 `.do`를 확장자를 주면 Controller를 찾을 수 있다.
 - MVC구조에서는 URL주소가 주로 `*.do`로 끝난다.
@@ -141,6 +144,7 @@ sort: 2
 ## Controller가 필요한 이유
 - 처리 후 결과값이 담겨있는 request값을 받아서 JSP에 넘겨주는 역할을 한다.
 - 각 model.java에 아래 코딩을 추가하고
+
 ```java
 public void execute(HttpServletRequest request)
 	{
@@ -148,7 +152,9 @@ public void execute(HttpServletRequest request)
 		request.setAttribute("msg", msg);
 	}
 ```
+
 - JSP에서 아래 코딩을 실행하면 결과값을 받지 못한다. 
+
 ```jsp
 <body>
 	<center>
@@ -160,6 +166,7 @@ public void execute(HttpServletRequest request)
 
 - 그 이유는 결과값이 담겨있는 request를 호출하지 않았기 때문이다. 
 - 그래서 각 JSP 파일 내에 아래 코딩을 추가하면 request값을 받을 수 있다.
+
 ```jsp
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="com.sist.model.*"%>
@@ -168,6 +175,7 @@ public void execute(HttpServletRequest request)
 	model.execute(request);
 %>
 ```
+
 - 하지만 이런 방식은 모든 파일을 일일히 찾아서 변경해야 하기 때문에 유지보수에 불리하다.
 - 이 기능을 Controller에 모아두면 내용을 한 번만 수정해주면 된다는 장점이 존재한다. 
 
@@ -186,7 +194,7 @@ Controller에서 IF문을 돌려서 URI값을 받아올 수도 있지만, 소스
 - 그래서 <url-pattern>*.do</url-pattern>로 설정한 뒤 해시맵으로 값을 받는 편이 유지보수가 편리하다.
 
 ```note
-** 스프링의 필요성 **
+**스프링의 필요성**
 - 하나의 클래스에 많은 메소드를 모아둬서 결합도(의존성)을 낮춘다.
 - LooseComplition
 - 한 클래스에서 오류났을 때 다른 클래스에서도 연쇄적으로 오류가 발생하면 <br> 각 클래스를 일일히 찾아서 수정해야 하기 때문에 유지보수가 어렵다.
