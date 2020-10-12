@@ -165,7 +165,6 @@ public void boardUpdate(HttpServletRequest request)
 
 ## BoardDAO.java
 - 비밀번호 확인해서 수정한 결과 처리하기
-```
 
 (중간 날림...)
 
