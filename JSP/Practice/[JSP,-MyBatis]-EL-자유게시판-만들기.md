@@ -63,6 +63,7 @@ public static BoardVO boardUpdateData(int no)
     return vo;
 }
 ```
+
 ## BoardManager.java
 - DAO로부터 출력되는 값을 request에 담아주기
 
@@ -100,7 +101,7 @@ public void boardUpdateData(HttpServletRequest request)
 <input
 ```
 
-- <textarea>태그에도 내용 출력하기
+- `<textarea>`태그에도 내용 출력하기
 
 ## update_ok.jsp
 - [manager.java] import하기
