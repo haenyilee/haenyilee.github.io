@@ -95,7 +95,7 @@ public void boardUpdateData(HttpServletRequest request)
 %>
 ```
 
-- <input>태그의 value값 출력하기
+- `<input>`태그의 value값 출력하기
 
 ```jsp
 <input
