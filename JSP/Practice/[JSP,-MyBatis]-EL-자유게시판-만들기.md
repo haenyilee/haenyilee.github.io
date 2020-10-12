@@ -43,6 +43,7 @@ sort: 2
 ## DAO.java
 - 수정할 데이터 읽기
   - boardDetailData mapper를 활용하면 값을 받을 수 있다.
+
 ```java
 public static BoardVO boardUpdateData(int no)
 {
@@ -64,6 +65,7 @@ public static BoardVO boardUpdateData(int no)
 ```
 ## BoardManager.java
 - DAO로부터 출력되는 값을 request에 담아주기
+
 ```java
 public void boardUpdateData(HttpServletRequest request)
 {
@@ -75,6 +77,7 @@ public void boardUpdateData(HttpServletRequest request)
 ## update.jsp
 
 - DAO로부터 데이터 받기
+
 ```jsp
 <%@ import="com.sist.manager.*"%>
 ```
@@ -82,24 +85,31 @@ public void boardUpdateData(HttpServletRequest request)
 ```jsp
 <jsp:useBean id="mgr" class="com.sist.manager.BoardManager"></jsp:useBean>
 ```
-BoardManager가 request에 결과값을 담아서 보내줌
+
+- BoardManager가 request에 결과값을 담아서 보내줌
+
 ```jsp
 <%
    mgr.boardUpdateData(
 %>
 ```
+
 - <input>태그의 value값 출력하기
+
 ```jsp
 <input
 ```
+
 - <textarea>태그에도 내용 출력하기
 
 ## update_ok.jsp
 - [manager.java] import하기
 - mgr객체 메모리 할당하기
+
 ```jsp
 <jsp:useBean id="mgr" class="com.sist.manager.BoardManager"/>
 ```
+
 - ```BoardManager mgr=new BoardManager()```의 자바 코딩을 JSP태그로 바꾼 것이다.
 - BoardManager로 request로 전송하면 처리해서 결과값을 JSP로 전송해서 요청한 결과의 출력만 담당하는 것이 JSP(View)의 역할이다. 이 부분을 프리젠테이션 로직이라고 한다. 
 - Java로 처리하는 것은 Model이며, 비지니스로직이라고 한다. Manager,DAO,VO 등이 모두 객체 모델이다. 
@@ -110,6 +120,7 @@ BoardManager가 request에 결과값을 담아서 보내줌
   - 한글로 변환하기
   - 사용자가 보내준 데이터 받기 
   - 받은 데이터 BoardVO에 묶어서 BoardDAO로 전송하면 오라클에서 수정하면 됨
+
 ```java
 public void boardUpdate(HttpServletRequest request)
 {
@@ -131,13 +142,16 @@ public void boardUpdate(HttpServletRequest request)
 
 ## mapper.xml
 - 비밀번호 가져오기
+
 ```xml
 <select id="boardGetPassword" resultType="string" parameterType="int">
     SELECT pwd FROM freeboard
     WHERE no=#{no}
 </select>
 ```
+
 - 비밀번호 가져오기
+
 ```xml
 <update id="boardUpdate" parameterType="BoardVO">
     UPDATE freeboard SET
