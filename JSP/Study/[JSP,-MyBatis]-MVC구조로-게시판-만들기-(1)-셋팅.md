@@ -243,13 +243,13 @@ NodeList list=root.getElementsByTagName("bean");
 
 
 #### **사용자 요청 시, 처리되는 과정** : `service`가 담당한다.
-- 1. 사용자 요청을 받기
+- 사용자 요청을 받기
 
 ```java
 String cmd=request.getRequestURI();
 ```
 
-  - 2. Model클래스 받기 : clsMap에 저장된 클래스를 찾아주기
+  - Model클래스 받기 : clsMap에 저장된 클래스를 찾아주기
     - ContextPath : `http://localhost/20201012-MVC1/*.do` 에서 `http://localhost/20201012-MVC1` 부분
 
 ```java
@@ -257,15 +257,15 @@ cmd=cmd.substring(request.getContextPath().length()+1);
 Model model=(Model)clsMap.get(cmd);
 ```
 
-  - 3. Model을 통해서 요청 처리하기 >> 결과값을  request,session에 담기
+  - Model을 통해서 요청 처리하기 >> 결과값을  request,session에 담기
 
 ```java
 String jsp=model.handlerRequest(request);
 ```
 
-  - 4. JSP파일 찾기
+  - JSP파일 찾기
 
-  - 5. JSP로 request 전송하기
+  - JSP로 request 전송하기
     - RequestDispatcher : request를 해당 JSP로 전송하는 클래스
 
 ```note
