@@ -33,59 +33,41 @@ public interface Model {
 
 
 
-### [applicationContext.xml]
-
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- applicationContext.xml
-     사용자 요청 => list.do 
-           => ListModel클래스를 찾을 수 있게 만든다 (매칭)
-           
-   Model클래스 등록 => Controller가 찾아서 요청 처리가 가능하게 만드는 파일
- -->
-<beans><!-- 스프링 Bean(Model클래스) -->
-  <bean id="list.do" class="com.sist.model.ListModel"/>
-  <bean id="detail.do" class="com.sist.model.DetailModel"/>
-  <bean id="insert.do" class="com.sist.model.InsertModel"/>
-  <bean id="insert_ok.do" class="com.sist.model.InsertOkModel"/>
-  <!-- 
-         map.put("list",new ListModel())
-   -->
-</beans>
-```
-
-- Model클래스를 등록하고, Controller가 찾아서 요청 처리가 가능하게 만드는 파일이다.
-  - list.do와 ListModel클래스를 찾을 수 있게 만드는 매칭 기능을 담당한다.
-
-- 자바로 구현했을 시, 아래 코딩과 같다.
-
-```java
-map.put("list",new ListModel())
-```
-
 
 
 
 
 
 ### [web.xml]
+- **등록정보**
+- Controller의 위치
+- applicationContext의 위치
+- url패턴
+- 초기 디폴트 페이지
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+	<!-- applicationContext.xml의 위치 -->
   <display-name>20201012-MVC1</display-name>
   <servlet>
   	<servlet-name>mvc</servlet-name>
   	<servlet-class>com.sist.controller.Controller</servlet-class>
   </servlet>
+	
+  	<!-- applicationContext.xml의 위치 -->
   <init-param>
   	<param-name>contextConfigLocation</param-name>
   	<param-value>C:\webDev\20201012-MVC1\WebContent\WEB-INF\applicationContext.xml</param-value>
   </init-param>
+	
+	<!-- uri 패턴 -->
   <servlet-mapping>
   	<servlet-name>mvc</servlet-name>
   	<url-pattern>*.do</url-pattern>
   </servlet-mapping>
+	
+	<!-- 초기 디폴트 페이지 -->
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -95,6 +77,28 @@ map.put("list",new ListModel())
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
 </web-app>
+```
+
+
+### [applicationContext.xml]
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<beans><!-- 스프링 Bean(Model클래스) -->
+  <bean id="list.do" class="com.sist.model.ListModel"/>
+  <bean id="detail.do" class="com.sist.model.DetailModel"/>
+  <bean id="insert.do" class="com.sist.model.InsertModel"/>
+  <bean id="insert_ok.do" class="com.sist.model.InsertOkModel"/>
+</beans>
+```
+
+- Model클래스를 미리 등록하여, 사용자로부터 요청이 들어오면 Controller가 해당 페이지를 찾아서 요청 처리를 가능하게 만드는 파일이다.
+  - list.do 요청이 들어오면 => Controller가 ListModel클래스를 찾을 수 있게 만드는 매칭 기능을 담당한다.
+
+- 자바로 구현했을 시, 아래 코딩과 같다.
+
+```java
+map.put("list",new ListModel())
 ```
 
 ### [Controller] 제작
@@ -108,7 +112,7 @@ map.put("list",new ListModel())
 
 - **서블릿에서 사용하는 메서드**
 ![서블릿의 라이프사이클](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FwsTd6%2FbtqBXUJ4fM2%2FtIM6vSTDW7OaakgwgHuuck%2Fimg.png)
-- 1. `init()` : 메모리할당(생성자 호출)이 되면, 파일 읽기와 서버연결을 담당하는 메소드이다.
+1. `init()` : 메모리할당(생성자 호출)이 되면, 파일 읽기와 서버연결을 담당하는 메소드이다.
     - xml데이터를 읽어서 map에 저장한다.
     - 프로그래머가 호출하는 것이 아닌 시스템에 의해서 자동 호출되는 Callback함수이다.
 
@@ -126,7 +130,7 @@ map.put("list",new ListModel())
 
 
 
-  - 2. `service()` : 사용자가 요청이 들어오면, 처리하는 메소드이다.
+2. `service()` : 사용자가 요청이 들어오면, 처리하는 메소드이다.
     - doGet과 doPost의 내용이 동일하기 때문에, 둘을 동시에 처리하는 service메소드를 사용한다.
     - 프로그래머가 호출하는 것이 아닌 시스템에 의해서 자동 호출되는 Callback함수이다.
 
@@ -138,7 +142,7 @@ map.put("list",new ListModel())
 ```
 
 
-  - 3. `destroy()` : 할당된 메모리를 회수하는 메소드이다.
+3. `destroy()` : 할당된 메모리를 회수하는 메소드이다.
     - 새로고침과 화면이동을 하면 destroy 메소드가 호출되어 메모리가 회수된다.
     - 다시 원상복귀되는 것은 기존 메모리가 호출되는 것(new)이 아닌 새로운 서블릿과 JSP를 생성하는 것이다.
     - 프로그래머가 호출하는 것이 아닌 시스템에 의해서 자동 호출되는 Callback함수이다.
