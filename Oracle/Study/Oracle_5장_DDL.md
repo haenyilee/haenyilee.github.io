@@ -5,6 +5,8 @@ sort: 9
 # DDL
 
 ## SQL의 종류
+
+
 <html>
 <table>
 <tr>
@@ -42,7 +44,6 @@ COMMIT<br>
 ROLLBACK<br>
 </td>
 </tr>
-
 </table>
 </html>
 
@@ -87,45 +88,53 @@ CREATE TABLE table_name(
 
 ## DROP : 삭제, table 자체를 삭제
 - 복구 불가하기 때문에 항상 백업해두어야함
+
 ```
 DROP TABLE 삭제할 테이블명;
 ```
 
 ## ALTER : 수정, 삭제, 추가 (컬럼 관련된 것들만)
 - 컬럼 추가
+
 ```
 ALTER TABLE table_name ADD 컬럼명 데이터형;
 ```
 
 - 컬럼 삭제
+
 ```
 ALTER TABLE DROP COLUMN 컬럼명;
 ```
 
 - 컬럼 이름 변경
   - 컬럼명에 작은따옴표``` ' ' ``` 불필요
+
 ```
 ALTER TABLE table_name RENAME COLUMN 이전컬럼명 TO 변경컬럼명;
 ```
 
 - 컬럼 데이터 변경
+
 ```
 ALTER TABLE MODIFY COLUMN 컬럼명 데이터형;
 ```
 
 
 ## TRUNCATE : 데이터만 삭제 ,  복구불가
+
 ```
 TRUNCATE TABLE table_name;
 ``` 
 
 ## RENAME : 테이블 이름 변경
+
 ```
 RENAME 이전 테이블명 TO 변경할 테이블명;
 ```
 
 ## read only : 읽기 전용으로 변경 
 - SELECT만 이용 가능
+
 ```
 ALTER TABLE table_name read only
 ```
@@ -138,12 +147,14 @@ SELECT ename,sal FROM emp WHERE sal<(SELECT AVG(sal) FROM emp);
 ## 테이블 제작 방식
 #### 1. 테이블 복사
 - 복사
+
 ```
 CREATE TABLE myDept 
 AS SELECT * FROM dept;
 ```
 
 - 특정 조건 성립할때만 복사
+
 ```
 CREATE TABLE myEmpDept 
 AS SELECT empno,ename,job,hiredate,sal,emp.deptno,dname,loc 
@@ -154,6 +165,7 @@ WHERE emp.deptno=dept.deptno;
 - 컬럼명만 복사해오려면? => 값을 가져오는 조건이 false가 되면 됨
   - WHERE 뒤에 false가 나오는 어떤 조건을 줘도 상관 없음
     - ORDER BY처럼 첫 번째 칼럼과 두 번째 칼럼이 같을때라고 쓴 조건이 아님
+
 ```
 CREATE TABLE new_emp2(no,name,hiredate)
 AS SELECT no,name,hiredate 
@@ -179,6 +191,7 @@ WHERE 1=2;
   - 글자수가 고정된 경우는 CHAR사용
 
 - (EX) emp테이블의 생성 
+
 ```
 CREATE TABLE emp(
 사번 정수     => empno NUMBER(4)    -- 1~9999
@@ -196,6 +209,7 @@ CREATE TABLE emp(
 - 한글도 사용이 가능하지만, 한글이 깨질 수 있어서 비권장함(알파벳 권장)
 - 대소문자 구분을 하지 않는다. 
   - BUT 테이블명이 오라클에 저장될 때는 대문자로 저장된다.
+
 ```
 // 소문자로 써서 못찾아옴
 SELECT column_name,data_type 
@@ -215,6 +229,7 @@ WHERE table_name='EMP';
   - 저장되는 폴더가 다르면 같은 이름을 쓸 수도 있다.
 - 키워드는 사용할 수 없다.
 - 테이블명과 컬럼명이 동일할 수도 있다.
+
 ```
 -- 게시판 테이블 만들기
 CREATE TABLE board(
@@ -228,6 +243,7 @@ CREATE TABLE board(
     hit NUMBER
 );
 ```
+
 ```
 // 바뀔 수 있는 부분들은 정수로 받기
 CREATE TABLE movie(
@@ -248,6 +264,7 @@ CREATE TABLE movie(
     address VARCHAR2(200)
 );
 ```
+
 ```
 -- 네이버 영화 테이블 만들기
 CREATE TABLE naver_Movie(
@@ -270,6 +287,7 @@ rank VARCHAR2(100),
 total NUMBER
 );
 ```
+
 ```
 CREATE TABLE test(
 // 여기 공백 들어가면 오류
@@ -328,12 +346,15 @@ SQL> DESC emp_test
  ENAME                                              VARCHAR2(10)
  JOB                                                VARCHAR2(9)
 ```
+
 #### ```DROP``` 
 - 완전 삭제, 복구(ROLLBACK) 불가
+
 ```
 DROP TABLE movie;
 DROP TABLE board;
 ```
+
 ```
 CREATE TABLE member(
 no NUMBER,
@@ -354,10 +375,12 @@ INSERT INTO member VALUES(1,'hong','홍길동','서울','010-0000-0000');
 COMMIT;
 SELECT * FROM member;
 ```
+
 - ```tab``` : 사용할 수 있는 테이블 확인
 ```SELECT * FROM tab;```
 
 - 업데이트 & 줄수와 블럭수 세기
+
 ```
 ANALYZE TABLE emp COMPUTE STATISTICS;
 SELECT num_rows, blocks FROM user_tables WHERE table_name='EMP';
