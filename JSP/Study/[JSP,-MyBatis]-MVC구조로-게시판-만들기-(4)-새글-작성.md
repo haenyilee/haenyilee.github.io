@@ -24,7 +24,7 @@ sort: 2
 ## [DAO]
 ## [Model]
 
-- **InsertModel.jsp**
+### **InsertModel.jsp**
 - 구현해야할 기능이 없음
 - insert.jsp로 화면만 전환하면 됨
 
@@ -35,12 +35,12 @@ sort: 2
 return "board/insert.jsp";
 ```
 
-- **InsertOkModel.jsp** 
+### **InsertOkModel.jsp** 
 
 ```note
 ### 화면을 이동하는 방법
 1. **sendredirect** : request가 초기화되는 상태이다. : `return "redirect:list.do";`
-2. **forward** : request를 전송하기 때문에, jsp에서 request에 담은 데이터를 받아서 출력할 수 있다. : `return "board/list.jsp";` 
+2. **forward** : 덮으쓰기 방식이기 때문에 request가 초기화 되지 않는다. jsp에서 request에 담은 데이터를 받아서 출력할 수 있다. : `return "board/list.jsp";` 
 
 ```
 
@@ -72,9 +72,9 @@ public class InsertOkMode implements Model {
 ```
 
 
-- **insert.jsp**
+### **insert.jsp**
 
-```java
+```jsp
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -137,4 +137,4 @@ h1 {
 </html>
 ```
 
-- **insert_ok.jsp**
+### **insert_ok.jsp**
