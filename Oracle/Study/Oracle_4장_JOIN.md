@@ -51,6 +51,7 @@ ORDER BY ename;
 - 등가조인의 형식
 
 
+<html>
 <table>
 <tr>
 <th colspan=4>EQUI_JOIN의 형식</th>
@@ -61,7 +62,6 @@ ORDER BY ename;
 <tr>
 <td colspan=2 align=center>컬럼명이 다를 수 있다</td><td colspan=2 align=center>반드시 같은 컬럼명이 존재해야함</td>
 </tr>
-
 <tr>
 <td></td><td colspan=2 align=center>컬럼명이 같을 때 사용 권장</td><td></td>
 </tr>
@@ -94,6 +94,7 @@ JOIN 테이블명B USING(deptno);
 </td>
 </tr>
 </table>
+</html>
 
 
 - (참고) 테이블 별칭 
