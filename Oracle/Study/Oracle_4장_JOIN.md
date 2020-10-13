@@ -49,6 +49,7 @@ ORDER BY ename;
 
 
 - 등가조인의 형식
+
 <HTML>
 <table>
 <tr>
@@ -98,6 +99,7 @@ JOIN 테이블명B USING(deptno);
 - (참고) 테이블 별칭 
   - 테이블명이 길 때 사용
   - as 안붙여줘도 됨
+
 ```oracle
 table : emp,dept
 SELECT 컬럼명....
