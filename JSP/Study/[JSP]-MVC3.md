@@ -8,6 +8,8 @@ sort: 2
 - 방법2 : http://localhost/mvc/Controller?cmd=list
 
 
+- `.jsp`, `.asp`, `.aspx`, `.php` 이외의 확장자는 mvc구조로 만들어졌다고 보면 됨
+
 ## MVC구조의 request 전송과정
 ![](https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile6.uf.tistory.com%2Fimage%2F2405DC46577868AF13E0FE)
   - 클라이언트 : request요청
