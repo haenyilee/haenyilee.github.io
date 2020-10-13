@@ -10,7 +10,7 @@ sort: 8
 
 ## JOIN의 종류
 
-![](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.dofactory.com%2Fsql%2Fjoin&psig=AOvVaw1wTs1RJA9s-oMUGU1QdncR&ust=1597364290194000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIjb0u3zlusCFQAAAAAdAAAAABAP)
+![](https://lh3.googleusercontent.com/proxy/p7pFiPxj-mSeqTzV6oZg34u3D1oh6zofg5CV9VZ9Lz_0F7xWFNzc0QJ-3-3tfONaw3UDt_U4Lc2zuBav-xoW7KcI19sTeDDGZnRsp8z2WoXRqwkea7gXcoIZgwkiwQ6SIS66fwkDckqkfhHW6hGhFOzrr7luJzGg43rh8j_LoHb2a7QaUIXeldPnJLMMlGX2qjdRzwDC4MX7Mb7bZTHom6T0zdJ0_93MWPEfX6E8t_6_SVgPrLzrFzsZUi3B4TI6rIUanSTf7kPufuH2xOIA2POUUVHtGb-_PVKhyaqnueyB67_ED3W-HXE5_rQEHDAglN597BY)
 
   - 카티션곱
   - INNER JOIN
