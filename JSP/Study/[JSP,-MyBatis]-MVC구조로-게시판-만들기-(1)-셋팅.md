@@ -39,7 +39,7 @@ public interface Model {
 
 
 ### [web.xml]
-- **등록정보**
+#### **등록정보**
 - Controller의 위치
 - applicationContext의 위치
 - url패턴
@@ -110,7 +110,7 @@ map.put("list",new ListModel())
   - list.do라는 요청이 들어오면 ListModel을 찾고 list.jsp를 전송해준다.
 
 
-- **서블릿에서 사용하는 메서드**
+#### **서블릿에서 사용하는 메서드**
 ![서블릿의 라이프사이클](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FwsTd6%2FbtqBXUJ4fM2%2FtIM6vSTDW7OaakgwgHuuck%2Fimg.png)
 - `init()` : 메모리할당(생성자 호출)이 되면, 파일 읽기와 서버연결을 담당하는 메소드이다.
     - xml데이터를 읽어서 map에 저장한다.
@@ -149,7 +149,7 @@ map.put("list",new ListModel())
 
 
 
-- **Controller의 기능**
+#### **Controller의 기능**
   -  요청을 받는다.
 
 ```java
@@ -157,45 +157,28 @@ String cmd=request.getRequestURI();
 // cmd : (list).do
 ```
 
+  - 모델을 찾는다. (Model이 담당함)
 
-  - 모델을 찾는다.
+  - 모델에서 넘겨준 결과값을 request, session에 담는다. : `request.setAttribute()`
 
-```java
-List Model
-```
+  - JSP를 찾아서 request, session을 넘겨준다. : `forward(request,response)`
 
-  - 모델에서 넘겨준 결과값을 request, session에 담는다.
-
-```java
-request.setAttribute()
-```
-
-  - JSP를 찾아서 request, session을 넘겨준다.
-
-```java
-forward(request,response)
-```
-
-- **xml파싱해서 읽는 과정** : `init`이 담당한다.
+#### **xml파싱해서 읽는 과정** : `init`이 담당한다.
 
 - Model과 View정보 담을 HashMap 생성
   - 객체 `clsMap`에는 Model과 View정보가 키, 값 형식으로 담겨있다.
-
 ```java
 private Map clsMap = new HashMap();
 ```
 
 - web.xml에 접근해서 데이터 읽기
   - `init`의 매개변수인 `ServletConfig config`에서 `ServletConfig`는 web.xml에 설정된 데이터에 접근하는 인터페이스이다.
-
-
 ```java
 String path=config.getInitParameter("contextConfigLocation");
 ```
 
 
 - xml읽기
-
 ```java
 DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
 ```
@@ -203,13 +186,11 @@ DocumentBuilderFactory dbf=DocumentBuilderFactory.newInstance();
 
 
 - xml파싱기 역할을 담당하는 클래스 생성
-
 ```java
 DocumentBuilder db=dbf.newDocumentBuilder();
 ```
 
 - xml 읽어서 메모리에 저장하기 (저장공간 :Document)
-
 ```java
 Document doc=db.parse(new File(path));
 ```
@@ -221,13 +202,11 @@ Element root=doc.getDocumentElement();
 ```
 
 - 같은 태그를 묶을 때 NodeList 를 사용한다.
-
 ```java
 NodeList list=root.getElementsByTagName("bean");
 ```
 
   - for문 돌려서 등록한 bean 태그 정보 전부 읽어오기
-
 ```java
 			for(int i=0; i<list.getLength();i++)
 			{
@@ -236,7 +215,6 @@ NodeList list=root.getElementsByTagName("bean");
 ```
 
   - 파싱한 클래스를 메모리 할당 한 다음에 키, 주소 주기
-
 ```java
 			for(int i=0; i<list.getLength();i++)
 			{
@@ -264,7 +242,7 @@ NodeList list=root.getElementsByTagName("bean");
 ```
 
 
-- **사용자 요청 시, 처리되는 과정** : `service`가 담당한다.
+#### **사용자 요청 시, 처리되는 과정** : `service`가 담당한다.
 - 1. 사용자 요청을 받기
 
 ```java
@@ -291,15 +269,9 @@ String jsp=model.handlerRequest(request);
     - RequestDispatcher : request를 해당 JSP로 전송하는 클래스
 
 ```note
-### 화면을 이동하는 방법
-1. sendredirect : request가 초기화되는 상태이다.
-
-`return "redirect:list.do";`
-
-2. forward : request를 전송하기 때문에, jsp에서 request에 담은 데이터를 받아서 출력할 수 있다.
-
-`return "board/list.jsp";`
-
+#### 화면을 이동하는 방법
+1. sendredirect : request가 초기화되는 상태이다. `return "redirect:list.do";`
+2. forward : request를 전송하기 때문에, jsp에서 request에 담은 데이터를 받아서 출력할 수 있다.`return "board/list.jsp";`
 ```
 
 
@@ -448,7 +420,7 @@ private static SqlSessionFactory ssf;
 
 
 ```note
-### 초기화 블록
+#### 초기화 블록
 - static{} : static
 - {} : instance
 ```
@@ -480,7 +452,7 @@ Reader reader= Resources.getResourceAsReader("Config.xml");
 ## 2. 처음 실행하는 화면 설정하기
 
 ### View
-- index.jsp 만들기
+#### index.jsp 만들기
 
 ```jsp
 <%@ page language="java" contentType="text/html; charset=UTF-8"
