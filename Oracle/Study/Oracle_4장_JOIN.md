@@ -51,7 +51,6 @@ ORDER BY ename;
 - 등가조인의 형식
 
 
-<HTML>
 <table>
 <tr>
 <th colspan=4>EQUI_JOIN의 형식</th>
@@ -95,7 +94,6 @@ JOIN 테이블명B USING(deptno);
 </td>
 </tr>
 </table>
-</HTML>
 
 
 - (참고) 테이블 별칭 
@@ -150,12 +148,6 @@ AND ename='SCOTT';
 SELECT empno,ename,job,mgr,hiredate,sal,comm,e.deptno,dname,loc FROM emp e JOIN dept d ON e.deptno=d.deptno;
 ```
 
-INSERT INTO B VALUES(2,'eee');
-INSERT INTO B VALUES(2,'eee');
-INSERT INTO B VALUES(2,'eee');
-INSERT INTO B VALUES(2,'eee');
-
-
 
 ```
 -- 이름이 SCOTT인 사원의 이름, 입사일, 부서명, 근무지 출력
@@ -171,6 +163,7 @@ WHERE emp.ename='SCOTT';
 
 #### ```NATURAL 조인``` : 반드시 같은 컬럼명이 존재해야함
   - 별칭을 안줘도 됨
+
 ```
 SELECT empno,ename,job,mgr,hiredate,sal,comm,deptno,dname,loc FROM emp NATURAL JOIN dept;
 ```
@@ -234,6 +227,7 @@ ON sal BETWEEN losal AND hisal;
 - (예시) 이름, 부서위치를 출력하는데 BOSTON도 출력되도록 하시오
   - 없는 쪽에 (+)붙이면 null값도 출력됨
   - emp.deptno에 없는데 dept.deptno에 있는 값을 가져와야하니까 Right에 (+)붙여주면 됨
+
 ```
 -- Right OUTER JOIN
 SELECT ename,loc FROM emp,dept WHERE emp.deptno(+)=dept.deptno;
@@ -242,6 +236,7 @@ SELECT ename,loc FROM emp,dept WHERE emp.deptno(+)=dept.deptno;
 ### OUTER JOIN의 종류 (NULL의 위치의 반대?)
 #### 1. LEFT OUTER JOIN : INTERSECT + MINUS
   - 오라클조인
+
 ```
 SELECT A.col , B.col
 FROM A , B
@@ -249,6 +244,7 @@ WHERE A.col=B.col(+)   // INNER JOIN +(A-B)
 ```
 
   - ANSI조인
+
 ```
 SELECT A.col , B.col
 JOIN A LEFT OUTER JOIN B
@@ -259,6 +255,7 @@ ON A.col=B.col   // A-B
 
 #### 2. RIGHT OUTER JOIN : INTERSECT + MINUS
   - 오라클조인
+
 ```
 SELECT A.col , B.col
 FROM A , B
@@ -266,13 +263,16 @@ WHERE A.col(+)=B.col   // INNER JOIN+(B-A)
 ```
 
   - ANSI조인
+
 ```
 SELECT A.col , B.col
 JOIN A RIGHT OUTER JOIN B
 ON A.col=B.col   // A-B
 ```
+
 #### 3. FULL OUTER JOIN : UNION
   - ANSI조인
+
 ```
 SELECT A.col , B.col
 JOIN A FULL OUTER JOIN B
@@ -280,6 +280,7 @@ ON A.col=B.col   // A-B
 ```
 
 ## INNER JOIN과 OUTER JOIN 연습
+
 ```
 SQL> select * from A;
 
@@ -299,13 +300,17 @@ SQL> select * from B;
          4 ggg
          5 hhh
 ```
+
 - INNER JOIN : (A ∩ B) (2, 3, 4)
+
 ```
 SELECT A.no,A.text,B.no,B.text
 FROM A,B
 WHERE A.no=B.no;
 ```
+
 - LEFT OUTER JOIN : (A-B) (1) + (A ∩ B) (2, 3, 4)
+
 ```
 SELECT A.no,A.text,B.no,B.text
 FROM A,B
@@ -315,12 +320,15 @@ WHERE A.no=B.no(+);
 
 
 - RIGHT OUTER JOIN : (A ∩ B) (2, 3, 4) + (B-A) (5)  
+
 ```
 SELECT A.no,A.text,B.no,B.text
 FROM A,B
 WHERE A.no(+)=B.no;
 ```
+
 - FULL OUTER JOIN : (A ∪ B) (1,2,3,4,5)
+
 ```
 SELECT A.no,A.text,B.no,B.text
 FROM A FULL OUTER JOIN B
@@ -328,6 +336,7 @@ ON A.no=B.no;
 ```
 
 - B집합이 A집합의 부분집합일때 OUTER JOIN의 결과는?
+
 ```
 SELECT ename, job,hiredate,sal,dname,loc 
 FROM emp,dept 
@@ -348,6 +357,7 @@ WHERE emp.deptno=dept.deptno(+);
 ```
 -- emp 테이블 내에서 사수가 같은 사람들의 이름을 출력하시오
 ```
+
 |empno|mgr|ename|
 |-----|---|-----|
 |7788|7566|SCOTT|
@@ -355,6 +365,7 @@ WHERE emp.deptno=dept.deptno(+);
 |empno|mgr|ename|
 |-----|---|-----|
 |7566|7839|JONES|
+
 
 ```
 // null값이 있는 것은 검색하지 못함
