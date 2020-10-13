@@ -4,10 +4,11 @@ sort: 8
 
 # JOIN
 
+## JOIN이란?
 - 하나의 SQL 명령문에 의해 디스크의 여러개의 테이블에서 사용자가 요청한 데이터를 메모리로 복사해서 가지고 와 조회도 하고 변경도 할 수 있는 기능
 - 메모리는 작업을 하는 공간, 디스크는 저장을 하는 공간
 
-#### JOIN의 종류
+## JOIN의 종류
 
 ![](https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.dofactory.com%2Fsql%2Fjoin&psig=AOvVaw1wTs1RJA9s-oMUGU1QdncR&ust=1597364290194000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCIjb0u3zlusCFQAAAAAdAAAAABAP)
 
@@ -16,26 +17,22 @@ sort: 8
   - OUTER JOIN
   - SELF JOIN
 
-# Cartesian Product(카티션 곱)
+## Cartesian Product(카티션 곱)
 
-```
--- 궁금한점? 
-where조건을 걸고 안걸고의 차이가 궁금함.. 
-무슨 원리로 where이 없으면 이름당 4개씩 출력되는지... ==> 카디션곱
-
-// INNER JOIN
+```oracle
+-- INNER JOIN
 SELECT empno,ename,job,mgr,hiredate,sal,comm,e.deptno,dname,loc 
 FROM emp e,dept d WHERE e.deptno=d.deptno 
 ORDER BY ename;
 
-// 카디션 곱
+-- 카디션 곱
 SELECT empno,ename,job,mgr,hiredate,sal,comm,e.deptno,dname,loc 
 FROM emp e,dept d 
 ORDER BY ename;
 ```
 
 
-# INNER JOIN 
+## INNER JOIN 
 - 교집합
 - 다른 테이블에서 데이터를 가져와서 연결
 - NULL값일때 처리가 불가능
@@ -225,7 +222,7 @@ ON sal BETWEEN losal AND hisal;
 
 
 
-# OUTER JOIN
+## OUTER JOIN
 - UNION과 유사, 합집합
 - 다른 테이블에서 데이터를 가져와서 연결
 - INNER JOIN값 + @ (NULL)
@@ -238,7 +235,7 @@ ON sal BETWEEN losal AND hisal;
 SELECT ename,loc FROM emp,dept WHERE emp.deptno(+)=dept.deptno;
 ```
 
-## OUTER JOIN의 종류 (NULL의 위치의 반대?)
+### OUTER JOIN의 종류 (NULL의 위치의 반대?)
 #### 1. LEFT OUTER JOIN : INTERSECT + MINUS
   - 오라클조인
 ```
@@ -278,7 +275,7 @@ JOIN A FULL OUTER JOIN B
 ON A.col=B.col   // A-B
 ```
 
-# INNER JOIN과 OUTER JOIN 연습
+## INNER JOIN과 OUTER JOIN 연습
 ```
 SQL> select * from A;
 
@@ -340,7 +337,7 @@ WHERE emp.deptno=dept.deptno(+);
 ```
 
 
-# SELF JOIN
+## SELF JOIN
 - 같은 테이블에서 데이터 연결
 - NULL값은 출력하지 않음
 
