@@ -39,13 +39,8 @@ return "board/insert.jsp";
 
 ```note
 ### 화면을 이동하는 방법
-1. sendredirect : request가 초기화되는 상태이다.
-
-`return "redirect:list.do";`
-
-2. forward : request를 전송하기 때문에, jsp에서 request에 담은 데이터를 받아서 출력할 수 있다.
-
-`return "board/list.jsp";` 
+1. **sendredirect** : request가 초기화되는 상태이다. : `return "redirect:list.do";`
+2. **forward** : request를 전송하기 때문에, jsp에서 request에 담은 데이터를 받아서 출력할 수 있다. : `return "board/list.jsp";` 
 
 ```
 
