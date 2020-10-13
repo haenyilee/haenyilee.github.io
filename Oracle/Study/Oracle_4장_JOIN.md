@@ -96,6 +96,7 @@ JOIN 테이블명B USING(deptno);
 </table>
 </HTML>
 
+
 - (참고) 테이블 별칭 
   - 테이블명이 길 때 사용
   - as 안붙여줘도 됨
