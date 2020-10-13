@@ -38,10 +38,14 @@ return "board/insert.jsp";
 ### **InsertOkModel.jsp** 
 
 ```note
-### 화면을 이동하는 방법
-1. **sendredirect** : request가 초기화되는 상태이다. : `return "redirect:list.do";`
-2. **forward** : 덮으쓰기 방식이기 때문에 request가 초기화 되지 않는다. jsp에서 request에 담은 데이터를 받아서 출력할 수 있다. : `return "board/list.jsp";` 
-
+### 화면을 변경하는 방법
+1. **sendredirect** : request가 초기화되는 상태이다.
+	- `return "redirect:list.do";`
+	- URL이 변경된다.
+2. **forward** : 덮어쓰기 방식이기 때문에 request가 초기화 되지 않는다. 
+	- jsp에서 request에 담은 데이터를 받아서 출력할 수 있다.
+	- `return "board/list.jsp";` 
+	- URL이 변경되지 않는다.
 ```
 
 
@@ -67,8 +71,8 @@ public class InsertOkMode implements Model {
 ## [View]
 
 ```note
-1. `list.jsp` : 받을 데이터가 없는 상태에서 HTML만 출력할 때 사용한다. 
-2. `list.do`  : 받을 데이터를 [Controller >> ListModel >> list.jsp]를 거쳐서 전송한 후 출력할 때 사용한다.
+- `list.jsp` : 받을 데이터가 없는 상태에서 HTML만 출력할 때 사용한다. 
+- `list.do`  : 받을 데이터를 [Controller >> ListModel >> list.jsp]를 거쳐서 전송한 후 출력할 때 사용한다.
 ```
 
 
