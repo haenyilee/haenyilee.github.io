@@ -4,42 +4,43 @@ sort: 2
 
 # XML(1)
 
-### XML이란?
-- HTML은 웹 페이지에서 데이터베이스처럼 구조화된 데이터를 지원할 수 없지만 XML은 사용자가 구조화된 데이터베이스를 뜻대로 조작할 수 있다. 
-- XML은 데이터를 문서로 저장해서 오라클 없이도 데이터를 가져와서 쓰기 위함이 기본 목적이다.
-
-### XML을 사용하는 이유는?
+## XML이란?
 - 일반 TXT파일은 데이터 내용을 구분할 수 없다.
 - 이때 내용을 구분할 수 있게 하는 형식이 탄생했는데 그것이 XML과 JSON이다.
 - 그 중 XML은 포맷형식이 운영체제마다 동일하기 때문에, 어떤 운영체제를 쓰던지 동기화 가능하다.
-- 기존의 모든 프레임워크들은 Spring도 있고 MyBaits, IBatis, Hibernate들이 있는데,
-<br> 이들이 전부 XML을 사용한다.
+- 기존의 모든 프레임워크들은 Spring도 있고 MyBaits, IBatis, Hibernate들이 있는데, 이들이 전부 XML을 사용한다.
 - Spring과 가장 어울리는 것이 MyBatis이다.
 - Struts와 가장 어울리는 것은 Hibernate이다.
 
-### XML파싱이란?
-- 태그의 속성값을 읽어 오는 과정
 
-### XML 파싱의 종류
-#### 1. JAXB
+## XML을 사용하는 이유는?
+- HTML은 웹 페이지에서 데이터베이스처럼 구조화된 데이터를 지원할 수 없지만 XML은 사용자가 구조화된 데이터베이스를 뜻대로 조작할 수 있다. 
+- XML은 데이터를 문서로 저장해서 오라클 없이도 데이터를 가져와서 쓰기 위함이 기본 목적이다.
+
+
+## XML파싱이란?
+- XML 문서 내 태그들의 속성값을 읽어 오는 과정이라고 할 수 있다.
+
+## XML 파싱의 종류
+### 1. JAXB
 - 외부에서 데이터를 XML로 보내는 경우에 주로 사용함
 - Java와 XML을 연결하는 라이브러리임
 
-#### 2. JAXP
-(1) DOM
+### 2. JAXP
+#### (1) DOM
 - XML을 메모리에 저장하고 제어함
 - 수정, 삭제, 추가, 검색이 가능함
 - 단점 : 속도가 늦음
 - XML을 오라클 대신 사용할 때 주로 사용함
 - 거의 사용하지 않음
 
-(2) SAX
+#### (2) SAX
 - 검색만 가능함(데이터 읽기만 가능)
 - MyBatis와 Spring이 주로 사용함
 - 기억해야 하는 이유 : 에러가 주로 SAX에서 발생하기 때문이다.
 
 
-### XML태그란?
+## XML태그란?
 - 사용자 정의 태그이다. 
 - 고정태그가 아니기 때문에 어떤 목적으로 만들었는지 알 수 없다.
 - 업체에서 제공하는 XML태그만 사용해야 한다.
@@ -47,19 +48,23 @@ sort: 2
 - XML태그와 속성이 어떤게 있는지 알 수 없기 때문에, 
 <BR>어떤 태그가 있는지 태그나 속성의 목록을 제공해주는 것이 DTD파일이다.
 
-### XML태그의 구조
-- 태그명+구조
+## XML태그의 구조
+- [태그명+구조]로 되어 있다.
 
 (1)
-```
+
+```xml
 <태그>데이터저장</태그> 
 <td>데이터 출력</td> ==> text()
 ```
-(2) 
-```
+
+(2)
+
+```xml
 <태그속성="데이터 저장"/>
 <img src=""/> ==> attr("src")
 ```
+
 - 문법사항은 DTD안에 있는 태그나 속성만 사용해야 한다.
 - HTML은 자유롭게 사용할 수 있다는 점이 차이점이다.
 
@@ -67,8 +72,8 @@ sort: 2
 
 
 
-### XML 데이터 읽는 방법
-#### 1. JAXB
+## XML 데이터 읽는 방법
+### 1. JAXB
 (1) 자바 클래스와 XML의 태그를 매칭시켜야 한다.
 - 태그 안에 태그가 있는 경우에는 자바 클래스로 제작해야 한다.
 - 태그 안에 문자열(데이터)가 있는 경우에는 자바 변수로 제작해야 한다.
@@ -94,6 +99,7 @@ sort: 2
 
 (2) 루트 클래스 = Rss클래스 제작
 - rss태그가 전체 태그를 감싸고 있기 때문에 root임
+
 ```java
 package com.sist.xml;
 
@@ -113,8 +119,10 @@ public class Rss {
 	
 }
 ```
+
 (3) Channel클래스 제작
 - 밑에 50개의 Item 태그를 가지고 있기 때문에 List에 데이터를 모아주어야 한다.
+
 ```java
 package com.sist.xml;
 
@@ -135,6 +143,7 @@ public class Channel {
 ```
 
 (4) Item클래스 제작
+
 ```java
 package com.sist.xml;
 
@@ -172,6 +181,7 @@ public class Item {
 ```
 
 (5) XML에 있는 데이터를 채우는 클래스 제작
+
 ```java
 package com.sist.xml;
 import java.util.*;
@@ -226,7 +236,9 @@ public class NewsManager {
 	}
 }
 ```
+
 (6) news.jsp 제작
+
 ```JSP
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.util.*, com.sist.xml.*"%>
@@ -341,8 +353,9 @@ h1{
 </html>
 ```
 
-#### 2. DOM
+### 2. DOM
 (1) 테이블과 동일한 형식으로 XML파일 제작
+
 ```XML
 <?xml version="1.0" encoding="UTF-8"?>
 <sawon>						<!-- 테이블명 -->
@@ -371,8 +384,10 @@ h1{
 </sawon>
 ```
 
-#### 3. DOM : 속성값을 불러오는 방법
+### 3. DOM : 속성값을 불러오는 방법
+
 (1) XML 데이터 만들기
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <sawon_list>
@@ -385,6 +400,7 @@ h1{
 ```
 
 (2) 만든 XML 데이터 읽어오기
+
 ```java
 package com.sist.dom;
 import java.io.*;
@@ -431,11 +447,12 @@ public class DomManager2 {
 		} catch (Exception e) {}
 	}
 }
-
 ```
-#### 4. SAX
+
+### 4. SAX
 (1) XMLParser 클래스 제작
 - SAXParser 재정의? 오버라이딩?
+
 ```JAVA
 package com.sist.dom;
 
@@ -481,6 +498,7 @@ public class XMLParser extends DefaultHandler{
 ```
 
 (2) SAXManager 클래스 파일 제작하기
+
 ```java
 package com.sist.dom;
 
@@ -513,11 +531,12 @@ public class SAXManager {
 ```
 
 
-### 메모리에 저장되는 형식
+## 메모리에 저장되는 형식
 ![](https://lh3.googleusercontent.com/proxy/IrcF0WgeDs3SPGPqWcwwMuAuYHoImnsz3vKA59LXDzR9uO7iCQvLaCKG5zJhVliaeWXTyEF9vdj_YmReeaPE0AgLXB3rYZTWC-bfOwgtY8thhXCjjWzmCnnoEmdiijY)
-#### 1. List 방식
+### 1. List 방식
 - 일반 변수, 클래스
-#### 2. Tree 방식
+
+### 2. Tree 방식
 - DOM파싱하면 트리 형식으로 저장됨
 - Document
 - 태그는 Elemnet
