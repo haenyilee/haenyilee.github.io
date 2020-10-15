@@ -29,14 +29,14 @@ sort: 5
   - COMMIT : 정상수행
   - ROLLBACK : 취소(*이미 저장되면 취소 못함)
 
-# DML : 데이터 조작어
+## DML : 데이터 조작어
 - SELECT : 데이터 검색
 - INSERT : 데이터 추가
 - UPDATE : 데이터 수정
 - DELETE : 데이터 삭제(ROW단위)
 
 
-# DML | SELECT
+### DML | SELECT
 - 데이터베이스로부터 저장되어 있는 데이터를 검색하는데 사용됨  
 ```
 -------------------- 필수조건 ----------------------
@@ -53,10 +53,12 @@ FROM table명(데이터가 저장된 위치)
 ---------------------------------------------------
 ```
 
-## DML_SELECT | 필수조건
+#### DML_SELECT | 필수조건
+
 ```
 SELECT() FROM (table명 , view명 , SELECT~~)
 ```
+
 - SELECT 뒤 ( )부분에 들어갈 내용
   - 필요한 데이터만 가져올때 : ```컬럼명1, 컬럼명2, 컬럼명3...```
   - 전체 데이터를 가져올때 : ```*```
@@ -65,13 +67,13 @@ SELECT() FROM (table명 , view명 , SELECT~~)
 - FROM 뒤에 들어갈 수 있는 내용
   - table명 , view명 , SELECT~~
 
-### DML_SELECT_필수조건 | 전체 가져오기
+#### DML_SELECT_필수조건 | 전체 가져오기
 
 ```
 select * from emp;
 ```
 
-### DML_SELECT_필수조건 | 원하는 컬럼만 가져오기
+#### DML_SELECT_필수조건 | 원하는 컬럼만 가져오기
 
 ```
 SELECT empno, ename, hiredate, job,sal FROM emp;
@@ -98,6 +100,7 @@ SQL> SELECT empno "사번", ename "이름", hiredate "입사일", sal "급여",c
 
 
 ## DML_SELECT | 옵션조건
+
 ```
 WHERE 조건(if) 
 GROUP BY 그룹컬럼
@@ -116,14 +119,17 @@ ORDER BY 컬럼명(ASC|DESC)
 -- 80년도에 입사한 사람 찾기
 SQL> select ename, sal,hiredate from emp where hiredate>='80/01/01' and hiredate<='80/12/31';
 ```
+
 ```
 -- 이름중에 KING이 들어간 사람
 WHERE ename='KING';
 ```
+
 ```
 -- 이름중에 알파벳순서가 K보다 뒤인 사람 찾기
 WHERE ename>'KING';
 ```
+
 ```
 -- 이름중에 알파벳순서가 K보다 앞인 사람 찾기
 WHERE ename<'KING';
@@ -138,6 +144,7 @@ WHERE ename<'KING';
 
 ### WHERE_연산자 | 산술연산자 : ```+``` , ```-``` , ```*``` , ```/```
 - NULL값일때는 연산처리가 불가함
+
 ```
 -- NULL값을 처리하지 않고 더한 경우
 SQL> SELECT ename,sal,comm,sal+comm FROM emp;
@@ -146,6 +153,7 @@ ENAME                       SAL       COMM   SAL+COMM
 SMITH                       800
 ALLEN                      1600        300       1900
 ```
+
 ```
 -- NULL값을 처리하여 더한 경우
 SQL> SELECT ename,sal,comm,sal+NVL(comm,0) FROM emp;
@@ -159,6 +167,7 @@ ALLEN                      1600        300            1900
     - 0으로 나눌 경우에 오류 발생함
     - 무조건 결과값이 실수로 나온다(5/2=2.5)
     - WHERE문장 뒤에 쓰는 것이 아니라 SELECT 뒤에서 사용 (true/false로 결과가 나오는 연산이 아니기 때문에)
+
 ```
 SQL> SELECT ename "이름", sal "급여" , sal*12 "연봉" FROM emp;
 
@@ -193,12 +202,12 @@ SQL> SELECT * FROM emp WHERE JOB='MANAGER';
 
 -- 입사일이 1982-12-9인 사원의 이름,입사일,급여 출력
 SQL> SELECT ename,hiredate,sal FROM emp WHERE hiredate='82/12/09'; // 날짜 작은따옴표 사이에
-
 ```
 
 
 
 - ```!=``` , ```<>``` , ```^=``` : 같지 않다.
+
 ```
 -- JOB이 CLERK이 아닌 사람의 이름,직위 출력
 SQL> SELECT ENAME,JOB FROM EMP WHERE JOB!='CLERK';
@@ -209,6 +218,7 @@ SQL>  SELECT ENAME,JOB FROM EMP WHERE JOB^='CLERK';
 
 
 - ```<``` : 작다
+
 ```
 -- 사원중에 급여가 1500보다 작은 사원의 이름,급여 출력
 SQL> SELECT ENAME,SAL FROM emp WHERE sal<1500;
@@ -223,7 +233,6 @@ SQL> SELECT * FROM emp WHERE hiredate<'82/12/09'; // 날짜도 비교연산자 �
 ```
 -- 입사일이 82/12/09보다 늦게 입사한 사원의 모든 정보 출력
 SQL> SELECT * FROM emp WHERE hiredate>'82/12/09'; // 날짜도 비교연산자 사용 가능 , 작은따옴표 사용
-
 ```
 
 - ```<=``` : 작거나 같다
@@ -246,6 +255,7 @@ SQL> SELECT * FROM emp WHERE hiredate>'82/12/09'; // 날짜도 비교연산자 �
 - ```OR``` : 둘 중에 한 개가 true면 true
 - ```AND``` : 둘 다 true이면 true
     - 범위 , 기간이 포함하는 경우에 사용
+
 ```
 -- 급여가 1500이상 3000이하인 사람의 모든 정보 출력
 SQL> SELECT * FROM emp WHERE sal>=1500 AND sal<=3000;
@@ -309,6 +319,7 @@ SQL> SELECT * FROM emp WHERE deptno NOT IN(10,20);
 ### WHERE_연산자 | ```BETWEEN ~ AND ~ ``` : 기간이나 범위를 구할 때 사용
 - 속도가 비교연산자보다 느림
 - 문자열, 날짜도 처리 가능함
+
 ```
 // JAVA
 sal>=100 && sal<=3000
@@ -326,6 +337,7 @@ SQL> SELECT ename FROM emp WHERE ename BETWEEN 'ADAMS' AND 'KING'; // 문자도 
 ```
 
 - 부정형 : ```NOT BETWEEN ~ AND ~ ```
+
 ```
 -- 1981년에 입사하지 않은 모든 사원의 정보를 출력
 SQL> SELECT * FROM emp WHERE hiredate NOT BETWEEN '81/01/01' AND '81/12/31';
@@ -399,6 +411,7 @@ SQL> SELECT * FROM emp WHERE ename LIKE '____';
 - 오라클 번호는 0번이 아닌 1번부터 시작됨  
 
 - ```DESC``` : 내림차순
+
 ```
 -- 급여순으로 내림차순 정렬
 SQL> SELECT ename,sal FROM emp ORDER BY sal DESC;
@@ -455,12 +468,14 @@ ADAMS                      1100
 
 ## 기타
 - ```DISTINCT``` : 중복된 데이터를 제외하고 출력
+
 ```
 SQL> SELECT DISTINCT job FROM emp;
 SQL> SELECT DISTINCT deptno FROM emp;
 ```
 
 - ```&``` : 입력하시오
+
 ```
 SQL> SELECT ename FROM emp WHERE empno=&no;
 Enter value for no: 7788
@@ -478,6 +493,7 @@ SCOTT
 
 ## 예시
 > 검색어 입력받아서 해당 문자열 포함하는 데이터 찾기
+
 ```JAVA
 // 검색어 입력 받기
 Scanner scan = new Scanner(System.in);
