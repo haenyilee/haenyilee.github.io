@@ -8,6 +8,8 @@ sort: 7
 ## 1. session
 
 - session : 서버측에 일부 정보를 저장하는 것이다. 각 접속마다 session공간에 한 개만 생성된다.
+  - 클라이언트 : 브라우저 / 주소값 : 서버
+  - 서버에 저장되는 것이다. 
 - 로그인 처리에 사용한다.
   - 서버에 id, 이름, 어드민, 주소
   - 임시 저장(예매정보, 장바구니)
@@ -23,21 +25,21 @@ request는 각 jsp마다 다른 request를 가지고 있어서, 화면 변경이
 - session은 내장객체이기 때문에 request를 통해서 값을 받는다
 - 본인 세션값 받아오기 : ```request.getSession()```
 
-### 2.1 서버에 저장 : setAttribute("키",값)
+### 2.1 서버에 저장 : `setAttribute("키",값)`
 - ```setAttribute("id","hong")```
 - ```setAttribute("name","홍길동")```
 - Map방식으로 저장되어 있음
 - 게시판, 댓글 같은 경우에는 세션값을 읽어서 id를 출력해준다.
 
-### 2.2 서버에 저장된 데이터를 가지고 오는 방법 : getAttribute("키")
+### 2.2 서버에 저장된 데이터를 가지고 오는 방법 : `getAttribute("키")`
 - 저장되는 것이 Object이다 => ArrayList로 저장해서 받을 수 있다. 
 - cookie : 문자열만 저장 가능하다
 - 한 공간 안에서 키가 중복되면 안된다.
 
 
-### 2.3 삭제하는 방법 
+### 2.3 삭제하는 방법 : `invalidate()`
 - 일부를 삭제할 때 : ```removeAttribute("키")```
-- 전체를 삭제할 때 : ```invalidate```
+- 전체를 삭제할 때 : ```invalidate()```
   - 로그아웃 시, 사용함 
 
 
