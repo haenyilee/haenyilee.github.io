@@ -2,7 +2,7 @@
 sort: 2
 ---
 
-# JSP Study
+# XML-JSON Study
 
 ```
 {% raw %}{% include list.liquid all=true %}{% endraw %}

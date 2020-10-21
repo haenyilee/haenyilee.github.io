@@ -1,7 +1,7 @@
 ---
-sort: 12
+sort: 3
 ---
 
-# Errors
+# Spring Practice
 
 {% include list.liquid all=true %}
