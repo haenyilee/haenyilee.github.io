@@ -86,5 +86,33 @@ sort:
 - 요일이 6보다 커지면, 다음주로 넘기기
   - 다음주로 넘어가면 요일은 0으로 reset된다.
 - 오늘 날짜에 색상 표시하기
-- 날짜직접 선택하는 selet마들기
+- 날짜직접 선택하는 select 추가하기
+
+### [main.jsp]
+- Ajax 
+
+
+
+## 예매 가능 영화 출력
+
+### [movie-mapper.xml]
+- LIKE 뒤에 변수가 올때는 `'%||#{ss }||%'`형식으로 작성하면 된다. 
+
+### [MovieDAO.java]
+
+### [MovieModel.java]
+
+- main.jsp로 반환해서 include하는 것이 아니라, movie.jsp로 이동해서 AJAX가 화면을 출력해주는 방식이다. 
+  - 기존화면은 유지되고, 추가되는 부부만 삽입되는 형식이다.
+  - append를 주게되면 클릭할때마다 추가된다. 
+  
+  ```note
+  #### 화면 삽입하는 방법
+  - switch문을 통해서 text를 uri에 삽입하기
+  - main에서 include하기
+  - ajax로 특정 부분만 추가하기
+  ```
+  
+  
+  
 
