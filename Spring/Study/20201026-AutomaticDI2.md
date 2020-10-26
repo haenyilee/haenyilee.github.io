@@ -4,13 +4,30 @@ sort: 8
 
 # AutomaticDI (2)
 
-```tip
-**스프링에서 관리 대상 : 여러 곳에서 사용하는 기능**
+## 스프링에서 관리 대상 : 여러 곳에서 사용하는 기능
 - DAO (Web)
 - Manager (Web)
 - Model
 - Service
-```
+
+## 스프링 클래스 관리 순서
+- 기능이 있는 모든 클래스는 스프링에 맡긴다.
+- 필요시마다 스프링을 통해서 데이터를 얻어온다.
+- 순서 : 생성 => DI(필요한 데이터 첨부) => 소멸
+
+- **생성**
+  - XML로 생성 : `<bean id="" class="">`
+  - Annotaion으로 생성 : `<context:component-scan base-package="패키지명">`
+    - 스프링에 의해 생성되는 클래스 : 클래스 위에 Annotation을 사용
+    - 프로그래머가 직접 생성하는 클래스 : VO , interface
+    
+- **DI**
+  - 일반데이터 : setter , constructor
+  - 클래스 자체를 첨부 : @Autowired , 스프링에서 미리 생성되어 있는 클래스 객체의 주입 
+    - @Autowired : 스프링에서 자동으로 첨부 , 원하는 클래스를 지정할 수 없음
+    - @Resource(name="클래스id") : 스프링에 저장되어 있는 객체 중에서 특정 주소를 지정해서 가지고 온다.
+    - 자동 주입은 반드시 스프링에서 메모리 할당을 해야 사용할 수 있다.
+    
 
 ## 실습해보기
 - xml없이 순수 자바로 코딩하기
@@ -130,4 +147,87 @@ sort: 8
 
 ## 실습해보기(2)
 - MySqlSessionFactoryBean.java , MyBasicDataSource.java를 xml로 대체하기
-- 
+
+
+### app2.xml
+- 패키지 바깥에 위치해야한다.
+
+```tip
+**xml 공통으로 들어가는 부분**
+1. 사용자 정의 클래스 등록하기 : 패키지 단위
+--- 6장
+2. AOP : 자동호출해야하는 반복코딩 제거(등록)
+--- 7장
+3. 데이터 소스 설정
+4. 데이터 소스 트랜젝션 등록
+5. SqlSessionFactoryBean 설정
+--- 8장
+6. WebSocket
+7. 보안설정
+```
+
+- 사용자가 만든 클래스 메모리 할당하기 : `<context:component-scan base-package="com.haeni.di2"/>`
+- 여러군데에서 di 가져다 쓸 수 있도록 설정하기
+
+```xml
+<bean id="ds" class="org.apache.commons.dbcp.BasicDataSource"
+		p:driverClassName="oracle.jdbc.driver.OracleDriver"
+		p:url="jdbc:oracle:thin:@211.238.142.183.1521:XE"
+		p:username="hr"
+		p:password="happy"
+/>
+<bean id="ssf" class="org.mybatis.spring.SqlSessionFactoryBean"
+		p:dataSource-ref="ds"  <-- id="ds"인 DB 연결정보 가져옴 -->
+		p:configLocation="classpath:Config.xml"
+/>
+```
+
+### MainClass.java
+
+- 메모리 할당하기 : `@Component`
+
+- DAO를 자동 주입으로 받기
+
+```java
+@Autowired
+	private MusicDAO dao;
+```
+
+- 스프링에 저장되어 있는 객체 가져오기 : `MainClass mc=(MainClass)app.getBean("mainClass");`
+  - 주입받은 값 받으려면 메모리 할당을 new로 하면 안됨
+  
+- 스프링에 저장된 개체 list에 담아서 출력하기
+
+```java
+for(MusicVO vo:list)
+{
+	System.out.println("번호:"+vo.getMno());
+	System.out.println("노래명:"+vo.getTitle());
+	System.out.println("가수명:"+vo.getSinger());
+	System.out.println("앨범:"+vo.getAlbum());
+	System.out.println("=============================");
+}
+
+```
+
+
+
+## 실습해보기 (3)
+
+### MovieVO
+- 데이터 컬럼 등록
+
+### movie-mapper.xml
+- 데이터 조회 쿼리문장 작성
+
+### Config.xml
+- typealias 및 mapper 위치 등록
+
+
+### MovieDAO
+- 메모리 할당
+- ssf
+
+### MainClass
+
+
