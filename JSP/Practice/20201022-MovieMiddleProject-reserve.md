@@ -2,9 +2,8 @@
 sort:
 ---
 
-# [JSP-Model2] 영화 예매하기
-
-### 코드 : MovieMiddelProject
+# Model2 방식으로 웹사이트 만들기 (1) 예매하기
+- 깃허브 : https://github.com/haenyilee/JSP-Study/tree/master/MovieMiddleProject
 
 ## 달력 만들기
 
@@ -112,6 +111,7 @@ sort:
   - main에서 include하기
   - ajax로 특정 부분만 추가하기
   ```
+  
   
   
   
