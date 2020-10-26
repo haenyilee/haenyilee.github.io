@@ -1,20 +1,19 @@
 ---
-sort: 9
+sort: 8
 ---
 
 # AutomaticDI (2)
 
-## 실습해보기
-- xml없이 순수 자바 코딩 
-- ?Annotaion으로 Autowired 사용해보기
-
 ```tip
-#### 스프링에서 관리 대상 : 여러 곳에서 사용하는 기능
+## 스프링에서 관리 대상 : 여러 곳에서 사용하는 기능
 - DAO (Web)
 - Manager (Web)
 - Model
 - Service
 ```
+
+## 실습해보기
+- xml없이 순수 자바로 코딩하기
 
 ### [VO] : MusicVO.java
 - DTO , BEAN : 데이터를 넘겨서 전송할 목적을 가지고 있음
@@ -39,8 +38,8 @@ sort: 9
     p:sqlSessionFactory-ref="ssf"
 />
 ```
-- setSqlSessionFactory
 
+- setSqlSessionFactory
 
 ### [Spring Bean Configuration file] : app.xml
 - `<context:component-scan base-package="패키지명">` : 클래스를 패키지 단위로 메모리 할당하기
@@ -56,6 +55,7 @@ sort: 9
      p:password="happy"
 />
 ```
+
 - xml없이 순수 자바 코딩을 하기 위함임
 - `extends BasicDataSource` 
   - setDriverClassName("");
@@ -88,6 +88,7 @@ sort: 9
      p:configLocation="classpath:Config.xml"
 />
 ```
+
 - `@Component` : 메모리 할당
   - 뒤에 아이디 작성하지 않으면 디폴트 id가 부여됨
   - ID : mySqlSessionFactoryBean
@@ -113,9 +114,6 @@ sort: 9
 ```
 
 - Congig.xml 정보 넘겨 받기 : `p:configLocation="classpath:Config.xml"`
-
-
-
 
 ### [mapper] : music-mapper.xml
 - `PreparedStatement` : SQL문장을 전송함
