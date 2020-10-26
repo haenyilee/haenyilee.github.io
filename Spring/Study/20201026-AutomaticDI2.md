@@ -123,7 +123,7 @@ sort: 8
   ```
 
 ```note
-#### @Autowired가 들어가는 위치
+**@Autowired가 들어가는 위치**
 - CONSTRUCTOR : 생성자
 - FIELD : 멤버변수
 - METHOD : 메소드
