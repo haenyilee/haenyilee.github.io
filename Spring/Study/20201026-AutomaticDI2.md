@@ -131,4 +131,5 @@ sort: 9
 - app.xml과 musicDAO를 통해 값 출력
 
 ## 실습해보기(2)
-
+- MySqlSessionFactoryBean.java , MyBasicDataSource.java를 xml로 대체하기
+- 
