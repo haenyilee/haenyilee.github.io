@@ -5,7 +5,7 @@ sort: 8
 # AutomaticDI (2)
 
 ```tip
-## 스프링에서 관리 대상 : 여러 곳에서 사용하는 기능
+**스프링에서 관리 대상 : 여러 곳에서 사용하는 기능**
 - DAO (Web)
 - Manager (Web)
 - Model
