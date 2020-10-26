@@ -228,8 +228,96 @@ for(MusicVO vo:list)
 
 ### MovieDAO
 - 메모리 할당
+- sqlSessionFactory 매개 변수에 데이터 주입
+
+	```java
+	@Autowired
+	public void setSqlSessionFactory(SqlSessionFactory sqlSessionFactory) {
+		// TODO Auto-generated method stub
+		super.setSqlSessionFactory(sqlSessionFactory);
+	}
+	```
+
 - ssf
 
 ### MainClass
+- dao메모리 할당
+- list에 데이터 담아서 출력
 
 
+```note
+**멤버변수 초기화 방식**
+1. 명시적 초기화
+  - 스프링은 명시적 초기화 못함 => 프로그래머가 만든 코드를 건들지 못하기 때문에
+  - 메모리 할당하기 전에 direct로 값 넣기
+2. setter DI : bean p태그로 데이터 주입
+3. 생성자
+```
+
+## 실습해보기 (4)
+- com.haeni.di3
+- 어노테이션 활용
+- autowired 대신 쓸 수 있는 방법
+- di가 필요하면 xml 코딩이 좋음
+  - 어노테이션은 메모리만 할당하기 때문에 set메모리 연결 방법이 없음 
+  - 스프링에서는 일반 변수에 값 채워서 넘어가는 방법은 없음
+
+### [VO] : Sawon, Member
+- 명시적 초기화 방식
+- 어노테이션 통한 메모리 할당 : `@Component("sa")` , `@Component("mem")`
+  - id를 지정했기 때문에 해당 id를 통해서만 호출 가능함
+  - 디폴트 id값(소문자 클래스명)은 사용 불가함  
+
+
+### app.xml
+- p는 set메소드를 호출해주는 용도이기 때문에 context와 beans만 필요함
+- 패키지 등록
+
+### MainClass.java
+
+- 메인클래스 메모리 할당
+
+- id 지정해서 의존 자동 주입 : `@Resource(name="아이디")`
+	- 스프링이 메모리할당 했으니 스프링에서 가져와야 한다.
+
+```java
+@Resource(name="sa")
+private Sawon sa;
+	
+@Resource(name="mem")
+private Member mem;
+```	
+
+
+- main 클래스 초기화???? 컨테이너??
+
+```java
+@Resource(name="mem")
+	private Member mem;
+	public static void main(String[] args) {
+		ApplicationContext app = new ClassPathXmlApplicationContext("app3.xml");
+		MainClass mc=(MainClass)app.getBean("mc");
+	}
+```	
+
+
+
+
+```tip
+**의존자동주입 위치(Target)**
+1. TYPE : 클래스 위에
+2. METHOD: 메소드 위에 
+3. FIELD 
+4. PARAMETER : 매개변수 앞에
+
+Component는 TYPE만 가능함
+
+
+
+
+
+---
+## 참고 
+- 책 : 
+- 코드 : ()[]
+---
