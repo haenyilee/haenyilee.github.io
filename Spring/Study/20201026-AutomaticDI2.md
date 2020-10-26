@@ -64,7 +64,7 @@ sort: 8
 - `<context:component-scan base-package="패키지명">` : 클래스를 패키지 단위로 메모리 할당하기
 
 ### MyBasicDataSource.java
-- app.xml에 작성하던 데이터 베이스 연결 정보를 아래 코딩을 대체하는 클래스
+- app.xml에 작성하던 데이터 베이스 연결 정보인 아래 코딩을 자바로 대체하는 클래스
 
 ```xml
 <bean id="ds" class="org.apache.commons.dbcp.BasicDataSource"
