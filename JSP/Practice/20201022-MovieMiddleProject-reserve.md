@@ -115,4 +115,30 @@ sort:
   
   
   
+## 극장 출력하기
 
+### [Model]
+- 곧장 보내고 실행결과 바로 받아오기 때문에 화면이 깜빡이지 않음
+
+- jsp에서 서버로 값 보냄
+- 서버에서 결과값 보냄
+- 결과값을 jsp로 보냄
+
+- Ajax코딩
+- Asynchronous Javascript And XML
+  - 동시에 여러가지를 처리할 수 있지만 속도가 느림
+  - HTML을 읽어오기 때문에 읽어올 데이터가 많아서 속도가 느리다.
+- 브라우저에 요청
+- XMLHttpRequest req : 브라우저에 있는 객체 
+1. 서버 연결 : req.open("POST" , "URL",true/false)
+	- true : 비동기방식
+	- false : 동기화방식
+2. 
+
+### VO
+
+### mapper
+
+### model
+
+### [View] theater.jsp
