@@ -313,7 +313,7 @@ private Member mem;
 4. PARAMETER : 매개변수 앞에
 
 Component는 TYPE만 가능함
-
+```
 
 
 
