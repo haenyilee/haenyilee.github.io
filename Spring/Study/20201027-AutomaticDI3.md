@@ -134,3 +134,55 @@ public static void main(String[] args) {
 ```
 
 - [소멸] : `app.close();`
+
+
+## 실습해보기 (3) - 빈 객체의 초기화와 소멸
+- [com.haeni.di5]
+- `InitializingBean`, `DisposableBean`활용하기
+	- `InitializingBean` : 초기화 
+	- `DisposableBean` : 소멸
+- 컨테이너가 가지고 있다가 `destroy()`함수 호출되면 소멸
+
+
+### Sawon.java
+
+```java
+package com.haeni.di5;
+
+import org.springframework.beans.factory.DisposableBean;
+import org.springframework.beans.factory.InitializingBean;
+
+public class Sawon implements InitializingBean,DisposableBean {
+	private String name;
+	private String dept;
+	
+	public Sawon(String name, String dept)
+	{
+		this.name=name;
+		this.dept=dept;
+	}
+	public void print()
+	{
+		System.out.println("이름:"+name);
+		System.out.println("부소:"+dept);
+	}
+	@Override
+	public void destroy() throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void afterPropertiesSet() throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+}
+```
+
+- 초기화되는 순서
+  - 생성자 , 멤버변수에 값을 채운다 , 메모리 할당
+  - afterPropertiesSet() => setName, setDept
+  - print() => 프로그래머가 활용
+  - close() => destry()
