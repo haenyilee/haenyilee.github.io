@@ -183,7 +183,15 @@ public class Sawon implements InitializingBean,DisposableBean {
 ```
 
 - 초기화되는 순서
-  - 생성자 , 멤버변수에 값을 채운다 , 메모리 할당
+  - 생성자 호출
+  - setterDI : 멤버변수에 값을 채운다 , 메모리 할당
   - afterPropertiesSet() => setName, setDept
   - print() => 프로그래머가 활용
   - close() => destry()
+
+
+### app.xml
+
+- `scope="prototype"` : 사용범위
+	- singleton(메모리주소 같음)
+	- prototype(메모리 주소 다름)
