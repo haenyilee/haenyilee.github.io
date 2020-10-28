@@ -306,3 +306,18 @@ CREATE TABLE reserve(
 - theater.jsp
 - date.jsp
 - time.jsp
+
+
+## 예매 완료?
+
+### movie-mapper.xml
+- insert쿼리문장 작성하기
+- `<selectKey>`
+  - insert할 때 사용가능한 기능이다.
+  - `keyProperty` : vo의 변수와 쿼리문장의 컬럼명이 일치하면 result의 결과를 keyProperty에 넣어준다.
+  
+### DAO
+- Insert문장은 COMMIT을 꼭 해야함을 유의해야 함
+
+### Model
+- DAO에서 실행 후 반환된 결과값 담아서 이동하기
