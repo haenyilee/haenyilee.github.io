@@ -295,6 +295,8 @@ CREATE TABLE reserve(
     isreserve CHAR(1) DEFAULT 'n',
     regdate DATE DEFAULT SYSDATE
 );
+
+ALTER TABLE reserve MODIFY time VARCHAT2(200);
 ```
 
 ### 요소 클릭할떄마다 hidden 방식으로 값 채우기
