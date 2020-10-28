@@ -2,7 +2,7 @@
 sort:
 ---
 
-# Model2 방식으로 웹사이트 만들기 (1) 마이페이지
+# Model2 방식으로 웹사이트 만들기 (2) 마이페이지
 
 ## Mypage에 출력할 데이터 가져오기
 
@@ -44,9 +44,9 @@ private MovieVO mvo=new MovieVO();
 
 ```oracle
   <select id="mypageReserveListData" resultMap="reserveList" parameterType="string">
-	SELECT no,title,poster,theater,time,inwon,price,isreserve
+	SELECT reservo.no,title,poster,theater,time,inwon,price,isreserve
 	FROM reserve,movie_info
-	WHERE mno=no AND id=#{id}
+	WHERE mno=movie_info.no AND id=#{id}
   </select>
   <select id="adminpageReserveListData" resultMap="reserveList">
 	SELECT no,id,title,poster,theater,time,inwon,price,isreserve
@@ -68,3 +68,4 @@ private MovieVO mvo=new MovieVO();
 
 
 #### mypage.jsp
+- `<c:if test="">` 태그를 통해서 승인 완료일 때와 승인이 완료되지 않았을 때 버튼을 달리하기
