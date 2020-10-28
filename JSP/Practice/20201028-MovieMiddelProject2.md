@@ -26,6 +26,7 @@ private MovieVO mvo=new MovieVO();
 ### [mapper]
 - `resultMap` : `getMvo()`는 있지만, MovieVO 각 객체들의 get메소드는 없기 떄문에 이를 컬럼명과 매칭해줄때 필요한 기능이다.
   - `vo.getMvo().setPoster(rs.getString("psoter"));`의 자바 코딩과 동일한 기능이다.
+  
 ```xml
 <resultMap type="com.sist.vo.ReserveVO" id="reserveList">
   	<result property="no" column="no"/>
