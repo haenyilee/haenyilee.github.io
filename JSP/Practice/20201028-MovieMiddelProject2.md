@@ -70,3 +70,64 @@ private MovieVO mvo=new MovieVO();
 
 #### mypage.jsp
 - `<c:if test="">` 태그를 통해서 승인 완료일 때와 승인이 완료되지 않았을 때 버튼을 달리하기
+
+
+## 승인대기 상태 결제건 승인완료하기
+
+### adminpage.jsp
+
+- 승인대기 버튼 경로 : `..reserve/admin_ok.do?no=${vo.no}`
+  - 이 버튼을 누르면 isreserve의 상태가 `n`에서 `y`로 변경되어야 함
+  
+
+### [mapper]
+- 승인 대기 > 승인 완료로 변경하는 쿼리문장 작성하기
+
+```xml
+<update id="reserveOk" parameterType="int">
+  	UPDATE reserve SET
+  	isreserve='y'
+  	WHERE no=#{no}
+</update>
+```
+
+
+### [DAO]
+- 승인 대기 > 승인 완료로 변경하는 쿼리문장 처리하기
+- UPDATE 처리 후, AutoCommit 실행될 수 있도록 `openSession(true)` 값 주기
+
+```tip
+**사용자가 요청할 수 있는 위치**
+1. `<a href="사용자 요청 페이지">`
+2. `<form action="사용자 요청 페이지">`
+3. ajax에서의 url:'사용자 요청 페이지'
+```
+
+### reserveModel.java
+- `@RequestMapping("reserve/admin_ok.do")` 
+  - `reserve/admin_ok.do` 요청이 들어오면 이를 처리하는 메소드 찾는 것이 어노테이션의 역할이다.
+  - 상세 처리 순서 : 사용자 요청(`*.do`) → DispatcherServlet(Controller) → Model(RequestMapping)
+- 사용자가 클릭한 예약번호 받아서 쿼리문장 실행한 뒤, adminpage로 redirect하기
+
+
+## 승인 대기 상태 한번에 처리하기
+
+### adminpage.jsp
+- 승인 완료된 건들만 체크박스 만들기
+
+```jsp
+<c:if test="${vo.isreserve=='n' }">
+	<input type="checkbox" value="${vo.no }" class="cb" name=cb>
+</c:if>
+```
+
+### mapper
+- 승인 미완료건들은 페이지 목록에 뜨지 않게 쿼리 문장 수정하기
+
+```jsp
+  <select id="adminpageReserveListData" resultMap="reserveList">
+	SELECT no,id,title,poster,theater,time,inwon,price,isreserve
+	FROM reserve,movie_info
+	WHERE mno=movie_info.no AND isreserve='n'
+  </select>
+```
