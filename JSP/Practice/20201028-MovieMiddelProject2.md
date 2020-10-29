@@ -112,15 +112,6 @@ private MovieVO mvo=new MovieVO();
 
 ## 승인 대기 상태 한번에 처리하기
 
-### adminpage.jsp
-- 승인 완료된 건들만 체크박스 만들기
-
-```jsp
-<c:if test="${vo.isreserve=='n' }">
-	<input type="checkbox" value="${vo.no }" class="cb" name=cb>
-</c:if>
-```
-
 ### mapper
 - 승인 미완료건들은 페이지 목록에 뜨지 않게 쿼리 문장 수정하기
 
@@ -131,3 +122,100 @@ private MovieVO mvo=new MovieVO();
 	WHERE mno=movie_info.no AND isreserve='n'
   </select>
 ```
+
+### adminpage.jsp
+- 승인 완료된 건들만 체크박스 만들기
+
+```jsp
+<c:if test="${vo.isreserve=='n' }">
+	<input type="checkbox" value="${vo.no }" class="cb" name=cb>
+</c:if>
+```
+
+- form 태그로 테이블 묶기
+
+- 전체 승인하는 버튼 만들기
+  - 각각 체크 후, 이 버튼을 만들면 전체 승인 완료로 변함
+  
+- 체크가 됐는지 유효성 검증하는 제이쿼리문 작성하기(자바 스크립트)
+  - 스프링에서는 리액트나 뷰로 대체함
+  - 아이폰과 안드로이드를 동시에 다뤄야 하기 때문이다.(native라는 라이브러리를 쓰면 가능하기 때문이다.)
+  - 변수는 let을 사용하는 것이 편하다(var은 구버전임)
+  - 체크박스만 가져오려면? : `$('input[type=checkbox]')`
+  
+  ```note
+  **태그명 가지고오기(SELECTOR)**
+  1. $('태그명')
+  2. $('#id')
+  3. $('.class')
+  ```
+  
+  ```note
+  **제어하기**
+  1. text() : 태그 사이에 태그가 또 있어도 값만 가져온다
+  2. attr(속성명)
+  3. val() : input이나 selector의 value를 가져올 때 사용한다.
+  4. html()
+  5. append() : 태그 사이에 태그를 여러개 첨부하고 싶을 때 사용한다.
+  6. hide() / show() : 감추기/보여주기 (더보기 기능에서 주로 사용)
+  7. contains() : 데이터가 쭉 있는데 내가 원하는 데이터만 찾을 때 사용한다.
+  8. parent() : 상위 태그 클릭
+  9. child() : 하위 태그 클릭
+  ```
+  
+  - 체크 박스 선택 됐으면 form태그의 action에 등록된 요청 실행하기
+```tip
+**가장 많이 등장하는 이벤트**
+1. click 
+2. change : select태그에 사용됨
+3. hover
+```
+
+- 전체 선택 하려면? : `.cb:clicked`
+
+### ReserveModel.java
+- 체크된 예약번호 배열로 받아서 하나씩 reserveOk 실행시키기
+
+```java
+  @RequestMapping("/reserve/reserve_all_ok.do")
+  public String reserve_all_ok(HttpServletRequest request)
+  {
+	  // 데이터 받기
+	  String[] nos=request.getParameterValues("cb");
+	  for(String n:nos)
+	  {
+		  MovieDAO.reserveOk(Integer.parseInt(n));
+	  }
+	  return "redirect:../reserve/adminpage.do";
+  }
+```
+
+## 영화 검색 기능만들기
+
+### movie.jsp
+- 검색 창 만들기 
+
+  ```jsp
+     <table class="table">
+   	<tr>
+   		<td>
+   		<input type=text id="keyword" size=15 placeholder="검색">
+   		</td>
+   	</tr>
+   </table>
+  ```
+
+- 검색 관련 제이쿼리 문장 작성하기
+  - 영화 검색 함수 만들기 : `$('#keyword').keyup(function(){}}`
+    - `keyup` : 글자를 다 썼을 때 (키보드 뗐을 때)
+    - `keydown` : 글자를 쓰고 있을 때 (키보드 누르고 있을 때)
+  - 검색어 입력값 읽어오기 : `let k=$('#keyword').val();`
+  - 영화 목록 전체 감추기 : `$('#movie-table > tbody > tr').hide();`
+    - `>` : 하위 태그 
+    - `tbody`
+  -  : `let temp=$('#movie-table > tbody > tr > td:nth-child(2n+2):contains("'+k+'")');`
+    - 2번째 컬럼 데이터(title부분) 전체 읽어오기 : `$('#movie-table > tbody > tr > td:nth-child(2n+2)`
+    - 검색한 키워드 포함되는 것 찾기 : `:contains("'+k+'")`
+  - 검색한 제목의 상위태그(전제 데이터) 보여주기 : `$(temp).parent().show();`
+  
+ 
