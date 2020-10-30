@@ -2,7 +2,7 @@
 sort: 3
 ---
 
-# 준비과정
+# CRUD 준비과정
 - 프로젝트 생성
 - 자바 리소스 라이브러리 변경
   - Java Resources > Libraries > JRE System Library > Properties > Workspace default JRE(jdk 1.8.0_251)
