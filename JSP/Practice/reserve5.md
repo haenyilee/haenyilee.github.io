@@ -91,4 +91,46 @@ CREATE TABEL movie_reply(
 ### [DAO]
 - 연결 : SqlSession
 - 마이바티스는 DBCP를 사용하기 때문에 꼭 사용이 종료된 뒤에는 반환해줘야 한다. (https://aljjabaegi.tistory.com/402)[DBCP와 JDBC란?]
-- POOLED를 사용하는 이유 : 
+- Connection Pool를 사용하는 이유 :
+
+```
+<PRE>
+- 시스템의 성능향상 
+- Connection Pool : 미리 커넥션을 생성 Client 접속시 이용가능 하도록 한 후 사용 후 회수 하도록 하는 형식
+
+javax.sql.DataSource
+DataSource.getConnection()
+
+Java Programming에서 Database로 Connection을 맺는 일은 매우 느리며 자원을 많이 소모하는 작업이다.
+그러므로 불특정 다수의 사용자들이 동시에 Database의 Connection을 요구한다면 최악의 경우 server가 down되기도 한다.
+이것을 해결하기 위해 Connection Pool을 이용한다.
+
+Connection Pool은 Database와의 연결을 효율적으로 관리하는 역할을 한다.
+사전에 일정량의 Connection 객체를 만들어 공유된 장소에 모아둔다.
+시간이 걸리는 Connection 객체 생성을 사전에 해 둠으로써 속도향상을 기대할 수 있다.
+Java Programming에서 사용이 끝난 Connection객체를 다시 공유된 장소에 넣어둔다.
+
+- 애플리케이션 서버가 시동될때 일정 수의 커넥션을 미리 생성한다.
+- 애플리케이션 요청에 따라 생성된 커넥션 객체를 전달한다.
+- 일정 수 이상의 커넥션이 사용되면 새로운 커넥션을 만든다.
+- 사용하지 않는 커넥션은 종료하고 최소한의 커넥션을 유지한다.
+
+예전에 이 같은 Connection Pool을 직접 개발하곤 햇으나 최근에는 JDBC Driver내에 자체적으로 내장되어 있는 경우가 많다.
+
+출처 : (https://wwhite103.tistory.com/35)[W.C.]
+<PRE>
+```
+
+- DML(INSERT , UPDATE, DELETE)은 커밋을 날려야 한다. 
+
+```note
+**SQL언어의 종류**
+- DQL : SELECT
+- DML : INSERT , UPDATE, DELETE
+- DDL : CREATE , DROP , ALTER , RENAME
+- DCL : GRANT , REVOKE
+- TCL : COMMIT , ROLLBACK
+```
+
+
+
