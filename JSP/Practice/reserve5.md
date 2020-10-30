@@ -91,3 +91,4 @@ CREATE TABEL movie_reply(
 ### [DAO]
 - 연결 : SqlSession
 - 마이바티스는 DBCP를 사용하기 때문에 꼭 사용이 종료된 뒤에는 반환해줘야 한다. (https://aljjabaegi.tistory.com/402)[DBCP와 JDBC란?]
+- POOLED를 사용하는 이유 : 
