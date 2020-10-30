@@ -33,3 +33,11 @@ CREATE TABLE jjim(
 
 
 ### detail.jsp
+
+
+## 마이페이지에서 찜목록 출력하기
+
+## 찜하기 취소하기
+
+### [Model]
+- MovieModel이던 ReserveModel이던 상관없음
