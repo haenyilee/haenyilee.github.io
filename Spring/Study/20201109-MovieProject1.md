@@ -31,4 +31,13 @@ sort:
   - 자바스크립트 파싱
   
 ### MovieController.java
+- 매개변수 no는 int보다 String으로 받는 것이 좋다.
 
+### application-context.xml
+- ViewResolver(경로명, 확장자)
+  - 데이터를 JSP로 전송
+
+
+### main.jsp
+
+### index.jsp
