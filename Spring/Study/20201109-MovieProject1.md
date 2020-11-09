@@ -32,7 +32,3 @@ sort:
   
 ### MovieController.java
 
-## 순서
-- `.do` => Model(RequestMapping) => DAO(Manager) => `request.setAttribute()` => `model.addAttribute()`
-
-- Tiles
