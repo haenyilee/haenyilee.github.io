@@ -68,17 +68,66 @@ HAVING AVG(sal)<(SELECT AVG(sal) FROM emp);
 
 - ANY , SOME, ALL
 
-|종류|의미|
+|종류|역할|
 |----|---|
 |ANY,SOME|메인 쿼리의 비교 조건이 서브 쿼리의 검색 결과와 하나 이상 일치하면 값을 반환|
 |ALL|메인 쿼리의 비교 조건이 서브 쿼리의 검색 결과와 모든 값이 일치하면 값을 반환|
 
 
-### 인라인 뷰
+- 수행된 결과 중에 최소값 가져오기
+
+```oracle
+SELECT empno,ename,job,deptno
+FROM emp
+WHERE deptno>ANY(SELECT DISTINCT deptno FROM emp);
+```
+
+- 중복되지 않는 값 가져오기
+
+```oracle
+SELECT empno,ename,job,deptno
+FROM emp
+WHERE deptno IN (SELECT DISTINCT deptno FROM emp);
+```
+
+
+
+### 인라인 뷰 , TOP-N(rownum)
 - FROM(SELECT~)
+- SELCT는 테이블과 컬럼을 대신할 수 있다.
 
+- rownum은 중간의 데이터를 짤라올 수 없다는 단점이 있다.
 
+```oracle
+-- 출력불가
+SELECT ename,job,sal,rownum FROM emp
+WHERE rownum BETWEEN 5 AND 10;
+```
 
+- 인기순위, 베스트 댓글
+
+```oracle
+SELECT ename,job,sal,rownum FROM emp
+WHERE rownum<=5;
+```
+
+- 예) 급여가 많은 사람 5명
+
+```ORACLE
+SELECT ename,job,sal,rownum 
+FROM (SELECT ename,job,sal FROM emp ORDER BY sal DESC)
+WHERE rownum<=5
+ORDER BY sal DESC;
+```
+
+- 예) 급여가 5~10위인 사람 5명
+
+```oracle
+SELECT ename,job,sal,num
+FROM (SELECT ename,job,sal, rownum as num
+FROM (SELECT ename,job,sal FROM emp ORDER BY sal DESC))
+WHERE num BETWEEN 5 AND 10;
+```
 
 ### Scalar Sub Query(스칼라 서브 쿼리)
 - 컬럼 대신에 사용하는 방법
@@ -96,7 +145,7 @@ FROM emp,dept
 WHERE emp.deptno=dept.deptno;
 ```
 
-- 조인을 서브쿼리로 대체하기
+- 조인을 스칼라 서브쿼리로 대체하기
 
 ```orale
 SELECT empno,ename,job,
