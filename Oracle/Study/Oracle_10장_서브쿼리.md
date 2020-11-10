@@ -91,7 +91,7 @@ HAVING AVG(sal)<(SELECT AVG(sal) FROM emp);
 |ALL|메인 쿼리의 비교 조건이 서브 쿼리의 검색 결과와 모든 값이 일치하면 값을 반환|
 
 
-- 수행된 결과 중에 최소값 가져오기
+- 예) 수행된 결과 중에 최소값 가져오기
 
 ```oracle
 SELECT empno,ename,job,deptno
@@ -99,7 +99,7 @@ FROM emp
 WHERE deptno>ANY(SELECT DISTINCT deptno FROM emp);
 ```
 
-- 중복되지 않는 값 가져오기
+- 예) 중복되지 않는 값 가져오기
 
 ```oracle
 SELECT empno,ename,job,deptno
@@ -107,6 +107,12 @@ FROM emp
 WHERE deptno IN (SELECT DISTINCT deptno FROM emp);
 ```
 
+- 예) rowid를 사용해서 중복행 제거하기(delete)
+
+```oracle
+DELETE FROM dept a 
+WHERE rowid>ANY(SELECT rowid FROM dept b WHERE b.deptno = a.deptno);
+```
 
 
 ## 인라인 뷰 , TOP-N(rownum)
