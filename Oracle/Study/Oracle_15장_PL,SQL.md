@@ -10,6 +10,8 @@ sort: 16
 - 재사용하기 위함이 목적이다.
 
 
+
+
 ## PL/SQL 기본 구조
 - PROCEDURE : 리턴형이 없는 자바스크립트 언어와 같음
 - FUNCTION : 리턴형이 있는 함수
@@ -21,11 +23,11 @@ sort: 16
 
 ## PL/SQL BLOCK 기본 구성
 
-
-
-- 형식)
+- SELECT에서 실행된 결과값을 받을 때, INTO를 사용한다.
+- 변수에 값 설정 할 때, `:=`를 사용한다.
 
 ```
+-- 형식
 선언부
   변수 선언
 구현부
@@ -439,6 +441,13 @@ FOR counter IN 1..9 LOOP
 END LOOP;
 ```
 
+```
+-- 형식(2)
+FOR i IN[REVERSE] 1..9 LOOP
+  처리
+END LOOP;
+```
+
 - 예) for : 1~10까지 출력
 
  ```oracle
@@ -466,11 +475,18 @@ END;
 
 
 
+## PL/SQL에서의 연산자 사용하기
+- 비교연산자 : = , != , < , > , <= , >=
+- 논리연산자 : OR , AND , NOT
+- 제어문 : IF , IF ~ ELSE , FOR
+
+
+## PL/SQL Cursor(커서)
+- 여러개의 데이터를 저장하는 공간
+
 ```
--- 형식(2)
-FOR i IN[REVERSE] 1..9 LOOP
-  처리
-END LOOP;
+CURSOR emp_cur IS
+  SELECT * FROM emp;
 ```
 
 ## PL/SQL의 런타임 구조
@@ -479,11 +495,5 @@ END LOOP;
 ## PL/SQL에서의 렉시칼
 ## PL/SQL에서의 블록 구문 작성 지침
 ## 중첩된 PL/SQL 블록 작성하기
-## PL/SQL에서의 연산자 사용하기
-
-
-
-
-## PL/SQL Cursor(커서)
 ## ORACLE EXCEPTION(예외 처리)
 ## ORACLE SUBPROGRAM
