@@ -156,6 +156,24 @@ public class EmpDAO {
 }
 ```
 
+### EmpController.java
+
+- `@Autowired` : 스프링에서 생성된 객체 EmpDAO 가져오기
+	- `@Autowired`가 있으면 config xml 파일에서 등록된 id를 찾아서 메모리 할당된 것을 찾아준다.
+	- 어디서 호출하더라고 똑같은 주소를 찾아준다. (한 사람 당, DAO는 한 번만 생성됨 => 싱글턴)
+
+- `emp/list.do`를 호출하면 `/emp/list.jsp` 반환하기
+
+```java
+@RequestMapping("emp/list.do")
+	public String emp_list(Model model)
+	{
+		List<EmpVO> list=dao.empListData();
+		model.addAttribute("list",list); // request.setAttribute("list",list)
+		return "list";
+	}
+```
+
 ## config
 
 ### application-context.xml
@@ -163,6 +181,7 @@ public class EmpDAO {
 - aop , beans, context , p , tx , util
 
 - 어노테이션이 있는 클래스를 메모리 할당하도록 명령내리기
+	- class찾기 => @Controller, @Repository ,@Service , @RestController , @Component 어노테이션을 기준으로...
 
 ```xml
 <context:component-scan base-package="com.sist.*"/>
@@ -191,18 +210,37 @@ public class EmpDAO {
 />
 ```
 
-- ViewResolver : JSP를 찾아서 request를 전송하기
-	- DispatcherServlet과 WebApplicationContext(Container)
-	![](https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile29.uf.tistory.com%2Fimage%2F99B16B375CC05ADD0D1A58)
-	- WebApplicationContext
-		- HandlerMapping : 클래스 찾기
-		- ViewResolver : JSP찾기
 
 ```tip
 **데이터 구조**
 - 데이터베이스(≒폴더) : XE , ora , orcl , pubs...
 - 테이블(≒파일)
 ```
+
+
+- ViewResolver : JSP를 찾아서 request를 전송하기
+	- DispatcherServlet과 WebApplicationContext(Container)
+	![](https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile29.uf.tistory.com%2Fimage%2F99B16B375CC05ADD0D1A58)
+	- WebApplicationContext
+		- HandlerMapping : 클래스 찾기
+		- ViewResolver : JSP찾기
+		
+		```
+		**ViewResolver**
+		(prefix)main/main(suffix)
+		/mian/main.jsp
+		```
+
+
+```xml
+<bean id="viewResolver"
+class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+p:prefix="/emp/"
+p:suffix=".jsp"
+/>
+```
+
+
 
 
 ```tip
@@ -213,3 +251,81 @@ public class EmpDAO {
 	- 스프링 5.0 (STS 4:Spring Boot)
 ```
 
+
+## view
+
+### list.jsp
+
+- 리액트
+	- ES 5.0 => text/javascript
+	- ES 6.0 => text/babel => react (ES6) => jsx(javascript+XML)
+		- jsx : 1. 대소문자 구분 , 2. 여는태그/닫는태그 동일 , 3. 태그를 사용할 경우 소문자로 시작
+
+- 리액트는 문법 사항이 까다롭지만, ajax가 포함되어 있다는 장점이 있다. 
+
+```jsp
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style type="text/css">
+.row {
+   margin: 0px auto;
+   width:900px;
+}
+</style>
+<script src="https://unpkg.com/react@15/dist/react.js"></script>
+<script src="https://unpkg.com/react-dom@15/dist/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.34/browser.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="row" id="root">
+		
+		</div>
+	</div>
+	<!-- 리액트 스크립트  -->
+	<script type="text/babel">
+		class Emp extends React.Component{
+			render()
+			{
+				return (
+					<table className="table table-striped">
+						<thead>
+							<tr className="sucess">
+								<th>사번</th>
+								<th>이름</th>
+								<th>직위</th>
+								<th>입사일</th>
+								<th>부서명</th>
+								<th>근무지</th>
+							</tr>						
+						</thead>
+						<tbody>
+							<c:forEach var="vo" items="${list}">
+								<tr>
+								<td>${vo.empno}</td>
+								<td>${vo.ename}</td>
+								<td>${vo.job}</td>
+								<td><fmt:formatDate value="${vo.hiredate}" pattern="yyyy-MM-dd"/></td>
+								<td>${vo.dname}</td>
+								<td>${vo.loc}</td>
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
+				)
+			}
+		}
+		ReactDOM.render(<Emp/>,document.getElementById('root'))
+	</script>
+</body>
+</html>
+```
