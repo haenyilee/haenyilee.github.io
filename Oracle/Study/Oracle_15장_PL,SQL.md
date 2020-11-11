@@ -5,20 +5,18 @@ sort: 16
 # PL,SQL
 
 ## PL/SQL이란
+- Procedural Language
 - PROCEDURE, FUNCTION, PACKAGE , TRIGGER를 제작할 때 사용하는 언어이다.
+  - PROCEDURE : 리턴형이 없는 자바스크립트 언어와 같음
+  - FUNCTION : 리턴형이 있는 함수
+    - 함수 : 독립(C언어)
+    - 메소드 : 클래스 종속
+  - PACKAGE : 관련된 PROCEDURE , FUNCTION 을 모아서 둔 곳
+  - TRIGGER : 이미 지정된 이벤트 발생시에 자동 처리
 - 사용자 정의로 사용한다.
 - 재사용하기 위함이 목적이다.
+- 정보 보호
 
-
-
-
-## PL/SQL 기본 구조
-- PROCEDURE : 리턴형이 없는 자바스크립트 언어와 같음
-- FUNCTION : 리턴형이 있는 함수
-  - 함수 : 독립(C언어)
-  - 메소드 : 클래스 종속
-- PACKAGE : 관련된 PROCEDURE , FUNCTION 을 모아서 둔 곳
-- TRIGGER : 이미 지정된 이벤트 발생시에 자동 처리
 
 
 ## PL/SQL BLOCK 기본 구성
@@ -56,7 +54,7 @@ END;
 - 지역변수
 - 매개변수 : SUBSTR('',1,2) MAX(컬럼명)
 ### 변수 사용법
-- 스칼라변수 : 일반 변수(NUMBER,VARCHAR2,CLOB,DATE)
+- 스칼라변수 : 단순 변수(NUMBER,VARCHAR2,CLOB,DATE)
   - id VARCHAR2(10)
   
 ```ORACLE
@@ -100,7 +98,7 @@ END;
 ```  
   
  
-- %TYPE : 원형 (다른 테이블의 원형)
+- %TYPE : 참조변수 (다른 테이블의 원형)
   - emp.ename%TYPE => ename이 가지고 있는 데이터형을 가지고 온다.
 
 ```oracle   
@@ -143,7 +141,7 @@ BEGIN
 END;
 ```
 
-- %ROWTYPE
+- %ROWTYPE : 
   - emp%ROWTYPE => emp테이블이 가지고 있는 모든 컬럼의 데이터형을 읽어 온다.
 
 ```oracle
@@ -165,7 +163,7 @@ END;
 ```
 
 
-- RECORD : VO와 같다. 여러개의 테이블 컬럼을 받아서 처리한다. 
+- RECORD : VO와 같다. 여러개의 테이블 컬럼을 받아서 처리한다. 복합변수
 
 - CURSOR : ArrayList와 같다. 여러개의 ROW처리가 가능하다.
   - 스칼라변수 , %TYPE , %ROWTYPE , RECORD 는 한 개의 ROW만 처리 가능하다.
@@ -482,11 +480,214 @@ END;
 
 
 ## PL/SQL Cursor(커서)
-- 여러개의 데이터를 저장하는 공간
 
-```
+### Cursor란?
+- 여러개의 Row(Record)데이터를 저장하는 공간이다.
+  - 처리하고 자바에서 받을 때, ResultSet으로 받는다. 
+
+```oracle
 CURSOR emp_cur IS
   SELECT * FROM emp;
+```
+
+### Cursor 사용 방법
+
+- 1. 커서 등록
+
+```oracle
+Cursor cur_name IS
+  SELECT * FROM emp
+```
+
+- 2. open
+- 3. fetch : 데이터 가져오기
+- 4. close
+
+### Cursor 실습
+
+- 예) 
+
+```oracle
+SET SERVEROUTPUT ON;
+DECLARE
+    vemp emp%ROWTYPE;
+    CURSOR cur IS
+        SELECT * FROM emp;
+BEGIN
+    OPEN cur;
+    DBMS_OUTPUT.PUT_LINE('========결과=========');
+    LOOP
+        FETCH cur INTO vemp;
+        EXIT WHEN cur%NOTFOUND; -- 데이터가 없는 경우 
+        DBMS_OUTPUT.PUT_LINE('사번:'||vemp.empno);
+        DBMS_OUTPUT.PUT_LINE('이름:'||vemp.ename);
+        DBMS_OUTPUT.PUT_LINE('직위:'||vemp.job);
+        DBMS_OUTPUT.PUT_LINE('입사일:'||vemp.hiredate);
+        DBMS_OUTPUT.PUT_LINE('급여:'||vemp.sal);
+        DBMS_OUTPUT.PUT_LINE('=====================');
+    END LOOP;
+    CLOSE cur;
+END;
+```
+
+- 예) for문 사용하기
+
+```oracle
+SET SERVEROUTPUT ON;
+DECLARE
+    vdept dept%ROWTYPE;
+    CURSOR cur IS
+        SELECT * FROM dept;
+    
+BEGIN
+    FOR vdept IN cur LOOP
+        DBMS_OUTPUT.PUT_LINE(vdept.deptno||' '||vdept.dname||' '||vdept.loc);
+    END LOOP;
+        
+END;
+/
+```
+
+### PROCEDURE 형식
+
+- 생성 형식 : ALTER가 없다.
+
+```
+CREATE [OR REPLACE] PROCEDURE pro_name(
+  매개변수,
+  매개변수,
+  매개변수....
+    1) 스칼라 변수 , 2) %TYPE
+)
+IS (AS)
+  지역변수 설정
+BEGIN
+  제어 => 제어문 || 연산자 || SQL
+END;
+/
+```
+
+- 삭제 형식
+
+```
+DROP PROCEDURE pro_name;
+```
+
+- 호출 형식
+
+```
+SELECT => EXECUTE
+INSERT , UPDATE , DELETE => CALL
+```
+
+### 매개변수
+
+- IN : 내부에서만 사용하는 변수 , 값을 넣어주기만 하는 것 (INSERT , DELETE)
+- OUT : Call By Reference , 결과 값을 받는 변수 (SELECT)
+- INOUT : 내부사용 , 값을 받는 변수 
+- 생략하면 default가 `IN 변수`임
+- 일반 function은 결과값이 1개이기 때문에 사용할 수 없다.
+
+- 예) 
+
+```oracle
+CREATE PROCEDURE empInsert(
+  name IN VARCHAR2(20),
+  addr IN VARCHAR2(100),
+  tel IN VARCHAR2(20),
+  result OUT VARCHAR2(100)
+)
+```
+
+- 예) p는 c언어의 포인터와 유사한 out변수 , k는 in변수와 비슷하다
+
+```
+int* p;
+void disp(int* p,int k)
+(
+  *p=100;
+)
+disp(p,10); ==> p=100
+```
+
+
+### PL/SQL 실행하기
+
+- 테이블 제작
+
+```oracle
+CREATE TABLE pl_student(
+    hakbun NUMBER PRIMARY KEY,
+    name VARCHAR2(34) NOT NULL,
+    kor NUMBER,eng NUMBER, math NUMBER
+);
+```
+
+- 값 삽입
+
+```oracle
+INSERT INTO pl_student VALUES(1,'홍길동',90,90,100);
+INSERT INTO pl_student VALUES(2,'박문수',85,80,75);
+COMMIT;
+```
+
+- 추가함수 작성
+
+```oracle
+CREATE OR REPLACE PROCEDURE studentInsert(
+    pName pl_student.name%TYPE,
+    pKor pl_student.kor%TYPE,
+    pEng pl_student.eng%TYPE,
+    pMath pl_student.math%TYPE
+)
+IS
+BEGIN
+    INSERT INTO pl_student VALUES(
+        (SELECT NVL(MAX(hakbun)+1,1) FROM pl_student),
+        pName,pKor,pEng,pMath
+    );
+    COMMIT;
+END;
+/
+```
+
+- 추가함수 호출하여 값 삽입
+
+```oracle
+CALL studentInsert('심청이',80,90,76);
+```
+
+- 데이터 하나만 상세 읽기 함수 작성
+
+```oracle
+CREATE OR REPLACE PROCEDURE studentDetailData(
+    pNo NUMBER,
+    pName OUT VARCHAR2,
+    pKor OUT NUMBER,
+    pEng OUT NUMBER,
+    pMath OUT NUMBER
+)
+IS 
+BEGIN
+    SELECT name,kor,eng,math INTO pName,pKor,pEng,pMath
+    FROM pl_student
+    WHERE hakbun=pNo;
+END;
+/
+```
+
+- 데이터 하나만 상세 읽기 함수 실행
+
+```oracle
+VARIABLE pName VARCHAR2;
+VARIABLE pKor NUMBER;
+VARIABLE pEng NUMBER;
+VARIABLE pMath NUMBER;
+EXECUTE studentDetailData(1,:pName,:pKor,:pEng,:pMath);
+PRINT pName;
+PRINT pKor;
+PRINT pEng;
+PRINT pMath;
 ```
 
 ## PL/SQL의 런타임 구조
