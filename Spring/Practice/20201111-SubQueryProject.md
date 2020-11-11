@@ -155,3 +155,61 @@ public class EmpDAO {
 	};
 }
 ```
+
+## config
+
+### application-context.xml
+
+- aop , beans, context , p , tx , util
+
+- 어노테이션이 있는 클래스를 메모리 할당하도록 명령내리기
+
+```xml
+<context:component-scan base-package="com.sist.*"/>
+```
+
+- 데이터베이스 정보를 마이바티스로 전송하기
+	- 1. 정보를 모아서 처리하기 : BasicDataSource
+	- 2. getConnection/disConnection
+	- 3. mapper 인터페이스 구현
+
+```xml
+<bean id="ds" class="org.apache.commons.dbcp.BasicDataSource"
+	p:driverClassName="oracle.jdbc.driver.OracleDriver"
+	p:url="jdbc:oracle:thin:@localhost:XE"
+	p:username="hr"
+	p:password="happy"
+/>
+<bean id="ssf"
+	class="org.mybatis.spring.SqlSessionFactoryBean"
+	p:dataSource-ref="ds"
+/>
+<bean id="mapper"
+	class="org.mybatis.spring.mapper.MapperFactoryBean"
+	p:mapperInterface="com.haeni.dao.EmpMapper"
+	p:sqlSessionFactory-ref="ssf"
+/>
+```
+
+- ViewResolver : JSP를 찾아서 request를 전송하기
+	- DispatcherServlet과 WebApplicationContext(Container)
+	![](https://img1.daumcdn.net/thumb/R720x0.q80/?scode=mtistory2&fname=http%3A%2F%2Fcfile29.uf.tistory.com%2Fimage%2F99B16B375CC05ADD0D1A58)
+	- WebApplicationContext
+		- HandlerMapping : 클래스 찾기
+		- ViewResolver : JSP찾기
+
+```tip
+**데이터 구조**
+- 데이터베이스(≒폴더) : XE , ora , orcl , pubs...
+- 테이블(≒파일)
+```
+
+
+```tip
+**무료로 설치 가능한 버전**
+- 오라클 : XE
+- JAVA : openjdk 15
+- STS : 3.9.14 
+	- 스프링 5.0 (STS 4:Spring Boot)
+```
+
