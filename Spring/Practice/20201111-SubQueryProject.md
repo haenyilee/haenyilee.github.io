@@ -174,6 +174,19 @@ public class EmpDAO {
 	}
 ```
 
+- 같은 부서에서 근무하는 사원 목록 결과 sublist.jsp로 전송하기
+
+```java
+@RequestMapping("emp/sublist.do")
+	public String emp_sublist(String ename,Model model)
+	{
+		if(ename==null)
+			ename="KING";
+		List<EmpVO> list = dao.empGroupData(ename);
+		model.addAttribute("list",list);
+		return "sublist";
+	}
+```
 ## config
 
 ### application-context.xml
@@ -329,3 +342,11 @@ p:suffix=".jsp"
 </body>
 </html>
 ```
+
+### list2.jsp
+
+- 리액트 없이 사원 목록 출력하기
+- ajax로 sublist.do의 호출 결과를 `<div id="print"></div>` 에 출력하기
+
+### sublist.jsp
+- empGroupData 쿼리 결과 표로 출력하기
