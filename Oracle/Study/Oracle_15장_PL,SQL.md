@@ -690,6 +690,60 @@ PRINT pEng;
 PRINT pMath;
 ```
 
+- 삭제하기 함수 제작
+
+```oracle
+CREATE OR REPLACE PROCEDURE studentDelete(
+    pNo pl_student.hakbun%TYPE
+)
+IS 
+BEGIN
+    DELETE FROM pl_student
+    WHERE hakbun=pNo;
+    COMMIT;
+END;
+/
+```
+
+- Update하기
+  - 값만 넣어주는 것은 IN 변수
+  - 값을 가져오는 것은 OUT 변수
+  
+```ORACLE
+CREATE OR REPLACE PROCEDURE studentUpdate(
+    pNo NUMBER,
+    pName VARCHAR2,
+    pKor NUMBER,
+    pEng NUMBER,
+    pMath NUMBER
+)
+IS
+    -- 변수 필요없음
+BEGIN
+    UPDATE pl_student SET
+    name=pName,kor=pKor,eng=pEng,math=pMath
+    WHERE hakbun=pNo;
+    COMMIT;
+END;
+/
+```
+
+- totalPage 함수
+  - SYS_REFCURSOR : 자바에서 받아서 처리할 수 있게 하기 위해서
+
+```oracle
+CREATE OR REPLACE PROCEDURE studentListData(
+    pResult OUT SYS_REFCURSOR
+)
+IS
+BEGIN
+    OPEN pResult FOR
+        SELECT * FROM pl_student;
+END;
+/
+```
+
+
 ## PL/SQL의 런타임 구조
 ## PL/SQL 블록 작성 시 기본 규칙과 권장사항
 ## PL/SQL 문 내에서의 SQL 문장 사용하기
