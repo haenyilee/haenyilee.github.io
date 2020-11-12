@@ -26,10 +26,17 @@ sort: 2
 - `@Controller` : RequestMapping을 찾아줘야 하니까 메모리 할당을 해야 한다. 
 - MVC구조의 Model역할이다. 
   - 요청을 처리하고 결과값을 전송해주는 역할을 담당한다.
+- DAO 객체 받기
+- 각 기능별로 RequestMapping을 활용해서 DAO에서 실행한 결과를 JSP에 전송하기 위해 사용된다. 
   
 ### StudentDAO.java
 - `@Repository` : DB와 관련된 DAO의 메모리 할당하기 위해 사용한다.
 
+
+
+## 목록 출력하기
+
+### StudentDAO.java : studentListData
 - `CallableStatement` : Procedure를 호출할 때 사용한다.
   - `PreparedStatement` : 일반 sql문장을 전송할 때 사용한다.
   - 마이바티스를 사용할 때에도 디폴트로 잡혀있는 PreparedStatement를 CallableStatement로 변경해야 한다.
@@ -62,18 +69,17 @@ sort: 2
 
 
 
-### MainController.java
-
-- DAO 객체 받기
-- RequestMapping으로 JSP에 결과값 전송하기
+### MainController.java : main_list
 
 - 프로시저 작동 과정은 볼 수가 없음
 	- 호출된 결과로 유추할 수 있어야 한다.
 	- 만들어진 프로시저를 활용할 수 있어야 한다.
 	
-### list.jsp
+### list.jsp 
 
 - studentListData 결과 화면에 출력하기
+
+## 새 정보 등록하기 
 
 ### StudentDAO.java : studentInsert
 
@@ -95,3 +101,14 @@ sort: 2
 
 - 학생이름, 과목별 성적 등록하는 화면 출력하기
 - html 5버전
+
+## 삭제하기
+
+### StudentDAO.java : studentDelete
+
+- 매개변수 자리에 ? 를 작성한 뒤 값을 넣어준다. 
+
+
+### MainController.java : main_delete
+
+- DAO에서 작성한 쿼리 문장을 실행 후, list.do로 화면을 이동시킨다. 
