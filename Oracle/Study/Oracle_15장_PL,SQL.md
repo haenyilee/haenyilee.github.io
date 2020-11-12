@@ -743,6 +743,50 @@ END;
 /
 ```
 
+- 평균 구하기
+
+```oracle
+CREATE OR REPLACE FUNCTION studentAvg(
+    pNo pl_student.hakbun%TYPE
+)RETURN NUMBER
+IS
+    pAvg NUMBER;
+BEGIN
+    SELECT (kor+eng+math)/3 INTO pAvg
+    FROM pl_student
+    WHERE hakbun=pNo;
+    
+    RETURN pAvg;
+END;
+/
+```
+
+- 총점 구하기 
+
+
+
+```oracle
+CREATE OR REPLACE FUNCTION studentTotal(
+    pNo pl_student.hakbun%TYPE
+)RETURN NUMBER
+IS
+    pTotal NUMBER;
+BEGIN
+    SELECT (kor+eng+math) INTO pTotal
+    FROM pl_student
+    WHERE hakbun=pNo;
+    
+    RETURN pTotal;
+END;
+/
+```
+
+- 각 과목별 점수, 총점, 평균 확인하기
+
+```oracle
+SELECT name,kor,math,eng,studentAvg(hakbun),studentTotal(hakbun)
+FROM pl_student;
+```
 
 ## PL/SQL의 런타임 구조
 ## PL/SQL 블록 작성 시 기본 규칙과 권장사항
