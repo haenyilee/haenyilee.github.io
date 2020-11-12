@@ -80,24 +80,6 @@ END;
 ```oracle   
 SET SERVEROUTPUT ON;
 DECLARE
-    vempno emp.empno%TYPE;
-    vename emp.ename%TYPE;
-    vjob emp.job%TYPE;
-    vhiredate emp.hiredate%TYPE;
-    vsal emp.sal%TYPE;
-BEGIN
-    SELECT empno,ename,job,hiredate,sal INTO vempno,vename,vjob,vhiredate,vsal
-    FROM emp
-    WHERE empno=7788;
-    -- 출력
-    DBMS_OUTPUT.PUT_LINE('======결과======');
-    DBMS_OUTPUT.PUT_LINE('사번:'||vempno);
-    DBMS_OUTPUT.PUT_LINE('이름:'||vename);
-    DBMS_OUTPUT.PUT_LINE('직위:'||vjob);
-    DBMS_OUTPUT.PUT_LINE('입사일:'||vhiredate);
-    DBMS_OUTPUT.PUT_LINE('급여:'||vsal);
-END;SET SERVEROUTPUT ON;
-DECLARE
     vempno NUMBER(4);
     vename VARCHAR2(20);
     vjob VARCHAR2(20);
