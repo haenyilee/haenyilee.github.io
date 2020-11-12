@@ -788,6 +788,47 @@ SELECT name,kor,math,eng,studentAvg(hakbun),studentTotal(hakbun)
 FROM pl_student;
 ```
 
+## FUNCTION 
+- Function은 리턴값이 있는 함수이다. 
+
+- 형식
+  - IS 앞에 선언한 RETURN 데이터형과 실제 RETURN되는 결과값의 데이터형이 동일해야 한다.
+  
+```oracle
+CREATE [OR REPLACE] FUNCTION func_name(
+  매개변수
+  ...
+) RETURN 데이터형 (결과값의 데이터형)
+IS
+  지역변수
+BEGIN
+  처리 => 쿼리문장
+   RETURN 값 (결과값 보내주기)
+END;
+/
+```
+
+- 예 1-1) JOIN을 통해 값 출력하기
+
+```oracle
+SELECT ename,job,dname,loc
+FROM emp,dept
+WHERE emp.deptno=dept.deptno;
+```
+
+- 예 1-2) SubQuery을 통해 값 출력하기
+
+```oracle
+SELECT ename,job,(SELECT dname FROM dept d WHERE d.deptno=e.deptno) as dname,
+(SELECT loc FROM dept d WHERE d.deptno=e.deptno) as loc
+FROM emp e;
+```
+
+- 예 1-3) Function을 통해 값 출력하기
+
+```oracle
+```
+
 ## PL/SQL의 런타임 구조
 ## PL/SQL 블록 작성 시 기본 규칙과 권장사항
 ## PL/SQL 문 내에서의 SQL 문장 사용하기
