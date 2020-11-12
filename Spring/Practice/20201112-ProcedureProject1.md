@@ -112,3 +112,107 @@ sort: 2
 ### MainController.java : main_delete
 
 - DAO에서 작성한 쿼리 문장을 실행 후, list.do로 화면을 이동시킨다. 
+
+
+## 5.0 버전으로 변경하기
+
+### AppConfig.java
+
+- DispatcherServlet => HandlerMapping (클래스 찾기) => ViewResolver (JSP찾기)
+- 5.0 버전(자바로만 코딩)하는 방식임
+	- 기존에는 xml에 코딩했던 내용임
+	
+### web.xml
+
+@Configuration
+@EnableWebMvc
+@ComponentScan(basePackages={"com.haeni.*"})
+configureDefaultServletHandling
+
+
+- 5.0 코딩
+
+```xml
+<init-parm>
+	<param-name>contextClass</param-name>
+	<param-value>org.springframework.web.context.support.AnnotationCofigWebApplicationContext</param-value>
+</init-parm>
+<init-parm>
+	<param-name>contextConfigLocation</param-name>
+	<param-value>com.haeni.config.AppConfig</param-value>
+</init-parm>
+```
+
+- 4.0 코딩
+
+```xml
+<init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>/WEB-INF/config/application-*.xml</param-value>
+</init-param>
+```
+
+
+## 수정 전 내역 띄우기
+
+
+### PL/SQL
+
+```ORACLE
+create or replace PROCEDURE studentDetailData(
+    pNo NUMBER,
+    pName OUT VARCHAR2,
+    pKor OUT NUMBER,
+    pEng OUT NUMBER,
+    pMath OUT NUMBER
+)
+IS 
+BEGIN
+    SELECT name,kor,eng,math INTO pName,pKor,pEng,pMath
+    FROM pl_student
+    WHERE hakbun=pNo;
+END;
+```
+
+### StudentDAO.java : studentDetailData
+
+- `registerOutParameter` : out 변수에 값 채울때는 결과를 담을 메모리 공간을 먼저 만들고 값을 채워야함
+
+
+### MainController.java : main_update
+
+- studentDetailData에서 실행 후 받은 결과값을 JSP로 전송하기
+
+### update.jsp
+- 기존값이 value 로 들어가 있어야 함
+
+### list.jsp
+- 수정하기 버튼을 누르면 `update.do?hakbun=${vo.hakbun }` 이 요청되도록 하기
+
+## 수정하기
+
+### PL/SQL
+
+```ORACLE
+create or replace PROCEDURE studentUpdate(
+    pNo NUMBER,
+    pName VARCHAR2,
+    pKor NUMBER,
+    pEng NUMBER,
+    pMath NUMBER
+)
+IS
+    -- 변수 필요없음
+BEGIN
+    UPDATE pl_student SET
+    name=pName,kor=pKor,eng=pEng,math=pMath
+    WHERE hakbun=pNo;
+    COMMIT;
+END;
+```
+
+### StudentDAO.java : studentUpdate
+
+### MainController.java : main_update_ok
+- 내용 수정 완료되면 `list.do`로 화면 전환하기
+
