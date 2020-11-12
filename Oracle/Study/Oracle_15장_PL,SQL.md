@@ -7,7 +7,10 @@ sort: 16
 ## PL/SQL이란
 - Procedural Language
 - PROCEDURE, FUNCTION, PACKAGE , TRIGGER를 제작할 때 사용하는 언어이다.
-  - PROCEDURE : 리턴형이 없는 함수 (리턴형이 없다는 특징이 자바스크립트 언어와 같음)
+  - PROCEDURE : 리턴형이 없는 함수 
+    - 리턴형이 없다는 특징이 자바스크립트 언어와 같음
+    - 캐시 메모리에 저장되어 속도가 빠르다.
+    - 트랜젝션 제어할 때 사용된다. 
   - FUNCTION : 리턴형이 있는 함수
     - 함수 : 독립(C언어)
     - 메소드 : 클래스 종속
@@ -180,16 +183,16 @@ CURSOR emp_cur IS
 
 ### Cursor 사용 방법
 
-- 1. 커서 등록
+- 1) 커서 등록
 
 ```oracle
 Cursor cur_name IS
   SELECT * FROM emp
 ```
 
-- 2. open
-- 3. fetch : 데이터 가져오기
-- 4. close
+- 2) open
+- 3) fetch : 데이터 가져오기
+- 4) close
 
 ### Cursor 실습
 
@@ -549,11 +552,12 @@ END;
 
 ## PROCEDURE
 
+
 ### PROCEDURE 형식
 
 - 생성 형식 : ALTER가 없다.
 
-```
+```ORACLE
 CREATE [OR REPLACE] PROCEDURE pro_name(
   매개변수,
   매개변수,
@@ -561,23 +565,27 @@ CREATE [OR REPLACE] PROCEDURE pro_name(
     1) 스칼라 변수 , 2) %TYPE
 )
 IS (AS)
-  지역변수 설정
+  변수 선언 (지역변수)
 BEGIN
-  제어 => 제어문 || 연산자 || SQL
+  SQL 구현 => 제어문 || 연산자 || SQL
 END;
 /
 ```
 
+
+- 매개변수
+  - `IN` : SQL 실행 시 필요한 데이터 (WHERE ,INSERT ,UPDATE ,DELETE)
+  - `OUT` : SQL 문장을 실행하고 결과값을 받아올 때 사용한다. (SELECT)
+  
 - 삭제 형식
 
-```
+```oracle
 DROP PROCEDURE pro_name;
 ```
 
 - 호출 형식
-
-  - SELECT => EXECUTE
-  - INSERT , UPDATE , DELETE => CALL
+  - SELECT는 EXECUTE로 호출한다.
+  - INSERT , UPDATE , DELETE는 CALL로 호출한다.
 
 
 ### 매개변수
@@ -797,23 +805,37 @@ FROM pl_student;
 - FUNCTION : 리턴값이 있는 함수가 필요할 때 사용함
 ```
 
-- 형식
-  - IS 앞에 선언한 RETURN 데이터형과 실제 RETURN되는 결과값의 데이터형이 동일해야 한다.
+### FUNCTION 형식
+
   
 ```oracle
 CREATE [OR REPLACE] FUNCTION func_name(
-  매개변수
+  매개변수 (OUT 변수 존재X)
   ...
 ) RETURN 데이터형 (결과값의 데이터형)
 IS
-  지역변수
+  변수선언(지역변수)
 BEGIN
-  처리 => 쿼리문장
-   RETURN 값 (결과값 보내주기)
+  SQL 구현 => 쿼리문장
+  RETURN 값 (결과값 보내주기)
 END;
 /
 ```
 
+- 매개변수 
+  - OUT변수가 존재하지 않는다.
+
+```tip
+**IN변수와 OUT변수**
+- IN변수 : Call by value(값에 의한 호출)
+- OUT변수 : Call by reference(참조에 의한 호출)
+```
+  
+  
+- RETURN  
+  - IS 앞에 선언한 RETURN 데이터형과 실제 RETURN되는 결과값의 데이터형이 동일해야 한다.
+
+### FUNCTION 실습해보기
 - 예 1-1) JOIN을 통해 값 출력하기
 
 ```oracle
