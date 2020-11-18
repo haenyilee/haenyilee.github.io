@@ -13,7 +13,7 @@
 - AOP : 중복제거해서 자동호출하는 프로그램
 	- 시점 : JoinPoint
 	- 메소드 호출 : PointCut
-
+	- Aspect : 공통모듈
 ```
 
 ### MovieMapper
