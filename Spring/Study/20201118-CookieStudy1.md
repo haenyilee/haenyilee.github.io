@@ -1,10 +1,26 @@
 # 20201118-CookieStudy (1)
 
+## 쿠키를 활용해서 최근 본 영화 출력하기
+
+```note
+- Spirng Container의 종류 : 사용자정의 클래스를 관리(생성,소멸 담당)
+	- ApplicationContext
+	- WebApplicationContext
+	- AnnotationConfigApplicationContext
+- 생성시에 필요한 데이터 전송하기
+	- DI : setter , 생성자의 매개변수
+	- 	p:		c:
+- AOP : 중복제거해서 자동호출하는 프로그램
+	- 시점 : JoinPoint
+	- 메소드 호출 : PointCut
+
+```
+
 ### MovieMapper
 - 페이지 안나누고 20개 출력하는 쿼리문장 작성
 
 
-### MovieDAO
+### MovieDAOy
 
 ### application-context.xml
 - aop
@@ -31,7 +47,7 @@
   
 ### list.jsp
 
-```
+```html
 <a href="detail_before.do?no=${vo.no }"> <img src="${vo.poster }" alt="Lights"
 							style="width: 100%" class="img-rounded">
 ```
@@ -48,5 +64,6 @@
 - movie_list
   - 최신 쿠키부터 출력하기 위해 for문을 역순으로 진행함 : `for(int i=cookies.length-1;i>=0;i--)`
   
- ### list.jsp 
-  
+### list.jsp 
+
+### detail.jsp
