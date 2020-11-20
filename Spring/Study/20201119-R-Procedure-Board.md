@@ -400,3 +400,18 @@ END;
 - reply로 시작하는 DAO클래스에 AOP 적용시켜야 함
 	- `||execution(* com.sist.board.dao.BoardDAO.reply*(..))`을 추가하기
 
+
+### detail.jsp
+
+- 댓글 수정하는 화면은 특정 댓글을 수정했을 때만 떠야 한다.
+	- `display:none`으로 설정해두고 수정하기 버튼 눌렀을 때만 나타나도록 설정하면 된다.
+	- 수정하기 버튼은 `<span>`으로 변경하고 `data-no="${rvo.no}`로 설정한다.
+	- 제이쿼리 : 댓글 수정 버튼 눌렸을 떄는 show / 버튼 안 눌렸을떄는 hide
+
+## 로그인 처리
+
+### BoardController
+
+- board_login_ok : 세션 객체에 로그인 성공시 로그인 정보를 담아둬야함
+
+- board_detailData : 
