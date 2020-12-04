@@ -1,6 +1,6 @@
 # 20201203-newsapi-react-spring
 
-## react
+## react : 20201203-newsapi-react-spring
 
 ### App.js
 
@@ -30,5 +30,12 @@ function App() {
 ## openApi
 - news api : https://newsapi.org/
 - key : b90ec673d2724353a8cd018741bf1c4b
+- 한국 뉴스 : https://newsapi.org/s/south-korea-news-api
+- 한국 뉴스 get : http://newsapi.org/v2/top-headlines?country=kr&apiKey=b90ec673d2724353a8cd018741bf1c4b
+
+## 20201203-news-api-react-spring
+### App.js
+- 변수 설정
+- 초기값 설정
 
 ## spring
