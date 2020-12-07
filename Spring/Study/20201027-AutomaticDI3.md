@@ -1,8 +1,4 @@
----
-sort: 9
----
-
-# AutomaticDI (3)
+# 20201027-AutomaticDI (3)
 - 책 : 132 page
 
 
