@@ -104,3 +104,67 @@
 
 - 한글이 깨지지 않게 하기 위해선 requestMapping에 설정해준다
   - `@RequestMapping(value="kotlin_list.do",produces="text/plain;charset=UTF-8")`
+
+
+## kotlin
+
+### build.gradle(Module)
+- id 'kotlin-android-extensions'
+
+- 라이브러리 추가
+
+```kotlin
+implementation "org.jetbrains.anko:anko:$anko_version"
+implementation 'com.google.code.gson:gson:2.8.5'
+implementation 'org.jsoup:jsoup:1.11.2'
+implementation 'com.github.bumptech.glide:glide:4.9.0'
+annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'
+implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+```
+
+### build.gradle(Project)
+- ext.anko_version = "0.10.5"
+
+### strings.xml
+- 어플 제목 추가
+
+### activity_main.xml
+
+
+### manifest
+- 권한설정
+  - 인터넷 사용권한 얻을 때 사용
+  
+### MainActivity
+
+- 데이터 받아올 url에 localhost가 들어가면 못 받아온다
+  - 자신의 ip로 꼭 입력해줘야 한다.
+- Callback은 추상클래스이기 때문에 두 개의 함수를 재정의해야 한다.
+
+
+### data class FoodVO
+- VO를 제작할 때 사용하는 클래스
+
+### MainActivity
+- vo로 묶어서 데이터 받기
+  - gson 객체 생성 => json 읽어서 객체 변환
+  - [] : List 변환
+  - {} : vo 변환
+
+- 그리드뷰
+                val gridView=findViewById<GridView>(R.id.gridView)
+                gridView.adapter=FoodCategoryAdapter(this@MainActivity,foodList)
+
+### MainActivity : FoodCategoryAdapter
+- ListView , GridView 연결하는 클래스
+- Any => 어떤 데이터형이어도 상관없이 대입 가능하다는 뜻이다.
+
+
+
+
+
+## 오류나서 okhttp3 안쓰고 Asynk로 변경
+
+### 
+- 
+- `intent` : detail화면으로 넘기기
