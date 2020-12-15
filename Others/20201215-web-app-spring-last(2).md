@@ -37,8 +37,8 @@ public class NewsManager {}
 **[면접]Collection(자료구조)**
 - 자바에서는 표준화에 따라서 코딩을 해야 하는데, 데이터 저장방법에 따라 클래스가 분리된다.
 
-||종류|
-|---|------|
+||종류|||
+|---|------|||
 |List|ArrayList|Vector|LinkedList|
 |Set|ArrayList|Vector|LinkedList|
 |Map|ArrayList|Vector|LinkedList|
