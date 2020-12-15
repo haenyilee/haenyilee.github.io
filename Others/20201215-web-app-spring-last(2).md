@@ -36,7 +36,47 @@ public class NewsManager {}
 ```note
 **[면접]Collection(자료구조)**
 - 자바에서는 표준화에 따라서 코딩을 해야 하는데, 데이터 저장방법에 따라 클래스가 분리된다.
-
+- 자바 컬렉션 종류
 ![](https://t1.daumcdn.net/cfile/tistory/99B88F3E5AC70FB419)
 
 ```
+
+- 파싱 : mashaller,unmarshaller
+
+```tip
+**[면접]마샬vs언마샬**
+- Unmarshaller : 
+- Mashaller : 
+```
+
+
+- @Component("mgr") : id를 설정해줌
+  - 설정 안해주면 앞글자 소문자로 변환해서 자동 
+  
+  
+### MainController
+- 뉴스 검색 결과를 view로 전송해줌
+
+- news.do => fd ==null 인경우
+- news.do?fd= => fd.equals("")인 경우
+
+
+### news.jsp
+- 화면 출력
+- 검색어를 form태그로 전송함
+
+- 클릭했을 때 별도의 창을 띄우려면 : a태그에 `target="_blank"`속성 주기
+  - 코틀린에서는 webview
+  
+  
+### MainController
+- 코틀린으로 데이터 전송
+
+## kotlin
+
+### 메뉴달기
+
+#### MainActivity
+- onCreateOptionsMenu
+- onOptionsItemSelected
+  
