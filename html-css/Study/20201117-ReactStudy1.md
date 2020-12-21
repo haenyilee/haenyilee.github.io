@@ -65,3 +65,4 @@
 ## 실행
 - 포트번호 바꾸기 : 스프링 - ReactController - @CrossOrigin("http://localhost:3000")
 - terminal => npm start
+ 
