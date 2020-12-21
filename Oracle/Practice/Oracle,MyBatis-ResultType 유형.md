@@ -22,9 +22,8 @@ SELECT * FROM naver_shopping WHERE no=3;
 ![image](https://user-images.githubusercontent.com/66978721/102735822-bec21080-4386-11eb-8456-9d4e2910819b.png)
 
 - VO로 받는다
-  - EX) ShoppingVO
-
-![image](https://user-images.githubusercontent.com/66978721/102735898-eadd9180-4386-11eb-8f82-1eb03e73005b.png)
+  - EX) `ShoppingVO`
+  - ![image](https://user-images.githubusercontent.com/66978721/102735898-eadd9180-4386-11eb-8f82-1eb03e73005b.png)
 
 
 ## 결과값이 여러개의 ROW일 때
@@ -36,4 +35,4 @@ SELECT * FROM naver_shopping;
 ![image](https://user-images.githubusercontent.com/66978721/102735970-19f40300-4387-11eb-8948-20a38c12e9b3.png)
 
 - ArrayList로 받는다.
-  - EX) List<ShoppingVO> 
+  - EX) `List<ShoppingVO>`
