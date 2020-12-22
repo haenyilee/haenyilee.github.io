@@ -188,15 +188,7 @@ public class mulyiplyDivision {
 		Scanner sc = new Scanner(System.in);
 		int input = sc.nextInt();
 		
-		// 숫자의 자릿수 구하기
-		int length = (int)(Math.log10(input)+1);
-		
-		// 첫번째 자리 수 구하기
-		while (input>0) {
-			
-		}
-		
-		System.out.println(length);
+		System.out.println(String.valueOf(input).charAt(0));
 		
 	}
 }
