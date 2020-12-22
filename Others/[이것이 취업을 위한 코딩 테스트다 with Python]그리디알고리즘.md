@@ -1,9 +1,9 @@
 # [이것이 취업을 위한 코딩 테스트다 with Python] 그리디 알고리즘
-## 그리디란?
+## 1. 그리디란?
 - 탐욕
 - 현재 상황에서 가장 좋아보이는 것을 선택하는 것
 
-## 거스름돈
+## 1.1 거스름돈
 
 ### 문제 
 ![image](https://user-images.githubusercontent.com/66978721/102842760-0dd17980-444b-11eb-86b5-a13e5add63fb.png)
@@ -68,7 +68,7 @@ public class change {
   - size() : 리스트에 들어있는 원소의 갯수
 ```
 
-## 1이 될때까지 
+## 1.2 1이 될때까지 
 
 ### 문제
 ![image](https://user-images.githubusercontent.com/66978721/102842760-0dd17980-444b-11eb-86b5-a13e5add63fb.png)
@@ -142,7 +142,7 @@ public class minusToOne {
 ```
 
 
-## 곱하기 혹은 더하기
+## 1.3 곱하기 혹은 더하기
 
 ### 문제
 ![image](https://user-images.githubusercontent.com/66978721/102848194-8e967280-4457-11eb-9f9a-0f783e72ec64.png)
