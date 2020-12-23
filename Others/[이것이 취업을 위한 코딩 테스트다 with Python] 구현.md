@@ -79,9 +79,9 @@ public class Clock {
 
 ### 문제
 
-![image](https://user-images.githubusercontent.com/66978721/102964274-9117cb80-452e-11eb-9131-e57e89ae719d.png)
-![image](https://user-images.githubusercontent.com/66978721/102964375-cb816880-452e-11eb-97a4-78a921ca66d3.png)
-![image](https://user-images.githubusercontent.com/66978721/102964397-de943880-452e-11eb-902b-aae4a20f8ecc.png)
+![image](https://user-images.githubusercontent.com/66978721/102964274-9117cb80-452e-11eb-9131-e57e89ae719d.png) <br>
+![image](https://user-images.githubusercontent.com/66978721/102964375-cb816880-452e-11eb-97a4-78a921ca66d3.png) <br>
+![image](https://user-images.githubusercontent.com/66978721/102964397-de943880-452e-11eb-902b-aae4a20f8ecc.png) <br>
 
 ### 힌트
 - 일련의 명령에 따라서 충실히 구현하면 되는 문제이다. (시뮬레이션 유형)
