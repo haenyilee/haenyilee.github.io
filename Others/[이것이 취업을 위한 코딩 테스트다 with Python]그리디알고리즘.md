@@ -52,7 +52,7 @@ public class change {
 - 시간 복잡도는 거슬러줘야 하는 금액과는 무관하다.
 - 화폐의 종류가 K라고 할 때, 소스코드의 시간복잡도는 O(K)이다.
 
-### 유의사항
+### 기타
 - 파이썬에서 몫 구하기 : `//`
 - 자바에서 몫 구하기 : `/`
 - 자바, 파이썬에서 나머지 구하기 : `%`
@@ -173,7 +173,7 @@ for i in range(1, len(data)):
 print(result)
 ```
 
-- 자바 
+- 자바 (미해결)
   - 첫번째 자리의 숫자를 구하는대서 막힘
   - charAt으로 구하면 문자를 숫자로 인식해서 이상한 숫자를 도출함
 
@@ -188,9 +188,38 @@ public class mulyiplyDivision {
 		Scanner sc = new Scanner(System.in);
 		int input = sc.nextInt();
 		
+		// 가장 큰 단위 숫자 구하기
+		char first = String.valueOf(input).charAt(0);
 		System.out.println(String.valueOf(input).charAt(0));
+		System.out.println(first);
+		
+		// 자릿수 구하기
+		int length = (int)(Math.log10(input)+1);
+		
+		// 결과값 초기화
+		int result=0;
+		
+		for(int i = 0;i<length;i++) {
+			char num = String.valueOf(input).charAt(i);
+			System.out.println(num);
+			
+			if(result<=1 || num<=1)
+				result += num;
+			else
+				result *= num;
+		}
+		
+		System.out.println(result);
 		
 	}
 }
+
 ```
+
+### 기타
+
+- `String.valueOf()` vs `toString()`
+	- String.valueOf() - 파라미터가 null이면 문자열 "null"을 만들어서 반환한다.
+	- toString() - 대상 값이 null이면 NPE를 발생시키고 Object에 담긴 값이 String이 아니여도 출력한다.
+
 
