@@ -186,34 +186,25 @@ import java.util.Scanner;
 public class mulyiplyDivision {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int input = sc.nextInt();
-		
-		// 가장 큰 단위 숫자 구하기
-		char first = String.valueOf(input).charAt(0);
-		System.out.println(String.valueOf(input).charAt(0));
-		System.out.println(first);
-		
-		// 자릿수 구하기
-		int length = (int)(Math.log10(input)+1);
-		
-		// 결과값 초기화
-		int result=0;
-		
-		for(int i = 0;i<length;i++) {
-			char num = String.valueOf(input).charAt(i);
-			System.out.println(num);
-			
-			if(result<=1 || num<=1)
-				result += num;
-			else
-				result *= num;
-		}
-		
-		System.out.println(result);
-		
-	}
-}
-
+        String input = sc.nextLine();
+        
+        
+        // 결과값 초기화
+        int result=0;
+        
+        for(int i = 0;i<=input.length()-1;i++) {
+           int num = Integer.parseInt(input.substring(i,i+1));
+           //System.out.println(num);
+           if(result<=1 || num<=1)
+              result +=num;
+           else
+              result *=num;
+        }
+        
+        //System.out.println(result);
+        
+     }
+  }
 ```
 
 ### 기타
