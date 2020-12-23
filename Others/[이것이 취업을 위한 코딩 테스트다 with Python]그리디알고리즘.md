@@ -175,7 +175,7 @@ print(result)
 
 - 자바 (미해결)
   - 첫번째 자리의 숫자를 구하는대서 막힘
-  - charAt으로 구하면 문자를 숫자로 인식해서 이상한 숫자를 도출함
+  - charAt으로 구하면 문자를 인식해서 문자의 10진수 숫자를 도출함
 
 
 ```java
@@ -221,5 +221,4 @@ public class mulyiplyDivision {
 - `String.valueOf()` vs `toString()`
 	- String.valueOf() - 파라미터가 null이면 문자열 "null"을 만들어서 반환한다.
 	- toString() - 대상 값이 null이면 NPE를 발생시키고 Object에 담긴 값이 String이 아니여도 출력한다.
-
 
