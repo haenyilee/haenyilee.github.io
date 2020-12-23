@@ -2,8 +2,8 @@
 sort: 2
 ---
 
-# Cannot find class: oracle.jdbc.driver.OracleDriver
-
+# 오라클 드라이버를 찾을 수 없는 에러
+- 오류 메시지 : Cannot find class: oracle.jdbc.driver.OracleDriver
 - 해결방법 : 라이브러리에 odbc6를 추가한다.
 - 출처 : [java.lang.ClassNotFoundException: oracle.jdbc.driver.OracleDriver 해결방법](https://wakestand.tistory.com/101)
 
