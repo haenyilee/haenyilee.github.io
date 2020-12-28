@@ -2,6 +2,6 @@
 sort: 1
 ---
 
-# ì´ì½”í…Œ
+# ÀÌÄÚÅ×
 
 {% include list.liquid all=true %}
