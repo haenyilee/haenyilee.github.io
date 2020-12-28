@@ -1,11 +1,3 @@
----
-sort: 3
----
-
-# JSP Practice
-
-```
-{% raw %}{% include list.liquid all=true %}{% endraw %}
-```
+# 토이프로젝트
 
 {% include list.liquid all=true %}
