@@ -1,8 +1,4 @@
----
-sort: 4
----
-
-# oracle
+# Oracle
 
 
 {% include list.liquid all=true %}
