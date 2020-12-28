@@ -1,7 +1,0 @@
----
-sort: 3
----
-
-# HTML CSS Practice
-
-{% include list.liquid all=true %}
