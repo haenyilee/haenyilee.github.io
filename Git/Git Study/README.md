@@ -2,6 +2,6 @@
 sort: 2
 ---
 
-# Git Study
+# Github
 
 {% include list.liquid all=true %}

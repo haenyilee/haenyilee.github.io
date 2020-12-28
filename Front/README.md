@@ -1,8 +1,4 @@
----
-sort: 5
----
-
-# html-css
+# Front-end
 
 
 {% include list.liquid all=true %}

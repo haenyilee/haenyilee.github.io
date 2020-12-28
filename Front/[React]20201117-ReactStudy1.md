@@ -50,10 +50,12 @@
 
 ## public - index.html
 
-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+```
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <div class="container-fluid" id="root">
   <div class=
 </div>
+```
 
 ## src - app.js
 - import : 라이브러리 읽어오기
