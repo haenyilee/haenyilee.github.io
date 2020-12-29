@@ -26,6 +26,25 @@ public class className
 - 기능을 고치는 경우에는 상속을 받아야함 > 포함관계는 기능 수정이 없는 경우에만 사용해야 함
 
 
+
+
+## import
+- import사용하는 방법
+
+```java
+import java.util.*;
+```
+
+- import를 사용하지 않는 방법
+
+```java
+java.util.Date date=new java.util.Date();
+javax.swing.JFrame f= new javax.swing.JFrame();
+```
+
+
+
+
 ## 제어자
 
 ### static - 클래스의, 공통적인
