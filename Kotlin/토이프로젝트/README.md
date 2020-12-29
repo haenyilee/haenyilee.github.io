@@ -1,8 +1,9 @@
 ---
 sort: 4
+published: true
 ---
 
-# oracle
+# Kotlin Practice
 
 
 {% include list.liquid all=true %}
