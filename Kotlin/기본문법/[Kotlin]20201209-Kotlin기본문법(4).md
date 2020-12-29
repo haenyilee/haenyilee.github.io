@@ -1,6 +1,208 @@
-# 20201208-Kotlin기본문법(4) : 
+# 20201208-Kotlin기본문법(4) : 클래스
 
-## 클래스
+
+## 클래스 (1)
+
+### 1. 클래스의 구성요소
+  
+- 멤버변수 : 멤버변수 설정
+- 멤버함수 : 함수(멤버메서드) 설정
+- 생성자 : 멤버번수 초기화 => 생성자 , init{}
+- 접근지정어 설정
+
+```tip
+**자바 생성자**
+- 생성자는 new 연산자를 통해서 인스턴스를 생성할 때 반드시 호출이 되고 제일 먼저 실행되는 일종의 메소드(하지만 메소드와는 다르다.)이다. 
+- 생성자는 인스턴스 변수(필드 값 등)를 초기화 시키는 역할을 한다. 
+- 출처 : [자바 생성자](http://blog.naver.com/PostView.nhn?blogId=heartflow89&logNo=220955879645)
+```
+  
+
+
+### 2. 클래스의 형식
+
+```kotlin
+class A{
+  멤버변수
+  함수
+  생성자
+}
+```
+
+
+- (예시) 코틀린의 getter/setter 클래스
+
+```kotlin
+class Sawon{
+    // 멤버변수 => 생성자(멤버변수 초기화) , init()
+    private var sabun:Int=0
+    private var name:String=""
+    // ?=null의 뜻 : null값을 허용한다.
+    private var dept:String=""
+    private var job:String=""
+    // 클래스 블록 안에서 사용이 가능
+    fun setSabun(sabun:Int)
+    {
+        this.sabun=sabun
+    }
+    fun getSabun():Int
+    {
+        return this.sabun
+    }
+    fun setName(name: String)
+    {
+        this.name=name
+    }
+    fun getName():String
+    {
+        return this.name
+    }
+    fun setDept(dept: String)
+    {
+        this.dept=dept
+    }
+    fun getDept():String
+    {
+        return dept
+    }
+    fun setJob(job: String)
+    {
+        this.job=job
+    }
+    fun getJob():String
+    {
+        return job
+    }
+}
+
+val sa:Sawon=Sawon()
+sa.setSabun(100)
+sa.setName("홍길동")
+sa.setDept("영업부")
+sa.setJob("대리")
+
+// 출력
+println("사번:${sa.getSabun()}")
+println("이름:${sa.getName()}")
+println("부서:${sa.getDept()}")
+println("직위:${sa.getJob()}")
+```
+
+### 3. 생성자
+- 멤버변수의 초기화를 담당
+- 멤버변수 초기화 방법
+
+  - 클래스 영역에서 초기화
+   
+  ```kotlin
+  class A
+  {
+    여기서 멤버변수 선언
+  }
+  ```
+  
+  - 클래스 이름 뒤에
+    - 선언과 초기화를 한번에!
+  
+  ```kotlin
+  class A(멤버변수)
+  {
+  }
+  ```
+  
+  - constructor 키워드 사용
+    - 생성자 영역에서 초기화
+
+  ```kotlin
+  class A()
+  {
+    constructor()
+    {
+    }
+  }
+  ```
+
+- 생성자 예시 (1) : 
+
+```kotlin
+class Person3(var name:String,var sex:String)
+{
+    // var name:String,var sex:String => 멤버변수
+    fun myPrintln()
+    {
+        println("name:$name")
+        println("sex:$sex")
+    }
+}
+val p=Person3("홍길동","남자")
+p.myPrintln()
+p.name="심청이"
+p.sex="여자"
+println("이름:${p.name}")
+println("성별:${p.sex}")
+```
+
+
+- 생성자 예시 (2) : 
+
+```kotlin
+class Member{
+    var no:Int=0
+    var name:String=""
+    var sex:String=""
+    // no:Int,name:String => 매개변수, 지역변수
+    constructor(no:Int,name:String){
+        this.no=no
+        this.name=name
+    }
+    // 오버로딩
+    constructor(sex:String)
+    {
+        this.sex=sex
+    }
+}
+
+// 선언
+val mem:Member= Member(1,"홍길동")
+println("번호:${mem.no}")
+println("이름:${mem.name}")
+
+val mem2:Member= Member("남자")
+println("성별:${mem2.sex}")
+```
+
+### 4. 초기화
+
+```kotlin
+class Member2{
+    var name:String="홍길동"
+    // 생성자
+    constructor()
+    {
+        name="심청이"
+    }
+    // 초기화 블록
+    init {
+        name="이순신"
+    }
+}
+
+// 명시적 초기화 => init()
+val mem4=Member2()
+println("이름:${mem4.name}")
+```
+
+
+### 5. 클래스에서 꼭 숙지해야 할 것
+- 객체 생성 방법
+- 상속 => 오버라이딩
+- 클래스의 종류
+  - 추상클래스
+  - 인터페이스
+  - inner클래스
+
+
+## 클래스 (2)
 
 ### 1. 멤버변수
 
@@ -381,6 +583,7 @@ g.display()
 
 #### 4.3 inner클래스
 - 잘 사용되지 않음
+
 
 
 
