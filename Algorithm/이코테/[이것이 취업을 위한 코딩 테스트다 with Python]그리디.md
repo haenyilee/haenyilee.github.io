@@ -1,4 +1,4 @@
-# [이것이 취업을 위한 코딩 테스트다 with Python] 그리디 알고리즘
+# 그리디
 ## 1. 그리디란?
 - 탐욕
 - 현재 상황에서 가장 좋아보이는 것을 선택하는 것
@@ -212,4 +212,3 @@ public class mulyiplyDivision {
 - `String.valueOf()` vs `toString()`
 	- String.valueOf() - 파라미터가 null이면 문자열 "null"을 만들어서 반환한다.
 	- toString() - 대상 값이 null이면 NPE를 발생시키고 Object에 담긴 값이 String이 아니여도 출력한다.
-
