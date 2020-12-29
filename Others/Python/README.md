@@ -1,7 +1,3 @@
----
-sort: 11
----
-
-# Others
+# Python
 
 {% include list.liquid all=true %}
