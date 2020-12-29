@@ -1,7 +1,3 @@
----
-sort: 11
----
-
-# Others
+# R
 
 {% include list.liquid all=true %}
