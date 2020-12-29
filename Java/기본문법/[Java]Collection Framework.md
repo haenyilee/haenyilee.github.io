@@ -1,8 +1,8 @@
 ---
-sort: 3
+sort: 11
 ---
 
-# Collection Framework : 자료구조
+# [Java]Collection Framework : 자료구조
 
 - 라이브러리이기 때문에 표준화되어 있다.
 - 데이터를 모아서 처리하게 쉽게 제공한다.
