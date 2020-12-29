@@ -1,7 +1,3 @@
----
-sort: 2
----
-
 # Server Tomcat v9.0 Server at localhost failed to start
 
 - 해결방법 : 톰캣 서버 옵션 변경하기
