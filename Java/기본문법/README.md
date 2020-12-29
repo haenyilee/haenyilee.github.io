@@ -1,7 +1,11 @@
 ---
 sort: 1
+published: true
+---
+---
+sort: 1
 ---
 
-# 기본문법
+# Java Study
 
 {% include list.liquid all=true %}
