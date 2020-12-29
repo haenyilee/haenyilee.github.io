@@ -1,7 +1,8 @@
 ---
 sort: 2
+published: true
 ---
 
-# Install
+# MongoDB
 
 {% include list.liquid all=true %}
