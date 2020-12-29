@@ -1,4 +1,3 @@
-# Front-end
-
+# jquery
 
 {% include list.liquid all=true %}
