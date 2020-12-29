@@ -2,6 +2,6 @@
 sort: 2
 ---
 
-# 토이프로젝트
+# JSP Practice
 
 {% include list.liquid all=true %}
