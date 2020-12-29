@@ -13,6 +13,6 @@
 ## Resume
 
 ## Github
-- 주소 : [haenyilee 깃허브](https://github.com/haenyilee)
+- 주소 : @haenyilee
 
 ## Portfolio
