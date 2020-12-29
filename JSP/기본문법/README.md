@@ -1,7 +1,8 @@
 ---
 sort: 1
+published: true
 ---
 
-# 기본문법
+# JSP Study
 
 {% include list.liquid all=true %}
