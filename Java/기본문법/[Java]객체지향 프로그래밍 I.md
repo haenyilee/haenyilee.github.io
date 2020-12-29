@@ -138,5 +138,17 @@ Tv[] tvArr = new Tv[3];
 - 네트워크 : 셋팅 => IP, PORT => 핸드폰(개통)
 - 웹 : 쿠키에서 값을 읽기 => 자동로그인
 
+### 매개변수
+
+- 매개변수가 3개 이상이면 '배열'이나 '클래스'로 넘겨주는게 더 편함!
+
+```java
+public FoodListCard(FoodHouseVO vo) { // 매개변수 = 클래스
+  posterLa.setOpaque(true);
+  posterLa.setBackground(Color.black);
+  la1=new JLabel(vo.getTitle());
+}
+```
+
 
 
