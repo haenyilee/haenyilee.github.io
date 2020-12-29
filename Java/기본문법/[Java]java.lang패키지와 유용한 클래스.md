@@ -471,6 +471,14 @@ while(st.hasMoreTokens())
 
 
 
+### 2.4 Scanner
+- 도스창에서만 사용
+- 문법 처리할 때만 사용
+
+
+
+### 2.5 reflect
+
 
 
 
