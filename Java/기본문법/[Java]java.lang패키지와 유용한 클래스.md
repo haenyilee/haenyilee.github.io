@@ -1,16 +1,18 @@
 ---
-sort: 2
+sort: 9
 ---
 
-# 1. java.lang
+# [Java]java.lang패키지와 유용한 클래스
+
+## 1. java.lang
 
 ![](https://t1.daumcdn.net/cfile/tistory/2255EF495696F9372F)
 
 - 자바모든 클래스가 상속받는 클래스이기 때문에 import붙이지 않음
 
-# 1.1 Object 
+### 1.1 Object 
 
-### Object의 특징
+#### Object의 특징
 - 모든 데이터형 포함하는 최상위 클래스
   - 데이터형 : 기본형 , 참조형(클래스,배열)
 
@@ -26,7 +28,7 @@ double[] d={10.5,'A',100,10.5F};
   - Object가 가지고 있는 모든 기능을 사용할 수 있음
 
 
-## 1.1.1 clone()
+### 1.1.1 clone()
 > 복제할 때 사용
 
 - spring에서는 prototype
@@ -87,6 +89,7 @@ A e=c.clone(); // 다른 저장 장소 , 동일한 값을 가지게 됨
 2. implements : interface로 부터 상속 , 다중상속
 
 - **this와 super**
+
 ```java
 class A
 {
@@ -109,7 +112,7 @@ class B extends A
 
 
 
-## 1.1.2 toString()
+### 1.1.2 toString()
 > 클래스 객체를 문자열로 변환할 때 사용
 
 - 매개변수 : ```string toStirng()```
@@ -117,7 +120,7 @@ class B extends A
 
 
 
-## 1.1.3 finalize()
+### 1.1.3 finalize()
 > 소멸자 함수
 > 누적된 메모리가 해제되었는지 확인하는 기능
 > 메모리 최적화 작업관련
@@ -156,9 +159,9 @@ public class MainClass5 {
 
 
 
-# 1.2. String
+### 1.2. String
 
-### String클래스의 특징
+#### String클래스의 특징
 - String클래스 : char[]를 조작해서 사용하기 쉽게 만들어진 클래스
   - ```"Hello"```는 ```char[] c={'H','e','l','l','o'};```와 같다.
 
@@ -181,7 +184,7 @@ System.out.println(s1.equals(s3)); // true. 값이 같음
 
 - 상속되지 않으면 크기 비교 불가
 
-### String의 주요 메소드
+#### String의 주요 메소드
 |no|메소드명|메소드 기능|
 |---|---------|----------|
 |1| length() | 문자의 갯수|
@@ -202,7 +205,7 @@ String.valueOf(); // static이기 때문에 클래스 사용 가능
 ```
 
 
-## 1.2.1 trim()
+### 1.2.1 trim()
 > 좌우 공백 제거
 ```java
 String s = "background-image: url(' https://mp-seoul.jpg');";
@@ -211,7 +214,7 @@ String temp= s.substring(s.indexOf("'")+1,s.lastIndexOf("'"));
 System.out.println(temp.trim()); // https://mp-seoul.jpg
 ```
 
-## 1.2.2 substring()
+### 1.2.2 substring()
 > 문자열 자르기
 
 ```java
@@ -220,16 +223,17 @@ String s="0123456789";
 String temp = s.substring(3,5);
 System.out.println(temp); // 34
 ```
-## 1.2.3 String.length()
-## 1.2.4 String.indexOf()
-## 1.2.5 String.lastIndexOf()
+### 1.2.3 String.length()
+### 1.2.4 String.indexOf()
+### 1.2.5 String.lastIndexOf()
+
 ```java
 String s = "background-image: url('https://mp-seoul.jpg');";
 
 String temp= s.substring(s.indexOf("'")+1,s.lastIndexOf("'"));
 System.out.println(temp); // https://mp-seoul.jpg
 ```
-## 1.2.6 equals()
+### 1.2.6 equals()
 
 |equals|equalsIgnoreCase|
 |------|-----------------|
@@ -237,7 +241,7 @@ System.out.println(temp); // https://mp-seoul.jpg
 |로그인|검색|
 
 
-## 1.2.7 String.valueOf()
+### 1.2.7 String.valueOf()
 > 모든 데이터형을 문자로 변환
 
 - ```String.valueOf(int)``` 
@@ -245,24 +249,24 @@ System.out.println(temp); // https://mp-seoul.jpg
 
 -  유일한 static메소드임
 
-## 1.2.8 contains()
+### 1.2.8 contains()
 > [찾기1] 문자열이 포함
 
-## 1.2.9 startsWith()
+### 1.2.9 startsWith()
 > [찾기2] 시작 문자열
 
-## 1.2.10 endWith()
+### 1.2.10 endWith()
 > [찾기3] 끝 문자열
 
-## 1.2.11 String.replace()
+### 1.2.11 String.replace()
 
 
 
 
-# 1.3. StringBuffer
+### 1.3. StringBuffer
 > 빠른 속도로 문자열 결합시켜주는 함수
 
-### 문자열 결합 방법
+#### 문자열 결합 방법
 1. StringBuffer : 동기화 , 안정성 높음
 ```java
 StringBuffer data = new StringBuffer();
@@ -280,15 +284,15 @@ data+=(String.valueOf((char)i));
 ```
 
 
-## 1.3.1 append()
-## 1.3.2 join()
+### 1.3.1 append()
+### 1.3.2 join()
 ```java
 String[] arr= {"홍길동","고길동","둘리","심청이","박문수"};
 System.out.println(String.join("|",arr));
 
 // 출력 : 홍길동|고길동|둘리|심청이|박문수
 ```
-## 1.3.3 format()
+### 1.3.3 format()
 ```java
 String str=String.format("%d - %d = %d", 10,2,10-2);
 System.out.println(str);
@@ -299,27 +303,27 @@ System.out.println(str);
 
 
 
-# 1.4. System
-## 1.4.1. System.println()
+### 1.4. System
+### 1.4.1. System.println()
 > 화면 출력
-## 1.4.2. System.exit()
+### 1.4.2. System.exit()
 > 프로그램 종료
-## 1.4.3. System.gc
+### 1.4.3. System.gc
 > "가비지컬렉션" 호출
 > 메모리를 회수
-## 1.4.4. System.currentTimeMillis()
+### 1.4.4. System.currentTimeMillis()
 > 현재 시간 불러오기
 
 
 
 
-# 1.5. Math
+### 1.5. Math
 > 수학에 관련된 함수
 
-## 1.5.1 Math.random()
+### 1.5.1 Math.random()
 > 0.0 ~ 0.99의 수를 랜덤으로 추출
 
-## 1.5.2 Math.ceil()
+### 1.5.2 Math.ceil()
 > 올림함수
 - 총 페이지 수를 구할 때 자주 사용됨
 ```java
@@ -327,11 +331,11 @@ Math.ceil(10.5); // 11
 ```
 
 
-# 1.6. Wrapper
+## 1.6. Wrapper
 > 기본형에 대한 클래스 
 > 모든 데이터형을 사용하기 쉽게 클래스로 변경해줌
 
-### 유형
+#### 유형
 - Double => double
 - Byte => byte
 - Integer => int
@@ -342,28 +346,35 @@ Math.ceil(10.5); // 11
 - parseBoolean()
 - parseLong()
 
-### 박싱과 언박싱
+#### 박싱과 언박싱
 
 - 박싱 : Primitive 자료형 -> Wrapper 클래스
+
 ```java
 Integer i = 10;
 ```
 
 - 언박싱 : Wrapper 클래스 -> Primitive 자료형
+
 ```java
 Integer i = new Integer(100);
 int k=i;
 ```
-## 1.6.1 Integer()
-```int i= (int)"10"; // Error! : 문자열은 정수로 형변환 불가```
+
+### 1.6.1 Integer()
+
+```
+int i= (int)"10"; // Error! : 문자열은 정수로 형변환 불가
+```
+
 - 계산기에서 숫자 입력 받을 때는 문자열로 받고, 계산할 때는 정수로 계산함
 
-## 1.6.2 Double()
-## 1.6.3 Boolean()
-## 1.6.4 Long()
+### 1.6.2 Double()
+### 1.6.3 Boolean()
+### 1.6.4 Long()
 
 
 
-# 1.7. Thread
-## 1.7.1 Thread.start()
-## 1.7.2 Thread.run()
+### 1.7. Thread
+### 1.7.1 Thread.start()
+### 1.7.2 Thread.run()
