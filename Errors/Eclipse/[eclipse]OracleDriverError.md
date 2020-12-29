@@ -1,6 +1,3 @@
----
-sort: 2
----
 
 # 오라클 드라이버를 찾을 수 없는 에러
 - 오류 메시지 : Cannot find class: oracle.jdbc.driver.OracleDriver
