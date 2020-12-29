@@ -91,6 +91,17 @@ javax.swing.JFrame f= new javax.swing.JFrame();
 - 사용할 수 있는 멤버의 갯수를 조절하는 것 
 - 조상과 자손 관계의 참조변수는 서로 형변환 가능함
 
+- `String.valueOf()` : String값으로 가져오기
+
+```java
+la2=new JLabel(String.valueOf(vo.getScore()));
+```
+
+- Wrapper Class
+    - 문자열을 => 더블형으로 변환할 때 : Double.parseDouble()
+    - 문자열을 => 정수형으로 변환할 때 : Integer.parseInt()
+    - 문자열을 => 논리형으로 변환할 때 : Boolean.parseBoolean()
+
 
 ## 클래스의 종류
 - 일반클래스 : POJO / public class A
