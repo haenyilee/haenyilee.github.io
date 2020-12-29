@@ -1,7 +1,4 @@
----
-sort: 1
-published: true
----
+
 ---
 sort: 1
 ---
