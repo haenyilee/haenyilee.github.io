@@ -4,20 +4,29 @@ sort: 8
 
 # JOIN
 
-## JOIN이란?
+## 1. JOIN이란?
 - 하나의 SQL 명령문에 의해 디스크의 여러개의 테이블에서 사용자가 요청한 데이터를 메모리로 복사해서 가지고 와 조회도 하고 변경도 할 수 있는 기능
 - 메모리는 작업을 하는 공간, 디스크는 저장을 하는 공간
 
-## JOIN의 종류
+```tip
+**집합 연산자 vs 조인**
+- 집합 연산자를 사용한 결과가 두 개 이상의  SELECT 문의 결과를 **세로**로 연결한 것이라면, 
+- 조인을 사용한 결과는 두 개 이상의 테이블 데이터를 **가로**로 연결한 것이다.
+```
 
-![](https://lh3.googleusercontent.com/proxy/p7pFiPxj-mSeqTzV6oZg34u3D1oh6zofg5CV9VZ9Lz_0F7xWFNzc0QJ-3-3tfONaw3UDt_U4Lc2zuBav-xoW7KcI19sTeDDGZnRsp8z2WoXRqwkea7gXcoIZgwkiwQ6SIS66fwkDckqkfhHW6hGhFOzrr7luJzGg43rh8j_LoHb2a7QaUIXeldPnJLMMlGX2qjdRzwDC4MX7Mb7bZTHom6T0zdJ0_93MWPEfX6E8t_6_SVgPrLzrFzsZUi3B4TI6rIUanSTf7kPufuH2xOIA2POUUVHtGb-_PVKhyaqnueyB67_ED3W-HXE5_rQEHDAglN597BY)
 
-  - 카티션곱
-  - INNER JOIN
-  - OUTER JOIN
-  - SELF JOIN
+## 2. JOIN의 종류
 
-## Cartesian Product(카티션 곱)
+![image](https://user-images.githubusercontent.com/66978721/103254122-711d5780-49c7-11eb-9dbf-7777bc84ed8d.png)
+
+![image](https://user-images.githubusercontent.com/66978721/103254215-d07b6780-49c7-11eb-8a26-e641f6e4d04d.png)
+
+- 카티션곱
+- INNER JOIN
+- OUTER JOIN
+- SELF JOIN
+
+## 3. Cartesian Product(카티션 곱)
 
 ```oracle
 -- INNER JOIN
@@ -31,8 +40,10 @@ FROM emp e,dept d
 ORDER BY ename;
 ```
 
+- 데카르트 곱 현상이 일어나지 않게 하는 데 필요한 조건식의 최소 개수 = 조인 테이블 개수 - 1  
 
-## INNER JOIN 
+## 4. INNER JOIN , EQUI_JOIN (등가조인)
+
 - 교집합
 - 다른 테이블에서 데이터를 가져와서 연결
 - NULL값일때 처리가 불가능
@@ -40,9 +51,9 @@ ORDER BY ename;
   - NULL값 처리를 위해서 기능을 확장한 것이 OUTER JOIN
 - 종류 : EQUI Join(등가 조인) , Non-Equi Join(비등가 조인)
 
-### ```EQUI_JOIN``` : 등가조인
-- 가장 많이 사용되는 기술
+- 가장 많이 사용되는 기술이다.
 - 연산자 ```=``` : 같은 값일때 가져오기
+
 - (예시) EMP테이블의 deptno와 DEPT테이블의 deptno가 같을 때, DEPT테이블의 loc, dept컬럼을 가져와라
   - DEPT테이블의 deptno는 ```Primary Key (기본키)```
   - EMP테이블의 deptno는 ```Foreign Key (참조키) ```
@@ -50,11 +61,16 @@ ORDER BY ename;
 
 - 등가조인의 형식
 
-[https://github.com/haenyilee/haenyilee.github.io/blob/master/E4B3BD46-39D6-40D8-88CA-C714F68A18ED.jpeg?raw=true]()
+```oracle
+SELECT E.EMPNO, E.ENAME, E.SAL, D.DEPTNO, D.DNAME, D.LOC
+FROM EMP E, DEPT D
+WHERE E.DEPTNO = D.DEPTNO	  --WHERE절에 조인조건을 명시한다.
+AND SAL >= 3000;	          --조건식을 추가하여 출력 범위를 설정할 수도 있다.
+```
 
-- (참고) 테이블 별칭 
-  - 테이블명이 길 때 사용
-  - as 안붙여줘도 됨
+- 등가 조인할 때 조인 조건이 되는 각 테이블의 열 이름들이 같을 경우 어느 테이블에 속해있는 열인지 반드시 명시해야 한다. 
+  - 테이블명이 길 때 테이블 별칭을 사용한다.
+  - as 안붙여줘도 된다.
 
 ```oracle
 table : emp,dept
@@ -62,7 +78,9 @@ SELECT 컬럼명....
 FROM emp e, dept d;
 ```
 
-#### ```오라클 조인``` : 컬럼명이 다를 수도 있다 , 오라클에서만 사용하는 쿼리문장
+### 4.1 오라클 조인
+
+- 컬럼명이 다를 수도 있다 , 오라클에서만 사용하는 쿼리문장
 
 ```
 SELECT empno,ename,job,mgr,hiredate,sal,comm,e.deptno,dname,loc FROM emp e,dept d WHERE e.deptno=d.deptno ORDER BY ename;
@@ -96,7 +114,7 @@ AND ename='SCOTT';
 
 
 
-#### ```ANSI 조인```  : 컬럼명이 다를 수도 있다 , 전체 데이터베이스에서 사용하는 쿼리
+### 4.2 ```ANSI 조인```  : 컬럼명이 다를 수도 있다 , 전체 데이터베이스에서 사용하는 쿼리
   - JOIN 2번 걸기 : 오라클조인 형식처럼 ```AND```사용 불가 , JOIN~ON을 여러번 사용해줘야함
 
 
@@ -117,7 +135,7 @@ WHERE emp.ename='SCOTT';
 
 
 
-#### ```NATURAL 조인``` : 반드시 같은 컬럼명이 존재해야함
+### 4.3 ```NATURAL 조인``` : 반드시 같은 컬럼명이 존재해야함
   - 별칭을 안줘도 됨
 
 ```
@@ -127,7 +145,7 @@ SELECT empno,ename,job,mgr,hiredate,sal,comm,deptno,dname,loc FROM emp NATURAL J
 
 
 
-#### ```JOIN-USING``` : 반드시 같은 컬럼명이 존재해야함
+### 4.4  ```JOIN-USING``` : 반드시 같은 컬럼명이 존재해야함
 
 ```
 SELECT empno,ename,job,mgr,hiredate,sal,comm,deptno,dname,loc 
@@ -136,7 +154,8 @@ FROM emp JOIN dept USING(deptno);
 
 
 
-### ```NON_EQUI_JOIN```
+## 5. NON_EQUI_JOIN
+
 - EQUI_JOIN과의 차이점
   - EQUI_JOIN은 ```=``` (등위연산자)
   - NATURAL-JOIN과 JOIN~USING은 사용하지 못한다(컬럼명이 무조건 같아야하니까...?)
@@ -175,7 +194,7 @@ ON sal BETWEEN losal AND hisal;
 
 
 
-## OUTER JOIN
+## 6. OUTER JOIN
 - UNION과 유사, 합집합
 - 다른 테이블에서 데이터를 가져와서 연결
 - INNER JOIN값 + @ (NULL)
@@ -189,8 +208,8 @@ ON sal BETWEEN losal AND hisal;
 SELECT ename,loc FROM emp,dept WHERE emp.deptno(+)=dept.deptno;
 ```
 
-### OUTER JOIN의 종류 (NULL의 위치의 반대?)
-#### 1. LEFT OUTER JOIN : INTERSECT + MINUS
+### 6.1 OUTER JOIN의 종류 (NULL의 위치의 반대?)
+#### 6.1.1 LEFT OUTER JOIN : INTERSECT + MINUS
   - 오라클조인
 
 ```
@@ -209,7 +228,7 @@ ON A.col=B.col   // A-B
 
 
 
-#### 2. RIGHT OUTER JOIN : INTERSECT + MINUS
+#### 6.1.2 RIGHT OUTER JOIN : INTERSECT + MINUS
   - 오라클조인
 
 ```
@@ -226,7 +245,7 @@ JOIN A RIGHT OUTER JOIN B
 ON A.col=B.col   // A-B
 ```
 
-#### 3. FULL OUTER JOIN : UNION
+#### 6.1.3 FULL OUTER JOIN : UNION
   - ANSI조인
 
 ```
@@ -235,7 +254,54 @@ JOIN A FULL OUTER JOIN B
 ON A.col=B.col   // A-B
 ```
 
-## INNER JOIN과 OUTER JOIN 연습
+
+
+
+## 7. SELF JOIN
+- 같은 테이블에서 데이터 연결
+- NULL값은 출력하지 않음
+
+```
+-- emp 테이블 내에서 사수가 같은 사람들의 이름을 출력하시오
+```
+
+|empno|mgr|ename|
+|-----|---|-----|
+|7788|7566|SCOTT|
+
+|empno|mgr|ename|
+|-----|---|-----|
+|7566|7839|JONES|
+
+
+```
+// null값이 있는 것은 검색하지 못함
+
+SELECT e1.ename "본인" , e2.ename "사수" 
+FROM emp e1,emp e2    // 같은 테이블 사용할 경우 별칭 사용 필수!
+WHERE e1.mgr=e2.empno;
+```
+
+```
+// null값까지 검색하고 싶을 때 => OUTER JOIN 사용해야함
+
+-- LEFT OUTER JOIN
+SELECT e1.ename "본인" , e2.ename "사수" 
+FROM emp e1,emp e2 
+WHERE e1.mgr=e2.empno(+);
+
+-- RIGHT OUTER JOIN
+SELECT e1.ename "본인" , e2.ename "사수" 
+FROM emp e1,emp e2 
+WHERE e1.mgr(+)=e2.empno;
+
+-- FULL OUTER JOIN
+SELECT e1.ename "본인" , e2.ename "사수" 
+FROM emp e1 FULL OUTER JOIN emp e2 
+ON e1.mgr=e2.empno;
+```
+
+## 8. INNER JOIN과 OUTER JOIN 연습
 
 ```
 SQL> select * from A;
@@ -304,49 +370,3 @@ WHERE emp.deptno=dept.deptno(+);
 
 // 결과값 같음
 ```
-
-
-## SELF JOIN
-- 같은 테이블에서 데이터 연결
-- NULL값은 출력하지 않음
-
-```
--- emp 테이블 내에서 사수가 같은 사람들의 이름을 출력하시오
-```
-
-|empno|mgr|ename|
-|-----|---|-----|
-|7788|7566|SCOTT|
-
-|empno|mgr|ename|
-|-----|---|-----|
-|7566|7839|JONES|
-
-
-```
-// null값이 있는 것은 검색하지 못함
-
-SELECT e1.ename "본인" , e2.ename "사수" 
-FROM emp e1,emp e2    // 같은 테이블 사용할 경우 별칭 사용 필수!
-WHERE e1.mgr=e2.empno;
-```
-
-```
-// null값까지 검색하고 싶을 때 => OUTER JOIN 사용해야함
-
--- LEFT OUTER JOIN
-SELECT e1.ename "본인" , e2.ename "사수" 
-FROM emp e1,emp e2 
-WHERE e1.mgr=e2.empno(+);
-
--- RIGHT OUTER JOIN
-SELECT e1.ename "본인" , e2.ename "사수" 
-FROM emp e1,emp e2 
-WHERE e1.mgr(+)=e2.empno;
-
--- FULL OUTER JOIN
-SELECT e1.ename "본인" , e2.ename "사수" 
-FROM emp e1 FULL OUTER JOIN emp e2 
-ON e1.mgr=e2.empno;
-```
-
