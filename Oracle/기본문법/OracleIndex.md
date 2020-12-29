@@ -1,8 +1,8 @@
 ---
-sort: 2
+sort: 1
 ---
 
-# Oracle_SQL과 PL SQL
+# Oracle INDEX
 
 ## [0장](https://github.com/haenyilee/Oracle-Study/wiki/Oracle_00%EC%9E%A5_%EA%B0%9C%EC%9A%94-%EB%B0%8F-%ED%8A%B9%EC%A7%95) 공부를 시작하기 전에 미리 알아두세요
 1. 미리 알아야 할 몇 가지 중요한 개념
