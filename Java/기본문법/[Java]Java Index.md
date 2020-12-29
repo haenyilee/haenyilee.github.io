@@ -1,8 +1,4 @@
----
-sort: 1
---- 
-
-# Java Index
+# 0. [Java] Index
 
 ## Chapter 1 자바를 시작하기 전에
 1. 자바(Java Programming Language) / 2
