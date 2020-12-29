@@ -1,6 +1,10 @@
-# 2. 구현
+---
+sort: 2
+---
 
-## 2. 구현(Implementation)
+# 구현
+
+## 2. 구현(Implementation) 기본
 - 행렬 <br>
 ![image](https://user-images.githubusercontent.com/66978721/102961725-6460b580-4528-11eb-9569-4713447e051a.png)
 
