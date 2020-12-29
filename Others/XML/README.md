@@ -1,7 +1,8 @@
 ---
 sort: 11
+published: true
 ---
 
-# Others
+# XML
 
 {% include list.liquid all=true %}
