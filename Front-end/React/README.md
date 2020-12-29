@@ -1,7 +1,4 @@
----
-sort: 2
----
+# Front-end
 
-# 토이프로젝트
 
 {% include list.liquid all=true %}
