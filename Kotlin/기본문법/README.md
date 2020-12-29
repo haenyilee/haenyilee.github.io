@@ -1,8 +1,8 @@
 ---
 sort: 4
+published: true
 ---
 
-# oracle
-
+# Kotlin Study
 
 {% include list.liquid all=true %}
