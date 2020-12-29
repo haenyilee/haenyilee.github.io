@@ -4,11 +4,57 @@ sort: 9
 
 # [Java]java.lang패키지와 유용한 클래스
 
+
+
+## 자바 API
+![](https://4.bp.blogspot.com/-GxunHEBiBmI/U6bst9SZh3I/AAAAAAAAAWY/LmU09gJrXu8/s1600/package+in+java.png)
+
+
+
+## import
+> import사용하는 방법
+```java
+import java.util.*;
+```
+> import를 사용하지 않는 방법
+```java
+java.util.Date date=new java.util.Date();
+javax.swing.JFrame f= new javax.swing.JFrame();
+```
+
+
+
 ## 1. java.lang
 
 ![](https://t1.daumcdn.net/cfile/tistory/2255EF495696F9372F)
 
 - 자바모든 클래스가 상속받는 클래스이기 때문에 import붙이지 않음
+
+- 종류 
+	- Object
+	  - clone() : 복제
+	  - finalize() : 소멸자
+	  - toString() : 객체를 문자열로 변환
+	- String (StringBuffer)
+	  - substring() : 문자 추출
+	  - indexOf(), lastIndexOf() : 문자 찾는 경우(MVC)
+	  - trim() : 로그인처리 , 사용자 입력값
+	  - equals() : 실제 저장된 문자열을 비교(로그인처리, 우편번호)
+	  - length() : 문자갯수
+	  - valueOf() : 모든 데이터형을 문자열로 변환(유일한 static함수)
+	  - join() : 변환
+	  - StringBuffer() : append() : 문자열 결합
+	- Wrapper : 클래스 형변환 , 문자열을 다른 데이터형으로 변경
+	  - Integer : parseInt() : 정수형 변환
+	  - Double : parseDouble() : 실수형 변환
+	  - Boolean : parseBoolean() : "true" => true , "false" => false
+	- Math
+	  - random() , ceil()
+	- System
+	  - gc() , exit()
+	  * web에서는 자동으로 메모리 회수(톰캣)
+
+
 
 ### 1.1 Object 
 
@@ -395,9 +441,24 @@ int i= (int)"10"; // Error! : 문자열은 정수로 형변환 불가
 
 
 ## 2.java.util
+- 프로그램에서 자주 사용하는 클래스의 집합
+- 반드시 import를 사용한다.
 
-1. 프로그램에서 자주 사용하는 클래스의 집합
-2. 반드시 import를 사용한다.
+- 종류 
+	- StringTokenizer : 문자를 분해 
+	  - nextToken() : 한 개의 구분문자를 자를 때
+	  - hasMoreTokens() : 자른 갯수만큼 루프
+	- Date , Calendar
+	  - Date : 시스템의 시간 , 날짜 읽기
+	  - Calendar : 요일구하기, 달의 마지막 날짜 읽기
+	    * 월 : month-1 , 요일 : week-1
+	- Collection
+	  - ArrayList : 비동기화
+	  - Vector : 동기화 , 네트워크에서 사용자 관리
+	  - HashMap : 키(일반문자열),값(클래스 주소) , 클래스관리
+	  * 단점 보완 : 제너릭스 프로그램 , <원하는 데이터형> : 데이터형의 특징
+
+
 
 
 ### 2.1 Random()
