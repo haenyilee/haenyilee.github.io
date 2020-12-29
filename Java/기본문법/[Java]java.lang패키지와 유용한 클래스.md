@@ -10,20 +10,6 @@ sort: 9
 ![](https://4.bp.blogspot.com/-GxunHEBiBmI/U6bst9SZh3I/AAAAAAAAAWY/LmU09gJrXu8/s1600/package+in+java.png)
 
 
-
-## import
-> import사용하는 방법
-```java
-import java.util.*;
-```
-> import를 사용하지 않는 방법
-```java
-java.util.Date date=new java.util.Date();
-javax.swing.JFrame f= new javax.swing.JFrame();
-```
-
-
-
 ## 1. java.lang
 
 ![](https://t1.daumcdn.net/cfile/tistory/2255EF495696F9372F)
