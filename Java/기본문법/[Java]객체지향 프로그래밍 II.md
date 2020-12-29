@@ -5,6 +5,27 @@ sort: 7
 # [Java]객체지향 프로그래밍 II : 추상클래스와 인터페이스
 
 
+## 재사용
+
+### 상속(is-a) : 기존의 클래스를 변경해서 사용
+- `public class className extends JFrame`
+- 기능을 받아서 변경 사용
+- JFrame 자체의 기능은 변하지 않음
+
+### 포함(has-a) : 기존의 클래스를 변경없이 사용
+
+```java
+public class className
+{
+    JFrame f = new JFrame(){
+    }
+}
+```
+
+- JFrame 자체의 기능이 변경됨
+- 기능을 고치는 경우에는 상속을 받아야함 > 포함관계는 기능 수정이 없는 경우에만 사용해야 함
+
+
 ## 제어자
 
 ### static - 클래스의, 공통적인
