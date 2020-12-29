@@ -2,6 +2,6 @@
 sort: 1
 ---
 
-# Git Blog
+# GitBlog
 
 {% include list.liquid all=true %}
