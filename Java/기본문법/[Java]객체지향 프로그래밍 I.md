@@ -4,14 +4,11 @@ sort: 6
 
 # [Java]객체지향 프로그래밍 I : 클래스와 객체
 
-- 참고 : [자바의 정석] ch6-1 ~ ch6-10
-
-## 객체 지향 코드와 비객체지향적인 코드
 - 객체 지향적 코드는 비 객체지향적 코드보다 덜 복잡하고, 유지보수가 편리하다는 장점이 있다. 
 
-- **객체 지향 코드**
-  - OOP (Object Oriented Programming)
-  - 객체를 생성한 뒤, 객체의 변수에 데이터를 정의하는 방식이다. 
+### 객체 지향 코드
+- OOP (Object Oriented Programming)
+- 객체를 생성한 뒤, 객체의 변수에 데이터를 정의하는 방식이다. 
 
 ```java
 class Time{
@@ -20,15 +17,15 @@ class Time{
    int second;
 }
 
-Time t= new Time();
+Time t= new Time(); // 객체 생성
 t.hour=12;
 t.minuate=34;
 t.second=56;
 ```
 
-- **비객체지향적인 코드**
-  - OOP (Object Oriented Programming)
-  - 객체를 생성하지 않고 변수를 정의하는 방식이다. 
+### 비객체지향적인 코드
+- OOP (Object Oriented Programming)
+- 객체를 생성하지 않고 변수를 정의하는 방식이다. 
   
 ```java
 class Time{
@@ -42,7 +39,7 @@ int minuate=34;
 int second=56;
 ```
 
-```NOTE
+```note
 **객체지향 VS 절차지향**
 - 절차지향은 데이터 중심, 객체지향은 기능 중심
 - 절차지향의 반대는 객체지향이 아니고 객체지향의 반대는 절차지향이 아님
