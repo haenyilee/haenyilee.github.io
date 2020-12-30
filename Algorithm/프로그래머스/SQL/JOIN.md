@@ -1,0 +1,93 @@
+---
+sort: 2
+---
+
+# JOIN
+ 
+## 없어진 기록 찾기
+
+```warning
+![image](https://user-images.githubusercontent.com/66978721/103327267-2ec34b80-4a97-11eb-8a4e-28f6157f675d.png)
+- 한 쪽이 NULL일 경우의 값을 구해야 차집합이 구해진다.
+```
+
+```sql
+SELECT B.ANIMAL_ID, B.NAME
+FROM ANIMAL_INS A, ANIMAL_OUTS B
+WHERE A.ANIMAL_ID(+)=B.ANIMAL_ID
+AND A.ANIMAL_ID IS NULL
+ORDER BY B.ANIMAL_ID
+```
+
+## 있었는데요 없었습니다
+
+```warning
+- 조건이 2개 필요함!
+```
+
+```sql
+SELECT A.ANIMAL_ID, A.NAME
+FROM ANIMAL_INS A, ANIMAL_OUTS B
+WHERE A.ANIMAL_ID=B.ANIMAL_ID
+AND A.DATETIME > B.DATETIME
+ORDER BY A.DATETIME
+```
+
+## 
+
+```warning
+```
+
+- 질문 : 아래 꺼는 왜 안돼지?
+
+```
+SELECT A.NAME, A.DATETIME
+FROM ANIMAL_INS A, ANIMAL_OUTS B
+WHERE A.ANIMAL_ID(+) = B.ANIMAL_ID
+AND B.ANIMAL_ID IS NULL
+```
+
+- 맞는 LEFT JOIN
+
+```
+SELECT A.NAME, A.DATETIME
+FROM ANIMAL_INS A LEFT JOIN ANIMAL_OUTS B
+ON A.ANIMAL_ID = B.ANIMAL_ID
+WHERE B.ANIMAL_ID IS NULL
+```
+
+
+```sql
+SELECT NAME,DATETIME
+FROM
+(SELECT A.NAME, A.DATETIME
+FROM ANIMAL_INS A 
+ LEFT JOIN ANIMAL_OUTS B
+ON A.ANIMAL_ID = B.ANIMAL_ID
+WHERE B.ANIMAL_ID IS NULL
+ORDER BY DATETIME)
+WHERE ROWNUM<=3
+ORDER BY ROWNUM
+```
+
+## 
+
+```warning
+```
+
+```sql
+```
+## 
+
+```warning
+```
+
+```sql
+```
+## 
+
+```warning
+```
+
+```sql
+```
