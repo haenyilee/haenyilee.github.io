@@ -2,6 +2,6 @@
 sort: 3
 ---
 
-# whiteship-study-halle
+# Whiteship-study-halle
 
 {% include list.liquid all=true %}
