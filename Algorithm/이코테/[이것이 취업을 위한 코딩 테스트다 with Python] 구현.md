@@ -175,14 +175,13 @@ public class Direction {
 
 
 
-
-
-
-
-
-## 2.2 상하좌우
+## 2.3 왕실의 나이트
 
 ### 문제
+![image](https://user-images.githubusercontent.com/66978721/103437628-13aa3480-4c6d-11eb-8e9c-2fa0c26543b8.png)
+![image](https://user-images.githubusercontent.com/66978721/103437630-1ad14280-4c6d-11eb-8828-f9b2161a530c.png)
+![image](https://user-images.githubusercontent.com/66978721/103437663-6257ce80-4c6d-11eb-838a-623c146c72c3.png)
+
 
 ### 힌트
 
