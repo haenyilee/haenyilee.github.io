@@ -122,7 +122,7 @@
 - 하지만 한 번만 실행되는 코드라면 JIT 보다 Interpreter 방식이 유리하다.
 - 따라서 JVM은 해당 메소드가 얼마나 자주 수행되는지 체크하고 일정 정도를 넘을 때 컴파일을 수행한다.
 
-{:.bg-yellow-dark.text-red.m-5}
+{:.bg-yellow-dark.text-black.m-5}
 ▶ 평소에는 Interpreter 방식으로 실행 <br>
 ▶ 적절한 시점에 바이트 코드 전체를 컴파일 하여 네이티브 코드로 변경<br>
 ▶ 더 이상 Interpreting 하지 않고 네이티브 코드로 직접 실행
@@ -157,74 +157,95 @@
 ### Execution Engine
 - ByteCode를 실행 가능 하도록 해석한다.
 - Class Loader에 의해 메모리에 적재된 클래스(바이트 코드)들을 기계어로 변경해 명령어 단위로 실행하는 역할을 한다.
-- 명령어를 하나 하나 실행하는 인터프리터(Interpreter)방식이 있고 JIT(Just-In-Time) 컴파일러를 이용하는 방식이 있다.
-- JIT 컴파일러는 적절한 시간에 전체 바이트 코드를 네이티브 코드로 변경해서 Execution Engine이 네이티브로 컴파일된 코드를 실행하는 것으로 성능을 높이는 방식입니다.
+- 명령어를 하나 하나 실행하는 인터프리터(Interpreter)방식이 있고 
+- JIT(Just-In-Time) 컴파일러를 이용하는 방식이 있다.
+  - JIT 컴파일러는 적절한 시간에 전체 바이트 코드를 네이티브 코드로 변경해서 Execution Engine이 네이티브로 컴파일된 코드를 실행하는 것으로 성능을 높이는 방식이다.
 
 
 ### Runtime Data Areas
 ![image](https://user-images.githubusercontent.com/66978721/103453293-c638d080-4d1b-11eb-8965-8f24cfd570a2.png)
 
 
-1. Method area (메소드 영역)
-
-  - 클래스 멤버 변수의 이름, 데이터 타입, 접근 제어자 정보같은 필드 정보와
-  - 메소드의 이름, 리턴 타입, 파라미터, 접근 제어자 정보같은 메소드 정보, 
-  - Type정보(Interface인지 class인지), Constant Pool(상수 풀 : 문자 상수, 타입, 필드, 객체 참조가 저장됨), static 변수, final class 변수등이 생성되는 영역입니다.
-
- 
-
-2. Heap area (힙 영역)
-
-  - new 키워드로 생성된 객체와 배열이 생성되는 영역입니다.
-
-  - 메소드 영역에 로드된 클래스만 생성이 가능하고 Garbage Collector가 참조되지 않는 메모리를 확인하고 제거하는 영역입니다.
-
- 
-
-3. Stack area (스택 영역)
-
-  - 지역 변수, 파라미터, 리턴 값, 연산에 사용되는 임시 값등이 생성되는 영역입니다.
-
-  - int a = 10; 이라는 소스를 작성했다면 정수값이 할당될 수 있는 메모리공간을 a라고 잡아두고 그 메모리 영역에 값이 10이 들어간다. 즉, 스택에 메모리에 이름이 a라고 붙여주고 값이 10인 메모리 공간을 만듭니다.
-
-  - 클래스 Person p = new Person(); 이라는 소스를 작성했다면 Person p는 스택 영역에 생성되고 new로 생성된 Person 클래스의 인스턴스는 힙 영역에 생성됩니다.
-
-  - 그리고 스택영역에 생성된 p의 값으로 힙 영역의 주소값을 가지고 있다. 즉, 스택 영역에 생성된 p가 힙 영역에 생성된 객체를 가리키고(참조하고) 있는 것입니다.
-
-  - 메소드를 호출할 때마다 개별적으로 스택이 생성됩니다.
+- **Method area (메소드 영역)**
+  - 객체 생성 후에 메소드를 실행하게 되면 해당 클래스 코드에 대한 정보를 Method Area에 저장 하게 된다. 
+  - 저장되는 내역은 아래와 같다.
+    - 클래스 멤버 변수의 이름, 데이터 타입, 접근 제어자 정보같은 필드 정보
+    
+    - 메소드의 이름, 리턴 타입, 파라미터, 접근 제어자 정보같은 메소드 정보
+    
+    - Type정보(Interface인지 class인지)
+    
+    - Constant Pool(상수 풀 : 문자 상수, 타입, 필드, 객체 참조가 저장됨)
+    
+    - static 변수, final class 변수
 
  
 
-4. PC Register (PC 레지스터)
+- **Heap area (힙 영역)**
 
-  - Thread(쓰레드)가 생성될 때마다 생성되는 영역으로 Program Counter 즉, 현재 쓰레드가 실행되는 부분의 Java Virtual Machine Instruction의 주소와 명령을 저장하고 있는 영역입니다. (*CPU의 레지스터와 다름)
+  - new 키워드로 생성된 객체와 배열이 생성되는 영역이다.
 
-  - 이것을 이용해서 쓰레드를 돌아가면서 수행할 수 있게 합니다.
+  - 메소드 영역에 로드된 클래스만 생성이 가능하다.
+  
+  - Garbage Collector가 참조되지 않는 메모리를 확인하고 제거하는 영역이다.
+ 
+
+- **Stack area (스택 영역)**
+
+  - 지역 변수, 파라미터, 리턴 값, 연산에 사용되는 임시 값등이 생성되는 영역이다.
+
+  - `int a = 10;` 이라는 소스를 작성했다면?
+    - 정수값이 할당될 수 있는 메모리공간을 a라고 잡아두고 
+    - 그 메모리 영역에 값이 10이 들어간다.
+    - 즉, 스택 메모리에 이름을 a라고 붙여주고 값이 10인 메모리 공간을 만든다.
+
+  - 클래스 `Person p = new Person();` 이라는 소스를 작성했다면?
+    - Person p는 스택 영역에 생성되고 
+    - new로 생성된 Person 클래스의 인스턴스는 힙 영역에 생성된다.
+    - 그리고 스택영역에 생성된 p의 값으로 힙 영역의 주소값을 가지고 있다. 
+    - 즉, 스택 영역에 생성된 p가 힙 영역에 생성된 객체를 가리키고(참조하고) 있는 것입니다.
+
+  - 메소드를 호출할 때마다 개별적으로 스택이 생성된다.
 
  
 
-5. Native method stack
+- **PC Register (PC 레지스터)**
 
-  - 자바 외 언어로 작성된 네이티브 코드를 위한 메모리 영역입니다.
+  - Thread(쓰레드)가 생성될 때마다 생성되는 영역이다.
+  - Program Counter 즉, 현재 쓰레드가 실행되는 부분의 Java Virtual Machine Instruction의 주소와 명령을 저장하고 있는 영역이다. (*CPU의 레지스터와 다름)
 
-  - 보통 C/C++등의 코드를 수행하기 위한 스택입니다. (JNI)
+  - 이것을 이용해서 쓰레드를 돌아가면서 수행할 수 있게 한다.
 
+ 
 
+- **Native method stack**
 
+  - 자바 외 언어로 작성된 네이티브 코드를 위한 메모리 영역이다.
 
-
+  - 보통 C/C++등의 코드를 수행하기 위한 스택이다. (JNI)
 
 
 ## 7. JDK와 JRE의 차이
+![image](https://user-images.githubusercontent.com/66978721/103454099-cb9a1900-4d23-11eb-9c43-bf3f8469d27f.png)
+
+### JDK(Java Development kit)란?
+- 자바 개발 도구이다.
+- 자바 프로그래밍을 할 때 필요한 컴파일러 등이 포함되어 있다. 
+- JDK를 설치하면 JRE도 함께 설치되어 있다.
+  
+### JRE(Java Runtime Enviroment)
+- 컴파일된 자바 프로그램을 실행시킬 수 있는 자바환경이다. 
+
+
+
 
 ## 참고
 - [링크](https://medium.com/@lazysoul/jvm-%EC%9D%B4%EB%9E%80-c142b01571f2)
 - [링크](https://saml2l.tistory.com/13)
 - [링크](https://opentutorials.org/module/516/5559)
 - [링크](http://www.tcpschool.com/java/java_intro_programming)
-- 자바의 정석
 - [링크](https://futurists.tistory.com/43)
 - [링크](https://devspark.tistory.com/entry/JIT-vs-Interpreter)
 - [링크](https://smujihoon.tistory.com/147)
-
-출처: https://joeylee.tistory.com/30 [조이리]
+- [링크]( https://joeylee.tistory.com/30)
+- 자바의 정석
