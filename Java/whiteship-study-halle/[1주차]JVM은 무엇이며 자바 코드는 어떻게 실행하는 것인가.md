@@ -59,12 +59,7 @@
 - 내부적으로는 classLoader -> Byte Code Verifier (바이트코드 변조 확인) -> Execution Engine에서 실행되는 구조다.
 - Execution Engine에서 클래스파일(바이트코드로 구성)을 기계어로 변경해서 명령어 단위로 실행한다.
 
-- 다만 명령어 단위 실행은 2가지 방식으로 동작한다.
-1. **Interpreter 방식** : 미리 컴파일된 함수들을 가지고 있고, code를 line by line으로 해석해서 이 함수들에게 던져준다. 
-
-2. **JIT(Just In Time compiler) 방식**: 그 코드 block이 사용(호출)될때 machine code로 변환해서 사용하고 이미 한번 machine code로 변환한것은 캐싱해두었다가 변환하는 과정없이 실행한다.
-
-
+- 다만 명령어 단위 실행은 2가지 방식으로 동작한다. (Interpreter 방식 / JIT(Just In Time compiler) 방식)
 
 
 
@@ -77,6 +72,8 @@
 - 자바 바이트 코드는 각 OS에 맞는 자바 가상 머신(JVM)만 설치되어 있으면, 어떤 운영체제에서라도 실행될 수 있다.
 
 - 즉 바이트 코드는 JVM이 이해하는 언어이며, 네이티브어는 CPU 이해하는 언어이다.
+
+
 
 ## 5. JIT 컴파일러란 무엇이며 어떻게 동작하는지
 
@@ -97,14 +94,12 @@
 - 이러한 느린 속도라는 단점을 해결하기 위해 바이트코드를 하드웨어의 기계어로 바로 변환해주는 JIT 컴파일러가 필요하게 된 것이다.
   
 ```tip
-**컴파일러 vs 인터프리터**
-
-- 컴파일러
+- **컴파일러**
   - 고급언어로 쓰여진 프로그램이 컴퓨터가 이해할 수 있는 기계어로 바꿔준다. 
   - 번역과 실행 과정을 거쳐야 하기에 번역과정이 번거롭고 시간이 오래 걸린다. 
   - 반면 한번 번역하면 이후엔 다시 번역하지 않으므로 실행속도 빠르다.
 
-- 인터프리터
+- **인터프리터**
   - 한 단계씩 기계어로 해석하여 실행하는 언어처리 프로그램이다. 
   - 줄 단위로 번역, 실행되기 때문에 시분할 시스템에 유용하며 원시 프로그램의 변화에 대한 반응이 빠르다.
   - 한 단계씩 테스트와 수정을 하면서 진행시켜 나가기 때문에 실행 시간이 길어 속도가 늦다.
@@ -123,9 +118,9 @@
 - 따라서 JVM은 해당 메소드가 얼마나 자주 수행되는지 체크하고 일정 정도를 넘을 때 컴파일을 수행한다.
 
 ```note
-▶ 평소에는 Interpreter 방식으로 실행 <br>
-▶ 적절한 시점에 바이트 코드 전체를 컴파일 하여 네이티브 코드로 변경<br>
-▶ 더 이상 Interpreting 하지 않고 네이티브 코드로 직접 실행
+= 평소에는 Interpreter 방식으로 실행 
+= 적절한 시점에 바이트 코드 전체를 컴파일 하여 네이티브 코드로 변경
+= 더 이상 Interpreting 하지 않고 네이티브 코드로 직접 실행
 ```
 
 
@@ -241,12 +236,12 @@
 
 
 ## 참고
-- [링크](https://medium.com/@lazysoul/jvm-%EC%9D%B4%EB%9E%80-c142b01571f2)
-- [링크](https://saml2l.tistory.com/13)
-- [링크](https://opentutorials.org/module/516/5559)
-- [링크](http://www.tcpschool.com/java/java_intro_programming)
-- [링크](https://futurists.tistory.com/43)
-- [링크](https://devspark.tistory.com/entry/JIT-vs-Interpreter)
-- [링크](https://smujihoon.tistory.com/147)
-- [링크]( https://joeylee.tistory.com/30)
+- [링크1](https://medium.com/@lazysoul/jvm-%EC%9D%B4%EB%9E%80-c142b01571f2)
+- [링크2](https://saml2l.tistory.com/13)
+- [링크3](https://opentutorials.org/module/516/5559)
+- [링크4](http://www.tcpschool.com/java/java_intro_programming)
+- [링크5](https://futurists.tistory.com/43)
+- [링크6](https://devspark.tistory.com/entry/JIT-vs-Interpreter)
+- [링크7](https://smujihoon.tistory.com/147)
+- [링크8]( https://joeylee.tistory.com/30)
 - 자바의 정석
