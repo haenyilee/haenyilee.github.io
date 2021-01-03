@@ -61,7 +61,7 @@
 - 제니퍼는 
 	- 경량화(Light-Weight), 
 	- 실시간(Real-Time), 
-    	- 개별 트랜잭션 모니터링(Individual Transaction Monitoring)
+	- 개별 트랜잭션 모니터링(Individual Transaction Monitoring)
 - 등 기술기반의 '직관적인 통합 성능관리 솔루션'으로 이미 국내외 900여개 고객사에서 검증된 바 있습니다. 
 
 - 또한, 시대의 요구사항인 모바일, 클라우드, 그리고 빅데이터 시장의 온전한 모니터링 체계를 위하여, 
@@ -87,64 +87,62 @@
 
 ### 미들웨어란?
 
-- Static Pages와 Dynamic Pages
+#### Static Pages와 Dynamic Pages
 ![image](https://user-images.githubusercontent.com/66978721/103474695-c7d0ca00-4de9-11eb-91b0-8b88c8b9061d.png)
 
 
-- Web Server와 WAS
+#### Web Server와 WAS
 ![image](https://user-images.githubusercontent.com/66978721/103474718-f8b0ff00-4de9-11eb-8468-719e4205902b.png)
 ![image](https://user-images.githubusercontent.com/66978721/103474763-58a7a580-4dea-11eb-8148-f0f00b5935be.png)
 
-- Web Server
-	- 정적인 콘텐츠(html/css/js)를 제공하는 서버
-	- Apache
-	- WAS는 DB 조회나 다양한 로직을 처리하느라 바쁘기 때문에 단순한 정적 컨텐츠는 Web Server에서 빠르게 클라이언트에 제공하는 것이 좋다
+#### Web Server
+- 정적인 콘텐츠(html/css/js)를 제공하는 서버
+- Apache
+- WAS는 DB 조회나 다양한 로직을 처리하느라 바쁘기 때문에 단순한 정적 컨텐츠는 Web Server에서 빠르게 클라이언트에 제공하는 것이 좋다
 
-- WAS(Web Application Server)
-	- 동적인 콘텐츠(DB조회/로직처리)를 제공하는 서버
-	- Tomcat, jeus
-	- WAS = Web Server + Web Container
+#### WAS(Web Application Server)
+- 동적인 콘텐츠(DB조회/로직처리)를 제공하는 서버
+- Tomcat, jeus
+- WAS = Web Server + Web Container
 
-- Web Service Architecture
+#### Web Service Architecture
 ![image](https://user-images.githubusercontent.com/66978721/103474785-999fba00-4dea-11eb-8de2-d5d361d65eef.png)
 
-	- 다양한 구조를 가질 수 있다.
-		- Client -> Web Server -> DB
-		- Client -> WAS -> DB
-		- Client -> Web Server -> WAS -> DB
+- 다양한 구조를 가질 수 있다.
+	- Client -> Web Server -> DB
+	- Client -> WAS -> DB
+	- Client -> Web Server -> WAS -> DB
 
-- MiddleWare
+#### MiddleWare
 ![image](https://user-images.githubusercontent.com/66978721/103474921-c30d1580-4deb-11eb-8a4c-64205ffbc3ae.png)
 
-	- Client - **MiddleWare Server** - DB Server(DBMS)
-	- Client는 단순히 요청만 중앙에 있는 MiddleWare Server에게 보낸다.
-	- MiddleWare Server에서 대부분의 로직이 수행된다.
-	- 이때, 데이터를 조작할 일이 있으면 DBMS에 부탁한다.
-	- 로직의 결과를 Client에게 전송한다.
-	- Client는 그 결과를 화면에 보여준다.
-	- 클라이언트 쪽에 비지니스 로직이 많을 경우, 클라이언트 관리(배포)로 인해 비용이 많이 발생하는 문제가 있다.
-	- 이때 비즈니스로직을 클라이언트와 DBMS 사이의 미들웨어 서버에서 동작하게 하도록 문제를 해결할 수 있다.
-	- 즉, 비즈니스 로직을 Client와 DBMS 사이의 MiddleWare Server에서 동작하도록 함으로써 Client는 입력과 출력만 담당하게 된다.
+- Client - **MiddleWare Server** - DB Server(DBMS)
+- Client는 단순히 요청만 중앙에 있는 MiddleWare Server에게 보낸다.
+- MiddleWare Server에서 대부분의 로직이 수행된다.
+- 이때, 데이터를 조작할 일이 있으면 DBMS에 부탁한다.
+- 로직의 결과를 Client에게 전송한다.
+- Client는 그 결과를 화면에 보여준다.
+- 클라이언트 쪽에 비지니스 로직이 많을 경우, 클라이언트 관리(배포)로 인해 비용이 많이 발생하는 문제가 있다.
+- 이때 비즈니스로직을 클라이언트와 DBMS 사이의 미들웨어 서버에서 동작하게 하도록 문제를 해결할 수 있다.
+- 즉, 비즈니스 로직을 Client와 DBMS 사이의 MiddleWare Server에서 동작하도록 함으로써 Client는 입력과 출력만 담당하게 된다.
 
-- DBMS(Database Management System)
-	- 다수의 사용자들이 DB 내의 데이터를 접근할 수 있도록 해주는 소프트웨어
-	- DBMS는 보통 Server 형태로 서비스를 제공한다.
-		- Ex) MySQL, MariaDB, Oracle, PostgreSQL 등
-	- DBMS Server에 직접 접속해서 동작하는 Client Program의 문제점?
-		- Client에 로직이 많아지고 이에 따라 Client Program의 크기가 커진다.
-		- 로직이 변경될 때마다 매번 배포가 되어야 한다.
-		- Client에 대부분의 로직이 포함되어 배포가 되기 때문에 보안에 취약하다.
-	- 이를 해결하기 위해 MiddlWare가 등장했다.
+#### DBMS(Database Management System)
+- 다수의 사용자들이 DB 내의 데이터를 접근할 수 있도록 해주는 소프트웨어
+- DBMS는 보통 Server 형태로 서비스를 제공한다.
+	- Ex) MySQL, MariaDB, Oracle, PostgreSQL 등
+- DBMS Server에 직접 접속해서 동작하는 Client Program의 문제점?
+	- Client에 로직이 많아지고 이에 따라 Client Program의 크기가 커진다.
+	- 로직이 변경될 때마다 매번 배포가 되어야 한다.
+	- Client에 대부분의 로직이 포함되어 배포가 되기 때문에 보안에 취약하다.
+- 이를 해결하기 위해 MiddlWare가 등장했다.
 
-- Web Application
+#### Web Application
 	
 
-- Web Container
+#### Web Container
 	
 
-## 출처
-
-- [https://gmlwjd9405.github.io/2018/10/27/webserver-vs-was.html](https://gmlwjd9405.github.io/2018/10/27/webserver-vs-was.html)
+- [출처](https://gmlwjd9405.github.io/2018/10/27/webserver-vs-was.html)
 
     
 ## 면접 기출 질문
