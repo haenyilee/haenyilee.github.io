@@ -3,27 +3,63 @@
 ## Comparator vs Comparator
 - [[Java] 객체 정렬하기 1부 - Comparable vs Comparator](https://www.daleseo.com/java-comparable-comparator/)
 - [[자바의 정석 - 기초편] ch11-30~33 Comparator와 Comparable](https://www.youtube.com/watch?v=EW3Mub24wYg)
+- [[JAVA]Array.sort 와 Collections.sort 의 차이](https://devlog-wjdrbs96.tistory.com/68)
 
+### Array.sort
 
-### sort
+#### Array.sort (오름차순)
 
 ```
 Array.sort(정렬대상(배열),정렬기준) 
 ```
 
-- 정렬 기준이 없으면 기본적으로 사전순서에 맞게 문자와 숫자를 정렬한다.
+- 정렬이 되는 기준은 `오름차순 : 숫자 > 대문자 > 소문자 > 한글` 이다.
+  - 정렬 기준이 없으면 기본적으로 사전순서에 맞게 문자와 숫자를 정렬한다.
   - 대문자보다 소문자를 먼저 정렬한다.
-  - String.CASE_INSENSITIVE_ORDER : Comparator 인터페이스를 구현하는 내부 클래스 
+
 
 ```java
 String[] strArr = {"cat", "Dog", "lion", "tiger"};
 
 // 기본정렬 : 대소문자 구분
 Array.sort(strArr); // {"Dog", "cat", "lion", "tiger"}
+```
+  
+- 대소문자를 구분하지 않고 정렬하려면 `String.CASE_INSENSITIVE_ORDER`을 사용한다.
+  - String.CASE_INSENSITIVE_ORDER : Comparator 인터페이스를 구현하는 내부 클래스 
+
+
+```java
+String[] strArr = {"cat", "Dog", "lion", "tiger"};
 
 // 대소문자 구분 x
 Array.sort(strArr, String.CASE_INSENSITIVE_ORDER); // {"cat", "Dog", "lion", "tiger"}
 ```
+
+#### Array.sort (내림차순)
+
+```
+Array.sort(정렬대상, Collections.reverseOrder());
+```
+
+- `Collections.reverseOrder()`은 파이썬에서의 `reverse` 내장함수와 같다.
+- 오름차순과 마찬가지로, `한글 > 소문자 > 대문자 > 숫자` 정렬이 된다. 
+
+
+
+## Collections.sort 
+
+
+### 기본정렬
+
+- 오름차순 : `Collection.sort(정렬대상);`
+  - 순서 : 한글 > 소문자 > 대문자 > 숫자
+  
+- 내림차순 : `Collection.reverse(정렬대상);`
+  - 순서 : 숫자 > 대문자 > 소문자 > 한글
+
+
+
 
 ### Comparable vs Comparator
 - Comparator와 Comparable은 정렬 기준을 제공하는 메서드를 정의한 인터페이스이다. 
