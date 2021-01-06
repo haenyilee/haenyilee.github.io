@@ -5,9 +5,9 @@
 - [[자바의 정석 - 기초편] ch11-30~33 Comparator와 Comparable](https://www.youtube.com/watch?v=EW3Mub24wYg)
 - [[JAVA]Array.sort 와 Collections.sort 의 차이](https://devlog-wjdrbs96.tistory.com/68)
 
-### Array.sort
+## 1. Array.sort
 
-#### Array.sort (오름차순)
+### 1.1 Array.sort (오름차순)
 
 ```
 Array.sort(정렬대상(배열),정렬기준) 
@@ -36,7 +36,7 @@ String[] strArr = {"cat", "Dog", "lion", "tiger"};
 Array.sort(strArr, String.CASE_INSENSITIVE_ORDER); // {"cat", "Dog", "lion", "tiger"}
 ```
 
-#### Array.sort (내림차순)
+### 1.2 Array.sort (내림차순)
 
 ```
 Array.sort(정렬대상, Collections.reverseOrder());
@@ -47,10 +47,10 @@ Array.sort(정렬대상, Collections.reverseOrder());
 
 
 
-## Collections.sort 
+## 2. Collections.sort 
 
 
-### 기본정렬
+### 2.1 기본정렬
 
 - 오름차순 : `Collection.sort(정렬대상);`
   - 순서 : 한글 > 소문자 > 대문자 > 숫자
@@ -60,36 +60,16 @@ Array.sort(정렬대상, Collections.reverseOrder());
 
 
 
-
-### Comparable vs Comparator
-- Comparator와 Comparable은 정렬 기준을 제공하는 메서드를 정의한 인터페이스이다. 
-
 ```note
-- Comparator : 기본 정렬기준 외에 다른 
-- Comparable : 기본 정렬 기준을 구현하는데 사용됨
+- Comparator와 Comparable은 정렬 기준을 제공하는 메서드를 정의한 인터페이스이다. 
+  - Comparator : 기본 정렬기준 외에 다른 
+  - Comparable : 기본 정렬 기준을 구현하는데 사용됨
 ```
 
-### compare
-
-```java
-// 역순으로 정렬하기
-Arrays.sort(strArr, new Descendion()); 
-
-// 정렬 기준 정의하기
-class Descending implements Comparator {
-  public int compare(Object o1, Object o2) {
-    if(o1 instanceof Comparable && o2 instanceof Comparable) {
-      Comparable c1 = (Comparable)o1;
-      Comparable c2 = (Comparable)o2;
-      return c1.compareTo(c2) * -1 // 기본 정렬방식의 역으로 변경하기 위해 -1을 곱함
-    }
-    return -1;
-  }
-}
-```
+### 2.2 Comparable 
 
 
-### compareTo
+#### compareTo
 
 ```java
 public final class Integer extens Number implements Comparable {
@@ -105,6 +85,30 @@ public final class Integer extens Number implements Comparable {
       return (v1 < v2 ? -1 : (v1==v2? 0 : 1));
    }
    ...
+}
+```
+
+
+
+
+### 2.3 Comparator
+
+#### compare
+
+```java
+// 역순으로 정렬하기
+Arrays.sort(strArr, new Descendion()); 
+
+// 정렬 기준 정의하기
+class Descending implements Comparator {
+  public int compare(Object o1, Object o2) {
+    if(o1 instanceof Comparable && o2 instanceof Comparable) {
+      Comparable c1 = (Comparable)o1;
+      Comparable c2 = (Comparable)o2;
+      return c1.compareTo(c2) * -1 // 기본 정렬방식의 역으로 변경하기 위해 -1을 곱함
+    }
+    return -1;
+  }
 }
 ```
 
