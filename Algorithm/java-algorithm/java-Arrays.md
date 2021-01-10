@@ -29,7 +29,7 @@ System.out.println(Arrays.equals(arr, arr2));
 - 출력 : `deepToString()`
 
 ```java
-int[][] arr2D = {{11,12}, {21,22}};
+int[][] arr2D = { {11,12}, {21,22} };
 System.out.println(Arrays.deepToString(arr2D));
 // 출력결과  : [[11, 12], [21, 22]]
 ```
