@@ -1,7 +1,7 @@
 # [java] Arrays
 
 ## 1. Arrays 
-- 배열을 다루기 편리한 메서드(static) wprhd
+- Arrays클래스에는 배열을 다루기 편리한 메서드(static)가 정의되어 있다.
 
 ### 1.1 toString(), equals()  - 1차원 배열의 출력과 비교
 
@@ -145,3 +145,7 @@ List list2 = Arrays.asList(1, 2, 3, 4, 5); // list2 = [1, 2, 3, 4, 5]
 List list = new ArrayList(Arrays.asList(1, 2, 3, 4, 5)); // list = [1, 2, 3, 4, 5]
 // 수정, 삭제 가능함
 ```
+
+
+## 출처
+- 자바의 정석 3판 : 11장, 624page ~ 627page
