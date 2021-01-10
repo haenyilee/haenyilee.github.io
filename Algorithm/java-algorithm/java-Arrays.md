@@ -39,11 +39,13 @@ System.out.println(Arrays.deepToString(arr2D));
 - 비교 : `deepEquals()`
 
 ```java
+{% raw %}
 String[][] str2D = new String[][]{{"AAA","BBB","CCC"}, {"DDD","EEE","FFF"}};
 String[][] str2D2 = new String[][]{{"AAA","BBB","CCC"}, {"DDD","EEE","FFF"}};
 
 System.out.println(Arrays.deepEquals(str2D,str2D2)); 
 // 출력결과 : true
+{% endraw %}
 ```
 
 ### 1.3 copyOf() , copyOfRange() - 배열의 복사
