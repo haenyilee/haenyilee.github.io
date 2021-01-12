@@ -1,8 +1,8 @@
 ---
-sort: 6
+sort: 2
 ---
 
-# 단일행 함수
+# [Oracle] 단일행 함수
 
 ## 단일행함수 VS 복수행함수
 - 단일행함수 : 한줄씩(ROW) 바꿔나가는 함수
@@ -13,11 +13,11 @@ sort: 6
 - 복수행함수 : 전체 ROW를(열)를 대상으로 데이터를 가져오는 함수
   - 예) 부서번호가 10번은 사람들을 찾아라 => 부서번호 열 전체를 검색해야함
 
-# 단일행함수
+## 단일행함수
 
 ![](https://lh3.googleusercontent.com/proxy/k3q9SNd9nbMY29J3SMyqbqbr3hKmiHz_SqxWkjvUJbj9Lzz23lJuvAevoJeqoIZzVvitigqCNeXvLTVIAQKYSnHdZf01A4Ksr8lKtiD2cReGiWw)
 
-# 문자 함수
+## 문자 함수
 
 ![](https://kookyungmin.github.io/image/Oracle_image/Oracle_image_72.png)
 
@@ -71,17 +71,20 @@ SQL> SELECT SUBSTR('HELLO ORACLE',1,3) FROM DUAL;
 HEL
 ```
 
+## 예시
+
+- emp테이블에서 12월 입사한 사원의 모든 정보 출력
 
 ```
--- emp테이블에서 12월 입사한 사원의 모든 정보 출력
 SELECT * FROM emp WHERE SUBSTR(hiredate,4,2)>=12;
 ```
 
-    - 날짜 자릿수 셀때 ```/```도 포함해야함
-      - 예) 81/12/03 에서 일자만 추출하려면 7번째글자(0)부터 2글자 출력해야함
+  - 날짜 자릿수 셀때 ```/```도 포함해야함
+    - 예) 81/12/03 에서 일자만 추출하려면 7번째글자(0)부터 2글자 출력해야함
+
+- 3일에 입사한 사원의 모든 정보 출력
 
 ```
--- 3일에 입사한 사원의 모든 정보 출력
 SQL> SELECT * FROM emp WHERE SUBSTR(hiredate,7,2)=03;
 
      EMPNO ENAME                JOB                       MGR HIREDATE        SAL       COMM     DEPTNO
@@ -90,10 +93,9 @@ SQL> SELECT * FROM emp WHERE SUBSTR(hiredate,7,2)=03;
       7902 FORD                 ANALYST                  7566 81/12/03       3000                    20
 ```
 
-
+- 이름중에 3번째 자리가 A인 사원의 모든 정보 출력
 
 ```
--- 이름중에 3번째 자리가 A인 사원의 모든 정보 출력
 방법1) SQL> SELECT * FROM emp WHERE SUBSTR(ename,3,1)='A'; // 1은 생략 가능
 방법2) SQL> SELECT * FROM emp WHERE  ename LIKE '__A%';
 
@@ -111,8 +113,9 @@ SQL> SELECT * FROM emp WHERE SUBSTR(hiredate,7,2)=03;
     - 찾을 문자의 순서가 첫번째일경우(첫번째 나오는 '찾을문자'의 자리수를 출력하고 싶다면), 1은 생략 가능
   - 출력내용 : 찾은 문자의 자릿수
 
+- 첫번째글자부터 검색해서 3번째로 나오는 슬러시(/)의 자릿수를 구해라
+
 ```
--- 첫번째글자부터 검색해서 3번째로 나오는 슬러시(/)의 자릿수를 구해라
 SQL> SELECT INSTR('A/B/C/D/E/F','/',1,3) FROM DUAL;
 
 INSTR('A/B/C/D/E/F','/',1,3)
@@ -125,7 +128,7 @@ INSTR('A/B/C/D/E/F','/',1,3)
 
 ## 기타함수
 
-- ```LENGTH``` : 문자의 갯수 카운트
+### ```LENGTH``` : 문자의 갯수 카운트
 
 ```
 SQL> SELECT LENGTH('HONG'),LENGTH('홍길동') FROM DUAL;
@@ -135,8 +138,10 @@ LENGTH('HONG') LENGTH('홍길동')
              4                3
 ```
 
+
+- 이름 글자수가 5자리인 사람들 출력
+
 ```
--- 이름 글자수가 5자리인 사람들 출력
 SQL> SELECT ename FROM emp WHERE LENGTH(ename)=5;
 
 ENAME
@@ -152,7 +157,7 @@ JAMES
 ```
 
 
-- ```LENGTHB``` : Byte 갯수 카운트
+### ```LENGTHB``` : Byte 갯수 카운트
   - 한글은 한글자를 3Byte로 인식
   - 자주 쓰이지 않음
 
@@ -168,7 +173,7 @@ LENGTHB('HONG') LENGTHB('홍길동')
 
 
 
-- ```LPAD``` : 왼쪽부터 글자를 대체
+### ```LPAD``` : 왼쪽부터 글자를 대체
 
 ```
 SQL> SELECT LPAD('SCOTT',10,'*') FROM DUAL;
@@ -178,7 +183,7 @@ LPAD('SCOTT',10,'*')
 *****SCOTT
 ```
 
-- ```RPAD``` : 오른쪽부터 글자를 대체
+### ```RPAD``` : 오른쪽부터 글자를 대체
 
 ```
 -- 이름 앞 두글자만 제외하고 *로 표시하기
@@ -205,10 +210,12 @@ HELLO ORACLE########
 
 
 
-- TRIM, RTRIM, LTRIM의 특징
+### TRIM, RTRIM, LTRIM
   - 지정한 문자를 제거할 수 있다.
   - 형식 : LTRIM('문자열' , '지정한문자')
-  - ```TRIM``` : 양쪽 시작부터 다른 문자나오기 전까지 지정한 문자를 제거
+  
+#### ```TRIM``` : 양쪽 시작부터 다른 문자나오기 전까지 지정한 문자를 제거
+  
 ```
 - 양쪽의 B삭제하기
 방법(1) SQL> SELECT TRIM('B' FROM'BBBaaAAB') FROM DUAL;
@@ -225,7 +232,7 @@ RTRIM('AAAAAAAAAAAAABAAAABBB','A')
 aaaaaaaaAAAAABAAAABBB
 ```
 
-  - ```LTRIM``` : 왼쪽 시작부터 다른 문자나오기 전까지 지정한 문자를 제거
+#### ```LTRIM``` : 왼쪽 시작부터 다른 문자나오기 전까지 지정한 문자를 제거
 
 ```
 -- 맨왼쪽부터 다른글자가 나오기 전까지 A를 모두 제거하기
@@ -256,7 +263,7 @@ ALLEN                LLEN
 ADAMS                DAMS
 ```
 
-# 숫자함수
+## 숫자함수
 - ```ROUND(실수,자리수)``` : 반올림함수
   - ROUND(실수,n)이면 소수점 이하 (n+1)번째 숫자를 보고 올림할지, 내림할지 결정해주기
     - (예) ```ROUND(23.3354, 2)``` : 소수점 이하 두자리 자르기 , 소수점 3자리에서 반올림
@@ -290,6 +297,7 @@ TRUNC(12.7859,3) TRUNC(987.654,2) TRUNC(987.654,0)
 
 - ```CEIL(실수)``` : 올림함수
   - (예) CEIL(12.34) = 13
+
 ```
 SQL> SELECT CEIL(12.7859),CEIL(987.654),CEIL(987.65445) FROM DUAL;
 
@@ -297,11 +305,13 @@ CEIL(12.7859) CEIL(987.654) CEIL(987.05445)
 ------------- ------------- ---------------
            13           988             988
 ```
+
   - 자리수 필요없음 : (오류) CEIL(12.34,0) , CEIL(12.34,1)
   - 소수점 이하 첫번째 자리가 ```0```이면 오류
 
 
   - 총 페이지수 구할때 자주 쓰임
+  
 ```
 SELECT CEIL(COUNT(*)/10.0) FROM emp;
 > 2 : 10개씩 나눴을 때 총 2페이지
@@ -313,6 +323,7 @@ SELECT CEIL(COUNT(*)/7.0) FROM genie_music;
 
 
 - ```MOD(정수,정수)``` : 나머지구하기 (Java:```%```)
+
 ```
 -- 10을 3으로 나누기
 SELECT MOD(10,3) FROM DUAL;
@@ -325,6 +336,7 @@ SELECT empno,ename FROM emp WHERE MOD(empno,2)=0 ORDER BY empno;
 # 날짜함수
 - ```SYSDATE``` : 시스템의 날짜, 시간
   - 숫자로 출력되기 때문에 어제, 오늘, 내일날짜 출력이 가능함
+  
 ```
 -- 시스템의 오늘 날짜 읽기
 SELECT SYSDATE FROM DUAL;
@@ -339,11 +351,12 @@ SELECT SYSDATE-1 "어제",SYSDATE+1 "내일",SYSDATE+2 as "모레" FROM DUAL;
 ```
 
 - ```MONTHS_BETWEEN``` : 기간의 개월수
+
 ```
 양식 : SELECT ename,MONTHS_BETWEEN(최신날짜,이전날짜)
 ```
 
-
+```
 SELECT ename,ROUND(MONTHS_BETWEEN(SYSDATE,hiredate),0),ROUND(MONTHS_BETWEEN(SYSDATE,hiredate),0)/12
 FROM emp;
 
@@ -352,10 +365,11 @@ FROM emp;
 
 
 SELECT ename,ROUND(MONTHS_BETWEEN(SYSDATE,hiredate),0) "근속기간",TRUNC(ROUND(MONTHS_BETWEEN(SYSDATE,hiredate),0)/12)) "연차" FROM emp;
-
+```
 
 - ```ADD_MONTHS(기준일,N)``` : 개월추가
   - 기준일로부터 N개월 후의 날짜를 구해줌
+  
 ```
 -- 지금부터 6개월 후의 날짜 구하기
 SELECT ADD_MONTHS(SYSDATE,6) FROM DUAL;
@@ -388,6 +402,7 @@ SELECT LAST_DAY(SYSDATE) FROM DUAL;
 # 변환함수
 - ```TO_CHAR(원래 날짜,'원하는 패턴')``` : (1) 날짜를 문자열로 변환
 1. 년 : YYYY , YY , RRRR , RR , YEAR
+
 ```
 SELECT SYSDATE, TO_CHAR(SYSDATE,'YYYY') "YYYY",TO_CHAR(SYSDATE,'RRRR') "RRRR",TO_CHAR(SYSDATE,'YY') "YY",TO_CHAR(SYSDATE,'RR') "RR",TO_CHAR(SYSDATE,'YEAR') "YEAR" FROM DUAL;
 
@@ -397,6 +412,7 @@ SYSDATE  YYYY     RRRR     YY   RR   YEAR
 ```
 
 2. 월 : MM , MON , MONTH
+
 ```
 SELECT SYSDATE,TO_CHAR(SYSDATE,'MM') "MM", TO_CHAR(SYSDATE,'MON') "MON", TO_CHAR(SYSDATE,'MONTH') "MONTH" FROM DUAL;
 
@@ -406,6 +422,7 @@ SYSDATE  MM   MON              MONTH
 ```
 
 3. 일 : DAY , DD , DDTH
+
 ```
 SELECT SYSDATE,TO_CHAR(SYSDATE,'DAY') "DAY", TO_CHAR(SYSDATE,'DD') "DD", TO_CHAR(SYSDATE,'DDTH') "DDTH" FROM DUAL;
 
@@ -416,6 +433,7 @@ SYSDATE  DAY                      DD   DDTH
 ```
 
 4. 시간 : HH ,  HH24
+
 ```
 SELECT SYSDATE,TO_CHAR(SYSDATE,'HH') "HH", TO_CHAR(SYSDATE,'HH24') "HH24" FROM DUAL;
 
@@ -426,6 +444,7 @@ SYSDATE  HH   HH24
 
 
 5. 분 : MI
+
 ```
 SELECT SYSDATE,TO_CHAR(SYSDATE,'MI') "MI" FROM DUAL;
 
@@ -435,6 +454,7 @@ SYSDATE  MI
 ```
 
 6. 초 : SS
+
 ```
 -- 시스템의 현재시간 구하기
 SELECT SYSDATE,TO_CHAR(SYSDATE,'SS') "SS" FROM DUAL;
@@ -474,6 +494,7 @@ SELECT ename, sal, TO_CHAR(sal,'L9,999,999') FROM emp;
 
 - ```TO_NUMBER('문자열','바꿀형식')``` : 정수로 변환
   - 정수로 바꾸려면, 뒤에 ```'9,999'``` 작성하면 됨
+  
 ```
 SQL> SELECT TO_NUMBER('5,000','9,999') FROM DUAL;
 
@@ -496,6 +517,7 @@ TO_NUMBER('300','9,999')
 - ```NVL(공백칼럼,대체어)``` : NULL값을 다른 값으로 변경
 - 대체어로 공백( ```''``` ) 주면 null값으로 인식해 오류발생
 - 공백으로 대체하려면 꼭 ```' '```으로 작성해야함
+
 ```
 SELECT zipcode,sido,gugun,dong,NVL(bunji,' ') FROM zipcode;
 ```
@@ -506,6 +528,7 @@ SELECT ename,sal, NVL(comm,0), sal+NVL(comm,0) FROM emp;
 
 - ```DECODE(컬럼명,값1,출력값1,값2,출력값2...)``` : 다중 IF문
   - 자바에서 switch문과 유사함
+  
 ```
 -- 부서번호마다 부서명 매겨주기
 SQL> SELECT ename, deptno, DECODE(deptno,10,'영업부',20,'개발부',30,'기획부') as dname FROM emp;
@@ -523,6 +546,7 @@ SELECT title, DECODE(state,'유지','-','상승','▲','하강','▼') as "상�
 
 - ```CASE``` : 선택문
   - 형식 : ```CASE WHEN 바꿀값 THEN 변경값 ..... END```
+  
 ```
 SELECT ename,CASE WHEN deptno=10 THEN '영업부' WHEN deptno=20 THEN '개발부' WHEN deptno=30 THEN '기획부' END "dname" FROM emp;
 
@@ -543,6 +567,7 @@ SELECT title, CASE WHEN state='유지' THEN '-' WHEN state='상승' THEN '▲' W
 
 # 정규식(Regular Expression) 함수
 - ```RANK() OVER(ORDER BY 컬럼명)```
+
 ```
 -- 월급 순위 매기기(내림차순, 중복순위 건너뛰기)
 SQL> SELECT ename,sal,RANK() OVER(ORDER BY sal DESC) as rank FROM emp;
@@ -568,6 +593,7 @@ MILLER                     1300          6
 ```
 
 - ```DENSE_RANK() OVER(ORDER BY 컬럼명)```
+
 ```
 -- 공동 4위가 2명이라면, 다음 순위를 5번으로 매기기(올림차순)
 SELECT ename,sal,DENSE_RANK() OVER(ORDER BY sal) as rank FROM emp;
@@ -615,8 +641,6 @@ WHEN sal BETWEEN 3001 AND 4000 THEN 'LV.4'
 WHEN sal BETWEEN 4001 AND 5000 THEN 'LV.5'
 END "연봉레벨"
 FROM emp;
-
-
 ```
 
 
