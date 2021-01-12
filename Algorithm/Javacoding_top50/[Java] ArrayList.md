@@ -54,6 +54,24 @@ ArrayList<Integer> list = new ArrayList<Integer>(Arrays.asList(1,2,3));
 System.out.println(list.size()); //list 크기 : 3
 ```
 
+
+### get() : index값 가져오기
+
+- ArrayList의 get(index) 메소드를 사용하면 ArrayList의 원하는 index의 값이 리턴된다. 
+
+- 전체출력은 대부분 for문을 통해서 출력을하고 Iterator를 사용해서 출력을 할수도 있다.
+
+
+```java
+ArrayList<Integer> list = new ArrayList<Integer>(Arrays.asList(1,2,3));
+
+System.out.println(list.get(0));//0번째 index 출력
+		
+for(Integer i : list) { //for문을 통한 전체출력
+    System.out.println(i);
+}
+```
+
 ### Iterator, ListIterator : 출력하기
 
 - Iterator<E> 인터페이스
@@ -127,8 +145,8 @@ while (iter.hasPrevious()) {
 |int nextIndex()	|다음 next() 메소드를 호출하면 반환될 요소의 인덱스를 반환함.|
 |E previous()	|리스트의 이전 요소를 반환하고, 커서(cursor)의 위치를 역방향으로 이동시킴.|
 |int previousIndex()	|다음 previous() 메소드를 호출하면 반환될 요소의 인덱스를 반환함.|
-void remove()	next()나 previous() 메소드에 의해 반환된 가장 마지막 요소를 리스트에서 제거함. (선택적 기능)
-void set(E e)	next()나 previous() 메소드에 의해 반환된 가장 마지막 요소를 전달된 객체로 대체함. (선택적 기능)
+void remove()	|next()나 previous() 메소드에 의해 반환된 가장 마지막 요소를 리스트에서 제거함. (선택적 기능)|
+void set(E e)	|next()나 previous() 메소드에 의해 반환된 가장 마지막 요소를 전달된 객체로 대체함. (선택적 기능)|
 
 
 
