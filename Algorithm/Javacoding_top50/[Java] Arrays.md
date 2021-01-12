@@ -11,6 +11,10 @@
 
 - 배열은 한번 생성되면 크기가 변하지 않는다.
 
+- 선언 : 스택1영역에만 올라감
+
+- 초기화 : 메모리(힙 영역) 할당
+
 ### 1.1 toString(), equals()  - 1차원 배열의 출력과 비교
 
 - 출력 : `toString()`
@@ -58,6 +62,8 @@ System.out.println(Arrays.deepEquals(str2D,str2D2));
 
 ### 1.3 copyOf() , copyOfRange() - 배열의 복사
 - 배열의 생성과 복사를 함께 해줌
+
+- copy된 배열은 새로운 heap영역에 생성된다.
 
 - `copyOf()` : 끝범위만 지정 가능 
 
