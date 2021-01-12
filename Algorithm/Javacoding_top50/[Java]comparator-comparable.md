@@ -1,4 +1,4 @@
-# [java] Comparator VS Comparable
+# [Java] Comparator VS Comparable
 
 
 ## 1. Comparable
