@@ -1,4 +1,4 @@
-# [java] Arrays
+# [Java] Arrays
 
 ## 1. Arrays 
 - Arrays클래스에는 배열을 다루기 편리한 메서드(static)가 정의되어 있다.
