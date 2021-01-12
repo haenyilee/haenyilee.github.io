@@ -2,7 +2,7 @@
 sort: 0
 ---
 
-# [Oracle] 개요-및-특징
+# [Oracle] 개요 및 특징
 
 ## Run SQL Command Line
 
