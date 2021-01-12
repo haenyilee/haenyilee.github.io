@@ -1,5 +1,5 @@
 ---
-sort: 100
+sort: 
 ---
 
 # [Oracle] ROLL UP / GROUP BY /CUBE
