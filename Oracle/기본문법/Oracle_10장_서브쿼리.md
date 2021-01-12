@@ -1,8 +1,8 @@
 ---
-sort: 15
+sort: 10
 ---
 
-# 서브쿼리
+# [Oracle] 서브쿼리
 - 책 : 443page
 
 ## Sub Query가 생겨난 이유
