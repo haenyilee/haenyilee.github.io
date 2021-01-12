@@ -1,8 +1,8 @@
 ---
-sort: 9
+sort: 5
 ---
 
-# DDL
+# [Oracle] DDL
 
 ## SQL의 종류
 
