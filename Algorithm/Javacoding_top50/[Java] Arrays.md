@@ -3,6 +3,12 @@
 ## 1. Arrays 
 - Arrays클래스에는 배열을 다루기 편리한 메서드(static)가 정의되어 있다.
 
+- Arrays 클래스의 모든 메소드는 클래스 메소드(static method)이므로, 객체를 생성하지 않고도 바로 사용할 수 있습니다.
+
+- 이 클래스는 java.util 패키지에 포함되므로, 반드시 import 문으로 java.util 패키지를 불러오고 나서 사용해야 합니다.
+
+- 배열의 생성 : `int[] arr = new int[1000];`
+
 ### 1.1 toString(), equals()  - 1차원 배열의 출력과 비교
 
 - 출력 : `toString()`
