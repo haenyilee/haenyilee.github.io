@@ -1,3 +1,3 @@
-# Baekjoon / 1단계
+# Baekjoon
 
 {% include list.liquid all=true %}
