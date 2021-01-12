@@ -160,3 +160,5 @@ List list = new ArrayList(Arrays.asList(1, 2, 3, 4, 5)); // list = [1, 2, 3, 4, 
 
 ## 출처
 - 자바의 정석 3판 : 11장, 624page ~ 627page
+
+- [tcpschool-Arrays](http://tcpschool.com/java/java_api_arrays)
