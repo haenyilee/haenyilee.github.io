@@ -24,6 +24,6 @@ Jekyll 은 GitHub Pages 의 내부 엔진으로 있기 때문에, Jekyll 페이�
 ## Gem이란?
 
 - 언어마다 사용하기 쉬운 방식으로 만들어 놓은 것들을 보통 라이브러리 또는 프레임워크라고 한다.
-- 이때, 레일즈가 프레임워크라고 한다면, 잼은 라이브러리다. ((라이브러리와 프레임워크)[https://www.redhat.com/ko/topics/cloud-native-apps/what-is-a-Java-framework])
+- 이때, 레일즈가 프레임워크라고 한다면, 잼은 라이브러리다. ([라이브러리와 프레임워크](https://www.redhat.com/ko/topics/cloud-native-apps/what-is-a-Java-framework))
 - 그래서 루비 프로그래머는 gem을 이용해서 간단하게 원하는 프로그램을 설치할 수 있으며, 자신이 개발한 프로그램을 간단하게 배포할 수 있다.
 - 기본적으로 오픈소스로 배포되어 있다.
