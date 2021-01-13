@@ -9,7 +9,18 @@
 
 ## thema fork하기
 
-- 원하는 테마의 github repository로 접속해서 우측 상단의 fork 버튼을 . ([minimal-mistakes테마의 git repository](https://github.com/mmistakes/minimal-mistakes))
+```tip
+- 나는 minimal-mistakes테마를 사용했지만, 구글에 jekyll theme 를 검색해보면 다양한 테마가 나온다
+
+- 본인의 블로그 사용 목적에 맞게 원하는 테마를 선택 후 사용하면 된다.
+
+- 단, thema마다 코드가 상이하여 방식이 다를 수도 있다. 
+
+- 이 포스팅으로 통해 흐름만 잡고, 본인이 선택한 jekyll theme의 README.MD 파일을 꼼꼼히 살펴보길 바란다. 
+
+```
+
+- 원하는 테마의 github repository로 접속해서 우측 상단의 fork 버튼을 클릭한다.. ([minimal-mistakes테마의 git repository](https://github.com/mmistakes/minimal-mistakes))
 ![image](https://user-images.githubusercontent.com/77392444/104453556-f455c480-55e7-11eb-9c9f-49b5057533f1.png)
 
 - repository명칭을 (본인의 git계정 이름).github.io로 변경해준다.
