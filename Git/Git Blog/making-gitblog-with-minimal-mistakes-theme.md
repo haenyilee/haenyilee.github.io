@@ -10,7 +10,7 @@
 
 - 이 중 가장 쉽고 빠르게 적용할 수 있는 `forking/directly copying` 방식으로 깃허브 블로그를 개설하는 방법을 소개하겠다. 
 
-## thema fork하기
+## theme fork하기
 
 ```tip
 - 나는 minimal-mistakes테마를 사용했지만, 구글에 jekyll theme 를 검색해보면 다양한 테마가 나온다
