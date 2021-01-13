@@ -15,6 +15,7 @@
 - repository명칭을 (본인의 git계정 이름).github.io로 변경해준다.
 	- settings 클릭
 ![image](https://user-images.githubusercontent.com/77392444/104453821-59a9b580-55e8-11eb-9042-05e333344ac7.png)
+
 	- repository 명 변경
 ![image](https://user-images.githubusercontent.com/77392444/104453957-8b228100-55e8-11eb-995d-8447f46eab21.png)
 
@@ -37,7 +38,7 @@
 - 현재 페이지와 코드 부분을 비교하면서 수정하고 싶은 부분을 수정한다
 	- 앞에 # 이 붙으면 주석처리 되기 때문에, 설정하고 싶은 내용은 주석처리를 해제해 준다(단축키 : Ctrl + /)
 
-![image](https://user-images.githubusercontent.com/77392444/104456530-279a5280-55ec-11eb-8caa-06c3125802f0.png)
+	![image](https://user-images.githubusercontent.com/77392444/104456530-279a5280-55ec-11eb-8caa-06c3125802f0.png)
 
 - 블로그에 접속해보면 `_config.yml`에 설정한대로 변경되어 있는 것을 확인할 수 있다. 
 	- Github Pages는 build되기까지 시간이 소요되기 때문에 5분 정도 기다려주면 변경되어 있다. 
