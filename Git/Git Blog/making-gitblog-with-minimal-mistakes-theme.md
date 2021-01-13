@@ -66,22 +66,23 @@
 	- 근데 _pages 폴더가 보이지 않는다.
 	- _pages 폴더를 만들어주기 위해 로컬 레파지토리에서 폴더를 생성해 주기로 한다. 
 
-```note
-- 나는 [C:\Git]디렉토리에 로컬 레파지토리를 생성해주기로 했다.
-- git bash 명령어
-	- git init
-	- git clone https://github.com/hennylee/hennylee.github.io.git
-- 만약 해당 방법을 모른다면, github repository clone하는 방법을 구글링해보자
-```
+	```note
+	- 나는 [C:\Git]디렉토리에 로컬 레파지토리를 생성해주기로 했다.
+	- git bash 명령어
+		- git init
+		- git clone https://github.com/hennylee/hennylee.github.io.git
+	- 만약 해당 방법을 모른다면, github repository clone하는 방법을 구글링해보자
+	```
 
 	- _pages폴더와 _post폴더를 생성해준뒤 원격 레파지토리에 반영한다. 
 
-```note
-- github 내의 원격  repository로 변경내역 반영하는 명령어
-	- git add . 
-	- git commit -m "_pages, _post Directory Add" 
-	- git push origin master 
-```
+	```note
+	- github 내의 원격  repository로 변경내역 반영하는 명령어
+		- git add . 
+		- git commit -m "_pages, _post Directory Add" 
+		- git push origin master 
+	```
+	
 	- github에 접속해보면 해당 디렉토리가 생겨난 것을 확인할 수 있다. 
 	
 
