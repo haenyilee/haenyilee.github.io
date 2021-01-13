@@ -1,8 +1,9 @@
 ---
-sort: 2
+sort: 
 ---
 
 # Prose.io 연동하여 마크다운 형식 편집하기
+
 
 ## 장단점
 - 장점
@@ -12,4 +13,4 @@ sort: 2
   - 포스팅의 속성을 설정하는 상단 부분은 편집이 불가하다.
   
 ## 출처 및 가입방법
-- 출처 : [Prose.io 연동으로 포스팅을 쉽게! 배포는 더 쉽게!](https://theorydb.github.io/envops/2019/05/04/envops-blog-posting-prose-io/)
+- [Prose.io 연동으로 포스팅을 쉽게! 배포는 더 쉽게!](https://theorydb.github.io/envops/2019/05/04/envops-blog-posting-prose-io/)
