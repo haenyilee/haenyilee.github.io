@@ -44,7 +44,7 @@
 ![image](https://user-images.githubusercontent.com/77392444/104457285-2fa6c200-55ed-11eb-9794-b006a4a9f4e8.png)
 
 
-- repository의 `_data` 폴더에 접근한다. 
+- repository의 `_data` 폴더에 접근한다. <br>
 ![image](https://user-images.githubusercontent.com/77392444/104457384-582ebc00-55ed-11eb-8c06-4ae8aa66cfd9.png)
 
 - navigation.yml 파일에 접근한다. 
@@ -54,7 +54,6 @@
 ![image](https://user-images.githubusercontent.com/77392444/104457632-a5129280-55ed-11eb-95de-7660503dbb23.png)
 
 - 원하는 내역으로 수정한다.
-
 ![image](https://user-images.githubusercontent.com/77392444/104457877-f28eff80-55ed-11eb-8aba-bae9e80b39ed.png)
 
 - 블로그로 접속해보면 navigation 부분이 수정된 것을 확인할 수 있다.
