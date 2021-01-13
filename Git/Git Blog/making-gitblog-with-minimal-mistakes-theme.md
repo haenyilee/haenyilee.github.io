@@ -1,3 +1,7 @@
+---
+sort: 2
+---
+
 # minimal-mistakes테마로 gitblog만들기
 
 - 깃 블로그를 만드는 대표적 방법은 크게 3가지로 나뉜다.
