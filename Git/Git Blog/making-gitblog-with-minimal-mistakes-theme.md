@@ -35,7 +35,7 @@
 - setting로 다시 돌아가서 github page가 만들어졌는지 확인한다.
 ![image](https://user-images.githubusercontent.com/77392444/104454263-f3716280-55e8-11eb-852e-bac477fb4700.png)
 
-```tip
+```warning
 - 만일, 빨간색 글씨 부분이 나오지 않는다면 branch가 master로 되어있지 않은지 확인한다.
 - 해당 문구가 나오면 `https://(본인계정명).github.io` 주소를 클릭한다.
 ```
