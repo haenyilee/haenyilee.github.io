@@ -9,8 +9,7 @@
 
 ## thema fork하기
 
-- 원하는 테마의 github repository로 접속한다.
-	- [minimal-mistakes테마의 git repository](https://github.com/mmistakes/minimal-mistakes)
+- 원하는 테마의 github repository로 접속해서 우측 상단의 fork 버튼을 . ([minimal-mistakes테마의 git repository](https://github.com/mmistakes/minimal-mistakes))
 ![image](https://user-images.githubusercontent.com/77392444/104453556-f455c480-55e7-11eb-9c9f-49b5057533f1.png)
 
 - repository명칭을 (본인의 git계정 이름).github.io로 변경해준다.
