@@ -4,7 +4,7 @@ sort: 3
 
 # ws-live-study
 
-![image](https://user-images.githubusercontent.com/66978721/104397466-35ba8580-5590-11eb-9233-b1bd742bc366.png) {center}
+![image](https://user-images.githubusercontent.com/66978721/104397466-35ba8580-5590-11eb-9233-b1bd742bc366.png)
 
 
 - 참여방식 : https://github.com/whiteship/live-study
