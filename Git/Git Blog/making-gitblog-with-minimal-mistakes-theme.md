@@ -17,7 +17,7 @@
 
 - 본인의 블로그 사용 목적에 맞게 원하는 테마를 선택 후 사용하면 된다.
 
-- 단, thema마다 코드가 상이하여 설정방식이 다를 수 밖에 없다. 
+- 단, theme마다 코드가 상이하여 설정방식이 다를 수 밖에 없다. 
 
 - 이 포스팅으로 통해 흐름만 잡고, 본인이 선택한 jekyll theme의 README.MD 파일을 꼼꼼히 살펴보길 바란다. 
 ```
@@ -27,10 +27,10 @@
 
 - repository명칭을 (본인의 git계정 이름).github.io로 변경해준다.
 	- settings 클릭
-![image](https://user-images.githubusercontent.com/77392444/104453821-59a9b580-55e8-11eb-9042-05e333344ac7.png)
+	![image](https://user-images.githubusercontent.com/77392444/104453821-59a9b580-55e8-11eb-9042-05e333344ac7.png)
 
 	- repository 명 변경
-![image](https://user-images.githubusercontent.com/77392444/104453957-8b228100-55e8-11eb-995d-8447f46eab21.png)
+	![image](https://user-images.githubusercontent.com/77392444/104453957-8b228100-55e8-11eb-995d-8447f46eab21.png)
 
 - setting로 다시 돌아가서 github page가 만들어졌는지 확인한다.
 ![image](https://user-images.githubusercontent.com/77392444/104454263-f3716280-55e8-11eb-852e-bac477fb4700.png)
