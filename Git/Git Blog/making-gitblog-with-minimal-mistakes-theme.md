@@ -61,7 +61,7 @@
 - 상단 버튼을 클릭해 내용을 수정한다.
 ![image](https://user-images.githubusercontent.com/77392444/104457632-a5129280-55ed-11eb-95de-7660503dbb23.png)
 
-- 원하는 내역으로 수정한다.
+- 원하는 내역으로 수정한다. (*/tag/가 아니라 /tags/로 수정)
 ![image](https://user-images.githubusercontent.com/77392444/104457877-f28eff80-55ed-11eb-8aba-bae9e80b39ed.png)
 
 - 블로그로 접속해보면 navigation 부분이 수정된 것을 확인할 수 있다.
