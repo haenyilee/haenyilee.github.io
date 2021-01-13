@@ -53,10 +53,11 @@
 
 - 현재 페이지와 코드 부분을 비교하면서 수정하고 싶은 부분을 수정한다
 
+![image](https://user-images.githubusercontent.com/77392444/104456530-279a5280-55ec-11eb-8caa-06c3125802f0.png)
+
 ```tip
 - 앞에 # 이 붙으면 주석처리 되기 때문에, 설정하고 싶은 내용은 주석처리를 해제해 준다 (* 단축키 : `Ctrl + /`)
 ```
-	![image](https://user-images.githubusercontent.com/77392444/104456530-279a5280-55ec-11eb-8caa-06c3125802f0.png)
 
 - 블로그에 접속해보면 `_config.yml`에 설정한대로 변경되어 있는 것을 확인할 수 있다. 
 
