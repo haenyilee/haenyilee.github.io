@@ -26,5 +26,5 @@ plugins:
   
 google:
   analytics: G-8PC93WST9C
-#   gtag:
+  gtag: G-RLCK2LGGJL
   adsense: ca-pub-2279095319488155
