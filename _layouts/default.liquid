@@ -21,6 +21,7 @@ layout: tasks/compress
     <body class="container">
         {%- include templates/sidebar.liquid -%}
         {%- include templates/content.liquid -%}
+        {%- include templates/disqus_comments.liquid-%}
         {%- include templates/addons.liquid -%}
         {%- include extra/body.html -%}
         {%- include rest/script.liquid -%}
@@ -29,6 +30,5 @@ layout: tasks/compress
         {%- include common/google_gtag.liquid-%}
         {%- include common/google_adsense.liquid-%}
         {%- include common/google_analytics.liquid-%}
-        {%- include common/disqus_comments.liquid-%}
     </body>
 </html>
