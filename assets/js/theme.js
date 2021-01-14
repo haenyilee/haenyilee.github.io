@@ -264,7 +264,7 @@ $(".toc ul")
       toggleCurrent(link);
       return false;
     });
-    //link.prepend(expand);
+    link.prepend(expand);
   });
 
 $(".markdown-body :header").append(function () {
