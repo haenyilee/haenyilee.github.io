@@ -1,4 +1,8 @@
-<br>
+{%- include common/rest/workdir.liquid %}
+
+{%- if workdir contains "README" -%}
+
+{%- else -%}
         <script src="https://utteranc.es/client.js"
                 repo="haenyilee/blog-comments"
                 issue-term="pathname"
@@ -7,6 +11,9 @@
                 crossorigin="anonymous"
                 async>
         </script>
+{%- endif -%}
+
+        
         
 
 {% comment %} prev and next {% endcomment %}
