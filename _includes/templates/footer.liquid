@@ -1,8 +1,5 @@
 {%- include common/rest/workdir.liquid %}
-
-{%- if workdir contains "README" -%}
-
-{%- else -%}
+{%- unless workdir contains "README" -%}
         <script src="https://utteranc.es/client.js"
                 repo="haenyilee/blog-comments"
                 issue-term="pathname"
