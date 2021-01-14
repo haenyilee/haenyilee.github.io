@@ -23,3 +23,5 @@ plugins:
   - jemoji
   - jekyll-avatar
   - jekyll-mentions
+  
+google_analytics: 'G-8PC93WST9C'
