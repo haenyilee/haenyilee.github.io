@@ -24,5 +24,6 @@ plugins:
   - jekyll-avatar
   - jekyll-mentions
   
-site: 
-  google_analytics: 'G-8PC93WST9C'
+google:
+  gtag:
+  adsense: ca-pub-2279095319488155
