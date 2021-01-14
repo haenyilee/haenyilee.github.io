@@ -1,8 +1,9 @@
 ---
-sort: 2
+sort: 
 ---
 
 # Prose.io 연동하여 마크다운 형식 편집하기
+
 
 ## 장단점
 - 장점
@@ -10,6 +11,8 @@ sort: 2
 - 단점
   - 폴더명이 한글로 되어 있을 경우 새로 고침을 한 번 더 눌러줘야 하는 불편함이 있다. 
   - 포스팅의 속성을 설정하는 상단 부분은 편집이 불가하다.
+  - commit message를 꼭 작성해주어야한다.
+  -여러가지 이유로 github에서 직접 작성/수정하는 것이 편해서 지금은 사용하지 않고 있다.
   
 ## 출처 및 가입방법
-- 출처 : [Prose.io 연동으로 포스팅을 쉽게! 배포는 더 쉽게!](https://theorydb.github.io/envops/2019/05/04/envops-blog-posting-prose-io/)
+- [Prose.io 연동으로 포스팅을 쉽게! 배포는 더 쉽게!](https://theorydb.github.io/envops/2019/05/04/envops-blog-posting-prose-io/)

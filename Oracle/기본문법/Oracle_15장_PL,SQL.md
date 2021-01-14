@@ -1,8 +1,8 @@
 ---
-sort: 16
+sort: 15
 ---
 
-# PL,SQL
+# [Oracle] PL,SQL
 
 ## PL/SQL이란
 - Procedural Language

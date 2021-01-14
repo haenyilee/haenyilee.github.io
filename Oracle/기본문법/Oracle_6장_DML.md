@@ -1,12 +1,12 @@
 ---
-sort: 10
+sort: 6
 ---
 
-# DML
+# [Oracle] DML
 
 - 자바에서 DML은 AutoCommit
 
-# INSERT : 새로운 데이터 입력하기
+## INSERT : 새로운 데이터 입력하기
 ### INSERT 유형
 1. [전체 추가](#전체-추가)
 2. [특정 칼럼만 추가](#원하는-데이터만-추가)
@@ -246,7 +246,7 @@ SELECT * FROM emp;
 
 
 
-# UPDATE
+## UPDATE
 - 데이터수정
 - 형식 : 
 ```
@@ -289,7 +289,7 @@ WHERE job='MANAGER';
 ```
 
 
-# DELETE
+## DELETE
 - 데이터 삭제
 ```
 DELETE FROM table_name
@@ -361,8 +361,23 @@ ERROR at line 1:ORA-00947: not enough values
 
 
 
-# MERGE
+## MERGE
+- [MERGE문](https://thebook.io/006696/part01/ch03/04/)
 
+- MERGE문은 조건을 비교해서 테이블에 해당 조건에 맞는 데이터가 없으면 INSERT, 있으면 UPDATE를 수행하는 문장이다. 
 
-# UPDATE 조인
-# TRANSACTION 관리하기
+- 특정 조건에 따라 어떤 때는 INSERT를, 또 다른 경우에는 UPDATE문을 수행해야 할 때, 과거에는 해당 조건을 처리하는 로직을 별도로 작성해야 했지만, 
+MERGE문이 나온 덕분에 이제 한 문장으로 처리할 수 있게 되었다.
+
+```
+MERGE INTO [스키마.]테이블명
+    USING (update나 insert될 데이터 원천)
+         ON (update될 조건)
+WHEN MATCHED THEN
+       SET 컬럼1 = 값1, 컬럼2 = 값2, ...
+WHERE update 조건
+       DELETE WHERE update_delete 조건
+WHEN NOT MATCHED THEN
+       INSERT (컬럼1, 컬럼2, ...) VALUES (값1, 값2,...)
+       WHERE insert 조건;
+```

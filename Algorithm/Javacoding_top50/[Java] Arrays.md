@@ -3,6 +3,18 @@
 ## 1. Arrays 
 - Arrays클래스에는 배열을 다루기 편리한 메서드(static)가 정의되어 있다.
 
+- Arrays 클래스의 모든 메소드는 클래스 메소드(static method)이므로, 객체를 생성하지 않고도 바로 사용할 수 있습니다.
+
+- 이 클래스는 java.util 패키지에 포함되므로, 반드시 import 문으로 java.util 패키지를 불러오고 나서 사용해야 합니다.
+
+- 배열의 생성 : `int[] arr = new int[1000];`
+
+- 배열은 한번 생성되면 크기가 변하지 않는다.
+
+- 선언 : 스택1영역에만 올라감
+
+- 초기화 : 메모리(힙 영역) 할당
+
 ### 1.1 toString(), equals()  - 1차원 배열의 출력과 비교
 
 - 출력 : `toString()`
@@ -50,6 +62,8 @@ System.out.println(Arrays.deepEquals(str2D,str2D2));
 
 ### 1.3 copyOf() , copyOfRange() - 배열의 복사
 - 배열의 생성과 복사를 함께 해줌
+
+- copy된 배열은 새로운 heap영역에 생성된다.
 
 - `copyOf()` : 끝범위만 지정 가능 
 
@@ -152,3 +166,5 @@ List list = new ArrayList(Arrays.asList(1, 2, 3, 4, 5)); // list = [1, 2, 3, 4, 
 
 ## 출처
 - 자바의 정석 3판 : 11장, 624page ~ 627page
+
+- [tcpschool-Arrays](http://tcpschool.com/java/java_api_arrays)

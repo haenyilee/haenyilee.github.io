@@ -1,4 +1,4 @@
-# [Java]Stack
+# [Java] Stack
 
 ## What is Stack?
 

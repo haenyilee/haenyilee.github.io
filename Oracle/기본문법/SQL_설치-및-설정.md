@@ -1,14 +1,25 @@
 ---
-sort: 3
+sort:
 ---
 
-# Oracle 설치
+# [Oracle] 설치
 
+## 순서
 1. 오라클 설치
 2. 오라클 Developer 설치
 3. 퀀텀db설치
 
-# 데이터베이스 꼭 알고 있어야 하는 자바 개념
-1. try~catch
-2. ~VO
-3. ArrayList
+## 계정연결
+
+```
+→ conn sys/happy as sysdba
+
+(happy는 설치시 적은 Password)/ hr : ID
+
+→ alter user hr identified by happy account unlock;
+
+→ conn hr/happy
+
+```
+
+- 출처 : [[Oracle] Oracle 이렇게만 설치하세요!](https://qh5944.tistory.com/38?category=307548)

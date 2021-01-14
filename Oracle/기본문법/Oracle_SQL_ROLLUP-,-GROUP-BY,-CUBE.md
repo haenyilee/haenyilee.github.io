@@ -1,8 +1,8 @@
 ---
-sort: 14
+sort: 
 ---
 
-# ROLL UP-GROUP BY-CUBE
+# [Oracle] ROLL UP / GROUP BY /CUBE
 
 ### ```GROUP BY``` : 단순히 모아서 출력
 ```

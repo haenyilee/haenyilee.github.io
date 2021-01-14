@@ -1,8 +1,8 @@
 ---
-sort: 5
+sort: 1
 ---
 
-# SQL언어
+# [Oracle] DML_SELECT
 
 ![](https://media.geeksforgeeks.org/wp-content/uploads/sql-commands.jpg)
 

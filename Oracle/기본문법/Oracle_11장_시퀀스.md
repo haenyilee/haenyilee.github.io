@@ -1,8 +1,10 @@
 ---
-sort: 13
+sort: 11
 ---
 
-# 시퀀스
+# [Oracle] 시퀀스
+
+## 시퀀스란?
 
 - 자동 증가번호에 쓰임
 - MAX+1 대신 사용 가능한 것
@@ -12,19 +14,23 @@ sort: 13
 
 - 테이블과 시퀀스는 별도임
 
-- 이름 : table명_column명_seq
+- 명명규칙 : table명_column명_seq
 
 - 삭제 : DROP SEQUENCE 시퀀스명;
+
 ```
 DROP SEQUENCE seq_no;
 ```
+
 - 형식
+
 ```
 CREATE SEQUENCE seq_no(시퀀스명)
 옵션 /* 시작번호 , 증가값 , CACHE , CYCLE , MAX , MIN */
 ```
 
 - 예시
+
 ```
 CREATE SEQUENCE seq_no
 START WITH 1
@@ -35,13 +41,13 @@ NOCYCLE;
 
 
 
-## START WITH
+### START WITH
 - 시작번호
 
-## INCREMENT BY
+### INCREMENT BY
 - 증가값, 증가폭
 
-## NOCYCLE | CYCLE
+### NOCYCLE | CYCLE
 - CYCLE
 - 1~10까지 사용 => 1로 돌아옴
 - PRIMARY KEY에 자주 쓰임
@@ -53,29 +59,30 @@ NOCYCLE;
 - NOCYCLE
 
 
-## CACHE | NOCACHE
+### CACHE | NOCACHE
 - 미리 20정도를 저장 => NOCACHE
 
-## MAX_VALUE , MIN_VALUE
+### MAX_VALUE , MIN_VALUE
 - 사용 빈도가 거의 없다.
 
-## seq.nextval
+### seq.nextval
 - 다음 값을 가지고 온다
 
 ```
 SELECT seq_no.nextval FROM DUAL;
 ```
 
-## seq.currval 
+### seq.currval 
 - 현재 값을 가지고 온다
 
 ```
 SQL> SELECT seq_no.currval FROM DUAL;
 ```
 
-#### 시퀀스 예제
+## 시퀀스 예제
 
-- 테이블 추가하기(제약조건)
+### 테이블 추가하기(제약조건)
+
 ```sql
 CREATE TABLE jsp_board(
 no NUMBER,
@@ -89,7 +96,8 @@ CONSTRAINT jb_no_pk PRIMARY KEY(no)
 );
 ```
 
-- 시퀀스 추가하기
+### 시퀀스 추가하기
+
 ```sql
 CREATE SEQUENCE jb_no_seq
 START WITH 1
@@ -98,7 +106,8 @@ NOCYCLE
 NOCACHE;
 ```
 
-- no에 시퀀스 적용해서 데이터값 집어넣기
+### no에 시퀀스 적용해서 데이터값 집어넣기
+
 ```sql
 INSERT INTO jsp_board(no,name,subject,content,pwd)
 VALUES(jb_no_seq.nextval,'홍길동','JSP처음수업','사용법(JavaScript,CSS)','1234');
