@@ -10,25 +10,61 @@
 
 
 ## 자바에서 예외 처리 방법 (try, catch, throw, throws, finally)
-### try ~ catch
+### 예외 복구 : try ~ catch (~ finally)
 
-- 형식
-  - `e.printStackTrace();` : 예외 발생 당시, 호출스택에 있던 메서드정보와 예외 메시지를 Console에 출력해준다.
-  - `System.Out.Println(e.getMessage);` : 예외클래스의 인스턴스에 저장되어 있는 메시지를 얻을 수 있다.
+- 예외가 발생하면 JVM은 즉시 프로그램을 중단하고, 해당 예외가 등록된 클래스를 객체로 만들어 Throw한다.
+
+- 이 때, JVM이 throw한 예외를 잡는 것이 try ~ catch구문이다. 
+
 
 ```java
 try {
     // 예외가 발생할 가능성이 있는 코드
 } catch (Exception1 e) {
     // Exception1이 발생했을 때 처리하는 코드
-    e.printStackTrace();
-    System.Out.Println(e.getMessage);
+} finally {
+  // 예외가 발생하던 안하던 무조건 실행되는 코드
 }
 ```
 
-- 멀티 Catch 블록
+- 예외가 발생한 경우와 발생하지 않은 경우 처리 흐름이 다르다.
 
-  - 아래와 같이 오류를 처리한다면 그 안에서 중복 코드들이 발생하는 문제가 있다.
+- 예외가 발생하면 JVM이 즉시 프로그램 진행을 멈추기 때문이다. 
+
+![image](https://user-images.githubusercontent.com/66978721/104605537-fab86f00-56c1-11eb-95fa-a1afb2b382ad.png)
+
+
+
+
+
+
+### 예외처리 회피
+
+- 예외처리를 자신이 담당하지 않고 자신을 호출한 쪽으로 던져버니는 것이다. 
+
+- 보통 throws문으로 선언하거나 catch문에서 rethrow한다. 
+
+
+### 예외 전환
+
+- 예외 상황에 대해 의미가 좀 더 명확한 예외로 재정의하여 throws한다. 
+
+- 보통 전환하려는 예와에 원래의 예외를 담는 중첩 예외를 만들어서 예외를 던지는 것이 좋다. 
+
+### throw와 throws
+
+- throw와 throws는 모두 예외를 던지는 것이다. 
+
+- 다만 throw는 Exception을 발생시킬 때 사용하는 키워드이며, 최상위 예외 클래스인 Exeption에 대해서 예외처리를 하면 거의 모든 예외가 잡힌다.
+
+- throws는 메소드를 정의할 때 사용하며, 메소드에서 발생하는 Exception의 종류를 명시적으로 정의할 때 사용한다. 
+
+
+
+
+### 멀티 Catch 블록
+
+  - 아래와 같이 오류를 처리한다면 예외처리 안에서 중복 코드들이 발생하는 문제가 있다.
 
 ```java
 // JDK 1.7 이전
@@ -89,7 +125,7 @@ try {
 }
 ```
 
-- 형식
+- try with resources를 사용하게 되면 예외가 발생 시, 자동으로 `close()`를 호출 후 catch문장을 수행한다. 
 
 ```java
 try(FileOutputStream out = new FileOutputStream("exFile.txt")) { 
@@ -99,8 +135,77 @@ try(FileOutputStream out = new FileOutputStream("exFile.txt")) {
 }
 ```
 
+- `close()`메서드 호출 후, 예외를 반납하던 중에 예외가 발생하면 CloseException이다.
+
+- try with resouces를 통해 자동으로 자원을 반납하기 위해서는 AutoCloseable 인터페이스를 구현해야 한다. 
+
+```java
+public interface AutoCloseable { 
+  void close() throws Exception; // 예외발생 시, JVM이 close()메소드를 호출한다
+}
+```
+
+
+
 
 ## 자바가 제공하는 예외 계층 구조
+
+![image](https://user-images.githubusercontent.com/66978721/104606672-5b947700-56c3-11eb-9749-064e8e545e84.png)
+
+- Throwable은 모든 예외의 조상이 되는 Exception클래스와 모든 오류의 조상이 되는 Error 클래스의 부모 클래스이다. 
+
+- Throwable에는 아래 메소드들이 포함되어 있다. 
+  - `void printStackTrace()` : throwable 객체와 Standard Error Stream에서 해당 객체의 Stack Trace를 출력한다. 
+  즉, 예외가 발생하게 되면 Stack 메모리 영역에 저장된 Stack Frame을 JVM이 Pop하면서 Stack Trace를 출력한다. 
+
+  - `String getMessage()` : throwable 객체에 대한 자세한 내용을 문자열로 반환한다. 
+  
+  - `String toString()` : 해당 throwable 객체에 대한 간략한 내용을 문자열로 반환한다. 
+
+- Exception은 크게 RuntimeException와 Execption로 나뉜다. 
+
+
+### RuntimeException과 기타 Execption
+
+- RuntimeException은 Java Virtual Machine의 정상적인 작동 중에 발생할 수 있는 예외의 슈퍼 클래스이다.
+
+- RuntimeException 및 해당 서브 클래스는 unchecked exception이다. 
+
+- unchecked exception은 메서드 또는 생성자의 실행에 의해 발생한다.
+
+- 명시적 예외처리를 꼭 할 필요는 없다. 
+
+- 예외 발생 시 트랜젝션 rollback한다. 
+
+- RuntimeException 클래스
+
+  - ArrayIndexOutOfBoundException: 배열에서 존재하지 않는 인덱스 가리킬때
+
+  - ArithmeticException: 정수를 0으로 나누려고 하는 경우
+
+  - ClassCastException: 클래스간의 형변환을 잘못한 경우 
+
+  - NumberFormatException: 숫자데이터 문제데이터 등을 넣었을 때
+
+  - NullPointerException: null 객체의 레퍼런스를 이용하거나 null 객체의 인스턴스 메소드를 호출하는 등
+
+
+
+- 기타 Execption은 대부분 checked exception이다.
+- checked exception은 반드시 예외 처리를 해야 한다. (try~catch를 통해)
+
+- checked exception은 컴파일 단계에서 확인 가능하다.
+
+- checked exception은 예외 발생 시 트랜잭션 roll back 하지 않는다.
+
+- RuntimeException을 제외한 Exception의 하위 클래스이다. 
+
+- Execption클래스
+  -ClassNotFoundException: 실수로 클래스의 이름을 잘못 적은 경우
+
+  -DataFormatException: 입력한 데이터 형식이 잘못된 경우
+
+  -FileNotFoundException: 존재하지 않는 파일의 이름 입력 시  
 
 
 
@@ -127,10 +232,50 @@ try(FileOutputStream out = new FileOutputStream("exFile.txt")) {
 - Exception은 프로그래머가 미리 발생할 것을 예측하고 방지할 수 있다.
 
 
-## RuntimeException과 RE가 아닌 것의 차이는?
+
+
+
+
 ## 커스텀한 예외 만드는 방법
 
+- 커스텀한 예외처리는 throw에 직접 작성한 클래스 파일을 지정하는 것이다. 
+
+
+## Exception chaining, Java8
+- 만약 한 예외가 다른 예외에 엮여있을 때, 이것은 그 예외의 원인이 된다. 
+
+- Throwable 클래스의 생성자가 이런 연쇄적 예외 기능을 지원한다. 
+
+|Method|Description|
+|------|-----------|
+|getCause()|	Returns the original cause of the exception|
+|initCause(Throwable cause)|	Sets the cause for invoking the exception|
+
+```java
+public class Example {
+   public static void main(String[] args) {
+      try {
+         // 새로운 예외 객체 e를 생성한다.
+         ArithmeticException e = new ArithmeticException("Apparent cause");
+         // 예외의 원인을 설정한다.
+         e.initCause(new NullPointerException("Actual cause"));
+         // 예외를 던진다.
+         throw e;
+      } catch(ArithmeticException e) {
+         // 예외의 실제 원인을 출력한다.
+         System.out.println(e.getCause());
+         // 출력결과 : java.lang.NullPointerException: Actual cause
+      }
+   }
+}
+```
+
+- 이런 기능이 왜 생겨났을까?
 
 ## 출처
 
 - [try ~ catch ~ resource](https://dololak.tistory.com/67?category=636500)
+- [자바 예외 계층구조](https://jiwontip.tistory.com/5)
+- [예외 처리방법](https://steady-hello.tistory.com/55)
+- [커스텀 예외](https://qdgbjsdnb.tistory.com/33)
+- [Exception chaining in Java](https://www.tutorialspoint.com/exception-chaining-in-java)
