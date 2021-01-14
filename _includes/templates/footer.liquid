@@ -1,5 +1,4 @@
 <hr>
-{% comment %}
         <script src="https://utteranc.es/client.js"
                 repo="haenyilee/blog-comments"
                 issue-term="pathname"
@@ -8,7 +7,9 @@
                 crossorigin="anonymous"
                 async>
         </script>
-{% endcomment %}
+        
+
+{% comment %} prev and next {% endcomment %}
 {%- if page.url != "/search.html" and page.url != "/404.html" -%}
     {%- if next or prev -%}
         <div class="navigation-bottom d-flex flex-justify-between py-3" role="navigation" aria-label="footer navigation">
