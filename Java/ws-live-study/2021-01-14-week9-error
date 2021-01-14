@@ -47,7 +47,7 @@ try {
 ```
 
 - 이러한 문제를 해결하기 위해 JDK 1.7부터는 멀티캐치문(`|`)을 제공하고 있다.
-  - 만약 
+  - 이때, 다형성에 의해 부모 예외로 자손 예외를 처리할 수 있기 때문에 부모-자식 관계의 예외 클래스는 멀티캐치 블록을 사용할 수 없다.
   
 ```java
 // JDK 1.7이상
@@ -58,13 +58,53 @@ try{
 }
 ```
 
+### try ~ with ~ resources
 
-### 
+- 입출력을 수행하는 도중 예외가 발생하면 입출력을 수행하던 stream이 open되어진 상태로 남겨지고, 
+close되지 않은 스트림이 쌓여 자원부족으로 프로그램이 멈추게된
 
+- 메모리가 점점 고갈되는 현상을 `메모리 누수(Memory Leak)`이라고 한다.
 
-### 
+- 이러한 예외를 처리하기 위해 도입된 것이 `try ~ with ~ resources` 문이다.
+
+- 만일, 기존 방식으로 예외처리를 하게 되면 아래와 같이 소스가 복잡해지기 때문에 JDK 1.7부터 생긴 기능이다.
+
+```java
+FileOutputStream out = null; 
+
+try { 
+  out = new FileOutputStream("exFile.txt"); //...이후 입출력 로직 처리... 
+} catch (FileNotFoundException e) { 
+  e.printStackTrace(); 
+} finally { 
+  if(out != null) { 
+    //스트림이 null인지 체크 
+    try { 
+      out.close(); //close 하다가 예외가 발생할 수 있다. 
+    } 
+    catch (IOException e) { 
+       e.printStackTrace(); 
+    } 
+  } 
+}
+```
+
+- 형식
+
+```java
+try(FileOutputStream out = new FileOutputStream("exFile.txt")) { 
+  //...이후 입출력 로직 처리... 
+} catch(IOException e){ 
+  e.printStackTrace(); 
+}
+```
+
 
 ## 자바가 제공하는 예외 계층 구조
+
+
+
+## Exception과 Error의 차이는?
 
 ### 컴파일에러
 - 컴파일 과정에서 일어나는 에러
@@ -78,8 +118,6 @@ try{
 
 - 대개 런타임에러는 Exception과 Error 두 가지로 나뉜다.
 
-## Exception과 Error의 차이는?
-
 ### Error
 - Error는 주로 JVM이나 하드웨어 등 기반 시스템의 문제로 발생한다.
 
@@ -91,3 +129,8 @@ try{
 
 ## RuntimeException과 RE가 아닌 것의 차이는?
 ## 커스텀한 예외 만드는 방법
+
+
+## 출처
+
+- [try ~ catch ~ resource](https://dololak.tistory.com/67?category=636500)
