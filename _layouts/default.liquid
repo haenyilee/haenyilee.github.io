@@ -17,8 +17,7 @@ layout: tasks/compress
         {%- include rest/styles.liquid -%}
         {%- include common/script.liquid -%}
         {%- include extra/head.html -%}
-        <script data-ad-client="pub-2279095319488155" async src="https://pagead2.googlesyndication.com/
-pagead/js/adsbygoogle.js"></script>
+        {%- include common/google_analytics.liquid-%}
     </head>
     <body class="container">
         {%- include templates/sidebar.liquid -%}
@@ -30,6 +29,6 @@ pagead/js/adsbygoogle.js"></script>
         {%- include common/mathjax.liquid-%}
         {%- include common/google_gtag.liquid-%}
         {%- include common/google_adsense.liquid-%}
-        {%- include common/google_analytics.liquid-%}
+        
     </body>
 </html>
