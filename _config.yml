@@ -25,5 +25,6 @@ plugins:
   - jekyll-mentions
   
 google:
-  gtag:
+  analytics: G-8PC93WST9C
+#   gtag:
   adsense: ca-pub-2279095319488155
