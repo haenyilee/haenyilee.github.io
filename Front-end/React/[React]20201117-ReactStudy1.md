@@ -1,3 +1,7 @@
+---
+comments: true
+---
+
 # React로 Recipe 출력하기
 
 - 20201117-AOPstudy3 프로젝트에 제작함
