@@ -1,4 +1,4 @@
-# 파이썬 기초 문법 포인트
+# [Python] 파이썬 기초 문법 포인트
 
 6개월동안 자바 배우면서 흐릿해진 파이썬의 기억을 상기하고자 정리합니다...★
 
@@ -147,9 +147,14 @@ cnt(fruits)
 
 ```warning
 - str과 int는 + 로 연결할 수 없다.
-```python
+
+`
 print(person['name']+person['age'])
 TypeError: can only concatenate str (not "int") to str
+`
+
+```
+
 
 ```python
 people = [{'name': 'bob', 'age': 20},
@@ -170,6 +175,4 @@ def count(name):
 
 # bob의 나이 출력하기        
 print(count('bob'))
-```
-
 ```
