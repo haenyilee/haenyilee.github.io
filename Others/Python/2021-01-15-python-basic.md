@@ -2,9 +2,9 @@
 
 6개월동안 자바 배우면서 흐릿해진 파이썬의 기억을 상기하고자 정리합니다...★
 
-## 자료형
+## 1. 자료형
 
-### bool
+### 1.1 bool
 
 - True, False가 있다. 
 
@@ -17,7 +17,7 @@ a = 4 > 2 # True
 not a     # False
 ```
 
-### list
+### 1.2 list
 
 ```python
 a_list = []
@@ -41,7 +41,7 @@ a + b  # 리스트 연결 : [3, 3, 1, 5, 2]
 a * 2  # 리스트 n번 반복 : [3, 3, 1, 3, 3, 1]
 ```
 
-### dictionary
+### 1.3 dictionary
 
 ```python
 a_dict = {}
@@ -54,7 +54,7 @@ a_dict['height'] = 178
 # a_dict['height']의 값은? 178
 ```
 
-#### list와 dict 
+### 1.4 list와 dict 
 
 ```python
 people = [{'name':'bob','age':20},{'name':'carry','age':38}]
@@ -69,9 +69,9 @@ people.append(person)
 # people[2]['name']의 값은? 'john'
 ```
 
-## 함수
+## 2. 함수
 
-### 함수의 정의
+### 2.1 함수의 정의
 
 ```python
 def f(x):
@@ -80,7 +80,7 @@ def f(x):
 f(2)  # 7
 ```
 
-### 함수의 응용
+### 2.2 함수의 응용
 
 ```python
 def sum_all(a,b,c):
@@ -94,7 +94,7 @@ result = sum_all(1,2,3) + mul(10,10)
 # result라는 변수의 값은? 6 + 100 = 106
 ```
 
-## 조건문
+## 3. 조건문
 
 - if (~ elif) ~ else 형식으로 사용한다. 
 
@@ -110,7 +110,7 @@ def is_adult(age):
 is_adult(30)              # 성인입니다
 ```
 
-## 반복문
+## 4. 반복문
 
 - 파이썬에서 반복문은 리스트의 요소들을 하나씩 꺼내쓰는 형태이다. 
 
@@ -126,9 +126,9 @@ for fruit in fruits:
 # 귤
 ```
 
-## 연습문제
+## 5. 연습문제
 
-### 리스트에 담긴 과일의 갯수 세기
+### 5.1 리스트에 담긴 과일의 갯수 세기
 
 ```python
 fruits = ['사과', '배', '배', '감', '수박', '귤', '딸기', '사과', '배', '수박']
@@ -143,7 +143,7 @@ def cnt(target):
 cnt(fruits)
 ```
 
-### 사람의 나이 출력하기
+### 5.2 사람의 나이 출력하기
 
 ```warning
 - str과 int는 + 로 연결할 수 없다.
