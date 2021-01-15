@@ -9,6 +9,14 @@
 
 - 한번 생성되면 크기가 변하지 않는 배열과는 달리 ArrayList는 객체들이 추가되어 저장 용량(capacity)을 초과한다면 자동으로 부족한 크기만큼 저장 용량(capacity)이 늘어난다. 
 
+```tip
+### List와 ArrayList의 차이
+- List는 인터페이스
+- ArrayList는 클래스
+- 그래서 List를 통해 ArrayList를 생성하면 유연성있게 사용할 수 있다. 
+- `ArrayList<Object> list = new ArrayList<>();`는 ArrayList 이외에는 사용할 수 없게 된다. 
+- `List<Object> list = new ArrayList<>();` 는 ArrayList 외에도 LinkedList를 사용할 수 있기 때문에 flexibility 효과를 가진다.
+```
 
 ## ArrayList의 메소드
 
@@ -76,17 +84,15 @@ for(Integer i : list) { //for문을 통한 전체출력
 
 ### Iterator, ListIterator : 출력하기
 
-- Iterator<E> 인터페이스
+#### Iterator<E> 인터페이스
 
-  - 자바의 컬렉션 프레임워크는 컬렉션에 저장된 요소를 읽어오는 방법을 Iterator 인터페이스로 표준화하고 있습니다.
+- 자바의 컬렉션 프레임워크는 컬렉션에 저장된 요소를 읽어오는 방법을 Iterator 인터페이스로 표준화하고 있습니다.
 
-  - Collection 인터페이스에서는 Iterator 인터페이스를 구현한 클래스의 인스턴스를 반환하는 iterator() 메소드를 정의하여 각 요소에 접근하도록 하고 있습니다.
+- Collection 인터페이스에서는 Iterator 인터페이스를 구현한 클래스의 인스턴스를 반환하는 iterator() 메소드를 정의하여 각 요소에 접근하도록 하고 있습니다.
 
-  - 따라서 Collection 인터페이스를 상속받는 List와 Set 인터페이스에서도 iterator() 메소드를 사용할 수 있습니다.
+- 따라서 Collection 인터페이스를 상속받는 List와 Set 인터페이스에서도 iterator() 메소드를 사용할 수 있습니다.
 
- 
-
-- 연결 리스트를 반복자(iterator)를 사용하여 순회하는 예제
+- **연결 리스트를 반복자(iterator)를 사용하여 순회하는 예제**
 
 ```java
 LinkedList<Integer> lnkList = new LinkedList<Integer>();
@@ -103,18 +109,17 @@ while (iter.hasNext()) {
 }
 ```
 
-- ListIterator
+#### ListIterator
 
-  - ListIterator 인터페이스는 Iterator 인터페이스를 상속받아 여러 기능을 추가한 인터페이스입니다.
+- ListIterator 인터페이스는 Iterator 인터페이스를 상속받아 여러 기능을 추가한 인터페이스입니다.
 
-  - Iterator 인터페이스는 컬렉션의 요소에 접근할 때 한 방향으로만 이동할 수 있습니다.
+- Iterator 인터페이스는 컬렉션의 요소에 접근할 때 한 방향으로만 이동할 수 있습니다.
 
-  - 하지만 JDK 1.2부터 제공된 ListIterator 인터페이스는 컬렉션 요소의 대체, 추가 그리고 인덱스 검색 등을 위한 작업에서 양방향으로 이동하는 것을 지원합니다.
+- 하지만 JDK 1.2부터 제공된 ListIterator 인터페이스는 컬렉션 요소의 대체, 추가 그리고 인덱스 검색 등을 위한 작업에서 양방향으로 이동하는 것을 지원합니다.
 
-  - 단, ListIterator 인터페이스는 List 인터페이스를 구현한 List 컬렉션 클래스에서만 listIterator() 메소드를 통해 사용할 수 있습니다.
+- 단, ListIterator 인터페이스는 List 인터페이스를 구현한 List 컬렉션 클래스에서만 listIterator() 메소드를 통해 사용할 수 있습니다.
 
-
-- 리스트 반복자를 사용하여 리스트의 모든 요소를 각각 순방향과 역방향으로 출력하는 예제
+- **리스트 반복자를 사용하여 리스트의 모든 요소를 각각 순방향과 역방향으로 출력하는 예제**
 
 ```java
 LinkedList<Integer> lnkList = new LinkedList<Integer>();
@@ -140,15 +145,17 @@ while (iter.hasPrevious()) {
 
 |메소드|설명|
 |-----|-----|
-|void add(E e)	|해당 리스트(list)에 전달된 요소를 추가함. (선택적 기능)|
+|void add(E e)		|해당 리스트(list)에 전달된 요소를 추가함. (선택적 기능)|
 |boolean hasNext()	|이 리스트 반복자가 해당 리스트를 순방향으로 순회할 때 다음 요소를 가지고 있으면 true를 반환하고, 더 이상 다음 요소를 가지고 있지 않으면 false를 반환함.|
 |boolean hasPrevious()	|이 리스트 반복자가 해당 리스트를 역방향으로 순회할 때 다음 요소를 가지고 있으면 true를 반환하고, 더 이상 다음 요소를 가지고 있지 않으면 false를 반환함.|
-|E next()	|리스트의 다음 요소를 반환하고, 커서(cursor)의 위치를 순방향으로 이동시킴.|
+|E next()		|리스트의 다음 요소를 반환하고, 커서(cursor)의 위치를 순방향으로 이동시킴.|
 |int nextIndex()	|다음 next() 메소드를 호출하면 반환될 요소의 인덱스를 반환함.|
-|E previous()	|리스트의 이전 요소를 반환하고, 커서(cursor)의 위치를 역방향으로 이동시킴.|
+|E previous()		|리스트의 이전 요소를 반환하고, 커서(cursor)의 위치를 역방향으로 이동시킴.|
 |int previousIndex()	|다음 previous() 메소드를 호출하면 반환될 요소의 인덱스를 반환함.|
-void remove()	|next()나 previous() 메소드에 의해 반환된 가장 마지막 요소를 리스트에서 제거함. (선택적 기능)|
-void set(E e)	|next()나 previous() 메소드에 의해 반환된 가장 마지막 요소를 전달된 객체로 대체함. (선택적 기능)|
+void remove()		|next()나 previous() 메소드에 의해 반환된 가장 마지막 요소를 리스트에서 제거함. (선택적 기능)|
+void set(E e)		|next()나 previous() 메소드에 의해 반환된 가장 마지막 요소를 전달된 객체로 대체함. (선택적 기능)|
+
+
 
 
 
