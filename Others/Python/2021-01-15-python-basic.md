@@ -125,3 +125,32 @@ for fruit in fruits:
 # 감
 # 귤
 ```
+
+## 연습문제
+
+### 리스트에 담긴 과일의 갯수 세기
+
+```python
+fruits = ['사과', '배', '배', '감', '수박', '귤', '딸기', '사과', '배', '수박']
+
+
+def cnt(target):
+    result = 0;
+    result = len(target)
+    return print(result)
+
+
+cnt(fruits)
+```
+
+### 사람의 나이 출력하기
+
+```warning
+- str과 int는 + 로 연결할 수 없다.
+
+```python
+print(person['name']+person['age'])
+TypeError: can only concatenate str (not "int") to str
+```
+
+```
