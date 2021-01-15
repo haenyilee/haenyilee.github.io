@@ -37,8 +37,19 @@ PriorityQueue<String> priorityQueue = new PriorityQueue<>();
 PriorityQueue<String> priorityQueue = new PriorityQueue<>(Collections.reverseOrder());
 ```
 
+- 배열을 담은 Queue
 
-### 추가
+```java
+// intervals : [[3,4], [5,6],[2,7]]
+Queue<MrInterval> minHeap = new PriorityQueue<>(intervals.length, (a,b)->a.start-b.start); // 우선순위는 람다식으로 구현
+```
+
+
+### 추가 : add(e), offer(e)
+
+- add(e) : 예외 발생
+
+- offer(e) : false 리턴
 
 ```java
 priorityQueue.add(1);     // priorityQueue 값 1 추가
@@ -46,15 +57,22 @@ priorityQueue.add(2);     // priorityQueue 값 2 추가
 priorityQueue.offer(3);   // priorityQueue 값 3 추가
 ```
 
-### 삭제
+### 삭제 : poll(), remove(), clear()
+
+- poll() : null 발생
+
+- remove() : NoSuchElementException 예외 발생
+
 
 ```java
-priorityQueue.poll();       // priorityQueue에 첫번째 값을 반환하고 제거 비어있다면 null
+priorityQueue.poll();       // priorityQueue에 첫번째 값을 반환하고 제거, 비어있다면 null
 priorityQueue.remove();     // priorityQueue에 첫번째 값 제거
 priorityQueue.clear();      // priorityQueue에 초기화
 ```
 
-### 루트 노드값 출력
+### 루트 노드값 출력 : peek()
+
+- peek() : null 반환
 
 ```java
 PriorityQueue<Integer> priorityQueue = new PriorityQueue<>();//int형 priorityQueue 선언
