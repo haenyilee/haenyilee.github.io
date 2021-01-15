@@ -147,10 +147,29 @@ cnt(fruits)
 
 ```warning
 - str과 int는 + 로 연결할 수 없다.
-
 ```python
 print(person['name']+person['age'])
 TypeError: can only concatenate str (not "int") to str
 ```
+```
 
+```python
+people = [{'name': 'bob', 'age': 20},
+          {'name': 'carry', 'age': 38},
+          {'name': 'john', 'age': 7},
+          {'name': 'smith', 'age': 17},
+          {'name': 'ben', 'age': 27}]
+
+# 각 사람의 이름과 나이 출력해보기
+for person in people:
+    print(person['name'], person['age'])
+
+# 사람의 나이를 구하기
+def count(name):
+    for person in people:
+        if name == person['name']:
+            return person['age']
+
+# bob의 나이 출력하기        
+print(count('bob'))
 ```
