@@ -151,7 +151,6 @@ cnt(fruits)
 print(person['name']+person['age'])
 TypeError: can only concatenate str (not "int") to str
 ```
-```
 
 ```python
 people = [{'name': 'bob', 'age': 20},
@@ -172,4 +171,6 @@ def count(name):
 
 # bob의 나이 출력하기        
 print(count('bob'))
+```
+
 ```
