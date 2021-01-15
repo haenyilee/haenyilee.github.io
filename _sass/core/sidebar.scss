@@ -63,8 +63,8 @@
       }
       // parent links
       > a {
-        .fa-plus-square-o {
-          @extend .fa-minus-square-o;
+        .fa-plus {
+          @extend .fa-minus;
         }
       }
     }
