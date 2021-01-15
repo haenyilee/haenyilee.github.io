@@ -257,7 +257,7 @@ $(".toc ul")
   .siblings("a")
   .each(function () {
     let link = $(this);
-    let expand = $('<i class="fa fa-plus-square-o"></i>');
+    let expand = $('<i class="fa fa-plus"></i>');
 
     expand.on("click", function (e) {
       e.stopPropagation();
@@ -268,7 +268,7 @@ $(".toc ul")
   });
 
 $(".markdown-body :header").append(function () {
-  return `<a href="#${this.id}" class="anchor"><i class="octicon-link fa fa-link text-blue"></i></a>`;
+  return `<a href="#${this.id}" class="anchor"><i class="octicon-link fa fa-link text-black"></i></a>`;
 });
 
 $("div.highlighter-rouge").each(function () {
