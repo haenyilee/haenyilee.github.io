@@ -150,7 +150,6 @@ cnt(fruits)
 ```python
 print(person['name']+person['age'])
 TypeError: can only concatenate str (not "int") to str
-```
 
 ```python
 people = [{'name': 'bob', 'age': 20},
