@@ -85,6 +85,18 @@ for(Integer i : list) { //for문을 통한 전체출력
 ### Iterator, ListIterator : 출력하기
 
 #### Iterator<E> 인터페이스
+	
+```java
+public interface Iterator {
+
+	boolean hasNext();
+
+	Object next();
+
+	void remove();
+
+}
+```
 
 - 자바의 컬렉션 프레임워크는 컬렉션에 저장된 요소를 읽어오는 방법을 Iterator 인터페이스로 표준화하고 있습니다.
 
@@ -93,6 +105,18 @@ for(Integer i : list) { //for문을 통한 전체출력
 - 따라서 Collection 인터페이스를 상속받는 List와 Set 인터페이스에서도 iterator() 메소드를 사용할 수 있습니다.
 
 - **연결 리스트를 반복자(iterator)를 사용하여 순회하는 예제**
+
+```java
+ArrayList<Integer> list = new ArrayList<Integer>();
+
+Iterator<Integer> itr = list.iterator();
+
+while( itr.hasNext() )
+{
+	list.get( itr.next() );
+}
+
+```
 
 ```java
 LinkedList<Integer> lnkList = new LinkedList<Integer>();
@@ -104,8 +128,15 @@ lnkList.add(1);
 
 Iterator<Integer> iter = lnkList.iterator();
 
+// while 활용
 while (iter.hasNext()) {
     System.out.print(iter.next() + " ");
+}
+
+// for문 활용
+for( Iterator<Integer> itr = list.iterator(); itr.hasNext(); )
+{
+	list.get( itr.next() );
 }
 ```
 
@@ -156,10 +187,16 @@ void remove()		|next()나 previous() 메소드에 의해 반환된 가장 마지
 void set(E e)		|next()나 previous() 메소드에 의해 반환된 가장 마지막 요소를 전달된 객체로 대체함. (선택적 기능)|
 
 
+```tip
+- Iterator 는 자동으로 Index 를 관리해주기 때문에, 사용에 편리함이 있을수 있으나 Iterator 를 열어보면 객체를 만들어 사용하기 때문에 느릴수 밖에 없다.
 
+- 그러므로, list 의 size를 받아와서 사용것이 더 좋다.
+```
 
 
 ## 출처
 - [[Java] 자바 ArrayList 사용법 & 예제 총정리](https://coding-factory.tistory.com/551)
 
 - [Iterator와 ListIterator](http://www.tcpschool.com/java/java_collectionFramework_iterator)
+
+- [Iterator](https://vaert.tistory.com/108)
