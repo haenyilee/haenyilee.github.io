@@ -18,8 +18,10 @@ point2.add(3); point2.add(5);
 ### Array
 
 ```java
+{% raw %}
 // 선언과 초기화 동시에
 int[][] points = new int[][]{{3,-2},{1,1}};
+{% endraw %}
 ```
 
 ### List<List<Integer>>를 int[][]로 변환하기
