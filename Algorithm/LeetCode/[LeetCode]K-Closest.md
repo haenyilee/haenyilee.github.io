@@ -21,6 +21,7 @@
 ## 코드
 
 ```java
+{% raw %}
 package PriorityQueue;
 
 import java.util.*;
@@ -65,4 +66,5 @@ class Point implements Comparable<Point> {
         return Integer.compare(distance,other.distance);
     }
 }
+{% endraw %}
 ```
