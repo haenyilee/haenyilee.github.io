@@ -21,6 +21,7 @@
 ## 코드
 
 ```java
+
 {% raw %}
 package PriorityQueue;
 
@@ -67,4 +68,5 @@ class Point implements Comparable<Point> {
     }
 }
 {% endraw %}
+
 ```
