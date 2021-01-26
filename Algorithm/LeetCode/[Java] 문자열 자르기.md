@@ -37,7 +37,7 @@ str.substring(3, 6);
 
 ### 마지막 3글자 자르기
 
-``java
+```java
 String str = "ABCDEFG"; 
 String result = str.substring(str.length()-3, str.length());
 System.out.println(result)
