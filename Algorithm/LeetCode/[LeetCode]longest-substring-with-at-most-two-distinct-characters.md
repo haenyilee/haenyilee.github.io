@@ -35,7 +35,7 @@ Explanation: t is "aabbb" which its length is 5.
 
 - Map 키의 값이 1이면 문자의 갯수(Counter)를 증가시킨다.
 
-- 만약 distinct한 문자가 3개 이상 나오면, Pointer를 이동시킨다.
+- 만약 distinct한 문자가 3개 이상 나오면, Start Pointer를 이동시킨다.
 
 - 연속 구간 갯수를 `int maxLength`에 저장한 뒤 `Math.max`를 활용해서 최대값을 구한다.
 
