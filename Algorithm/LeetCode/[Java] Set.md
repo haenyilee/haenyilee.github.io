@@ -25,6 +25,8 @@
 
 - `boolean add(E e)`
 
+- 중복값이 있으면 그 값은 add되지 않는다.
+
 ### remove() : 제거하기
 
 - `boolean remove(Object o)`
