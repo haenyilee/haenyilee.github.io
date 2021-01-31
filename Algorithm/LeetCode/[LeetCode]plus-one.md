@@ -18,7 +18,7 @@
 
 ## 코드
 
-```JAVA
+```java
 import java.util.Arrays;
 
 public class T10_PlusOne {
