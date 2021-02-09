@@ -37,6 +37,8 @@ Explanation: t is "aabbb" which its length is 5.
 
 - 만약 distinct한 문자가 3개 이상 나오면, Start Pointer를 이동시킨다.
 
+![ANY_0209231029](https://user-images.githubusercontent.com/66978721/107375436-17628e00-6b2c-11eb-9e51-6d6a68440e5e.gif)
+
 - 연속 구간 갯수를 `int maxLength`에 저장한 뒤 `Math.max`를 활용해서 최대값을 구한다.
 
 ## 코드
