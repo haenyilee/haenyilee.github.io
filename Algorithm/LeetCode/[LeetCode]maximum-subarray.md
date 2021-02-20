@@ -58,31 +58,31 @@ S[1] = 1
 
 ## 코드
 
-- **nums[0]**
+- **nums[0]**{:.border}
 ![그림1](https://user-images.githubusercontent.com/66978721/108597523-d7719580-73cc-11eb-9ebf-2af5595a604f.png)
-
-- **nums[1]**
+{:.border}
+- **nums[1]**{:.border}
 ![그림2](https://user-images.githubusercontent.com/66978721/108597524-d7719580-73cc-11eb-8e1d-1b634afa7f55.png)
 
-- **nums[2]**
+- **nums[2]**{:.border}
 ![그림3](https://user-images.githubusercontent.com/66978721/108597525-d80a2c00-73cc-11eb-86d6-5eed756cba9e.png)
 
-- **nums[3]**
+- **nums[3]**{:.border}
 ![그림4](https://user-images.githubusercontent.com/66978721/108597526-d80a2c00-73cc-11eb-9e14-e2b8c2d93c6a.png)
 
-- **nums[4]**
+- **nums[4]**{:.border}
 ![그림5](https://user-images.githubusercontent.com/66978721/108597527-d8a2c280-73cc-11eb-8afc-160aa0fdf2fa.png)
 
-- **nums[5]**
+- **nums[5]**{:.border}
 ![그림6](https://user-images.githubusercontent.com/66978721/108597528-d8a2c280-73cc-11eb-9720-8e97d6b198f5.png)
 
-- **nums[6]**
+- **nums[6]**{:.border}
 ![그림7](https://user-images.githubusercontent.com/66978721/108597531-d93b5900-73cc-11eb-9db2-b652c932c82e.png)
 
-- **nums[7]**
+- **nums[7]**{:.border}
 ![그림8](https://user-images.githubusercontent.com/66978721/108597533-d93b5900-73cc-11eb-8e57-d26cbc7b26ee.png)
 
-- **nums[8]**
+- **nums[8]**{:.border}
 ![그림9](https://user-images.githubusercontent.com/66978721/108597521-d6406880-73cc-11eb-89d3-c4a27bd9e215.png)
 
 
