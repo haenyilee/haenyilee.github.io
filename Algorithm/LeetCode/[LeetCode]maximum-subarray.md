@@ -35,7 +35,6 @@
 
 ### 동적계획법(Dynamic Programming)
 ![image](https://user-images.githubusercontent.com/66978721/108597409-40a4d900-73cc-11eb-9d0a-f66ee31c09fc.png)
-
 - 더 간단하게 풀기위해서 동적 계획법을 활용한 [카데인 알고리즘](https://medium.com/@vdongbin/kadanes-algorithm-%EC%B9%B4%EB%8D%B0%EC%9D%B8-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-acbc8c279f29)을 이용하면 시간복잡도 `O(N)`으로 문제를 해결할 수 있다.
 
 - 동적 계획법은 재귀호출이 아닌 작은 문제의 값을 어딘가에 저장해두고 큰 문제를 해결할 때, 재사용하는 방법이라고 볼 수 있다.
