@@ -1,4 +1,4 @@
-# [LeetCode]plus-one
+# [LeetCode] Plus One
 
 ## 문제
 
