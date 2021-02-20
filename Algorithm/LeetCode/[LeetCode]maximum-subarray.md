@@ -34,7 +34,7 @@
 - Middel 구간 합을 구할 때는 for loop가 돌고, Left와 Right를 구할 때는 배열의 갯수만큼 재귀적으로 반복하기 때문에 시간복잡도는 `O(nlog₂n)` 이다. 
 
 ### 동적계획법(Dynamic Programming)
-![image](https://user-images.githubusercontent.com/66978721/107373325-c5206d80-6b29-11eb-967d-341781b58fb5.png)
+![image](https://user-images.githubusercontent.com/66978721/108597409-40a4d900-73cc-11eb-9d0a-f66ee31c09fc.png)
 
 - 더 간단하게 풀기위해서 동적 계획법을 활용한 [카데인 알고리즘](https://medium.com/@vdongbin/kadanes-algorithm-%EC%B9%B4%EB%8D%B0%EC%9D%B8-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-acbc8c279f29)을 이용하면 시간복잡도 `O(N)`으로 문제를 해결할 수 있다.
 
@@ -59,7 +59,15 @@ S[1] = 1
 
 ## 코드
 
-![image](https://user-images.githubusercontent.com/66978721/108196228-34b2e000-715c-11eb-9047-a8ca4692896a.png)
+![그림1](https://user-images.githubusercontent.com/66978721/108597523-d7719580-73cc-11eb-9ebf-2af5595a604f.png)
+![그림2](https://user-images.githubusercontent.com/66978721/108597524-d7719580-73cc-11eb-8e1d-1b634afa7f55.png)
+![그림3](https://user-images.githubusercontent.com/66978721/108597525-d80a2c00-73cc-11eb-86d6-5eed756cba9e.png)
+![그림4](https://user-images.githubusercontent.com/66978721/108597526-d80a2c00-73cc-11eb-9e14-e2b8c2d93c6a.png)
+![그림5](https://user-images.githubusercontent.com/66978721/108597527-d8a2c280-73cc-11eb-8afc-160aa0fdf2fa.png)
+![그림6](https://user-images.githubusercontent.com/66978721/108597528-d8a2c280-73cc-11eb-9720-8e97d6b198f5.png)
+![그림7](https://user-images.githubusercontent.com/66978721/108597531-d93b5900-73cc-11eb-9db2-b652c932c82e.png)
+![그림8](https://user-images.githubusercontent.com/66978721/108597533-d93b5900-73cc-11eb-8e57-d26cbc7b26ee.png)
+![그림9](https://user-images.githubusercontent.com/66978721/108597521-d6406880-73cc-11eb-89d3-c4a27bd9e215.png)
 
 
 ```java
