@@ -12,7 +12,7 @@
 
 
 
-## 해결
+## 풀이법
 
 - 최대부분합을 구하는 문제이다.
 
@@ -55,8 +55,18 @@ S[n] = S[n-1] + n
 S[1] = 1
 ```
 
+## 해결
 
-## 코드
+- newSum에 범위의 합계, max에 최대 범위의 합을 저장해두고 새로운 값과 비교해가면서 값을 변경한다.
+
+- 가장 처음에 newSum과 max에는 배열의 첫번째 값이 저장되어야 한다. 비교할 대상이 없기 때문이다.
+
+- 다음부터는 저장된 newSum와 (subArray + 배열의 i번째 index의 값)를 비교하여 더 큰 값을 newSum에 담는다.
+
+- 이렇게 구해진 newSum값을 기존의 max값과 비교하여 더 큰 값을 max에 담는다.
+
+
+### 알고리즘 순서
 
 - **nums[0]**
 ![그림1](https://user-images.githubusercontent.com/66978721/108597523-d7719580-73cc-11eb-9ebf-2af5595a604f.png){:.border}
@@ -85,6 +95,8 @@ S[1] = 1
 - **nums[8]**
 ![그림9](https://user-images.githubusercontent.com/66978721/108597521-d6406880-73cc-11eb-89d3-c4a27bd9e215.png){:.border}
 
+
+## 코드
 
 ```java
 // 문제 : https://leetcode.com/problems/maximum-subarray/
