@@ -4,11 +4,13 @@
 
 - [Maximum Subarray 문제 링크](https://leetcode.com/problems/maximum-subarray/)
 
+![image](https://user-images.githubusercontent.com/66978721/108598466-202b4d80-73d1-11eb-9607-45ac454c1089.png)
+
 - 숫자로된 배열이 주어졌을 때, 가장 큰 합계를 가지는 연속적인 부분 배열의 합계를 반환해라
 
   - 최소 한 개 이상의 숫자를 포함하는 부분 집합이어야 한다.
 
-  - 배열은 연속적이어야 한다. (`contiguous` : 연속적인)
+  - 배열은 `contiguous`(연속적)이어야 한다.
 
 
 
@@ -25,7 +27,7 @@
 
 - 가능한 모든 부분 배열의 합을 구하고 이에 대한 최대값을 구하기 때문에 시간복잡도는 `O(N³)`이다.
 
-- 이때 prefixSum을 먼저 계산해두고 풀면 시간복잡도가 `O(N²)`이다.
+- 이때 prefixSum을 먼저 계산해두고 for문이 돌때마다 하나씩 빼면서 풀면 시간복잡도가 `O(N²)`이다.
 
 ### 분할 정복(Divide and Conquer)
 
