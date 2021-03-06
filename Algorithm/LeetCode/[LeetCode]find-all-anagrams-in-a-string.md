@@ -31,12 +31,6 @@
     - `String S = "cbaebabacd"`를 P의 길이만큼 Anagram으로 만든 뒤 아스키 코드로 만든 방에 담는다.
     - `S.length()-P.length()+1`까지 순회하면서 Anagram이 P와 일치하는지 확인한다.
     - 이때, `Sarr`과 `Parr`은 배열의 크기만큼 for문을 돌려 각 방의 값이 일치하는지 비교한다.
-    ![image](https://user-images.githubusercontent.com/66978721/110206739-f428c580-7ec2-11eb-8d31-09b7a6121b94.png)
-    ![image](https://user-images.githubusercontent.com/66978721/110206776-1cb0bf80-7ec3-11eb-8b83-dbb0746ea01f.png)
-    ![image](https://user-images.githubusercontent.com/66978721/110206783-2803eb00-7ec3-11eb-9ddd-ce91beb90685.png)
-
-
-
 
 ### 1.2 코드
 
@@ -94,8 +88,12 @@ class T15_1_FindAllAnagramsString {
 }
 ```
 
+### 1.3 그림으로 이해하는 풀이
+![image](https://user-images.githubusercontent.com/66978721/110206739-f428c580-7ec2-11eb-8d31-09b7a6121b94.png)
+![image](https://user-images.githubusercontent.com/66978721/110206776-1cb0bf80-7ec3-11eb-8b83-dbb0746ea01f.png)
+![image](https://user-images.githubusercontent.com/66978721/110206783-2803eb00-7ec3-11eb-9ddd-ce91beb90685.png)
 
-### 1.3 유의사항
+### 1.4 유의사항
 - Sarr는 순회할때마다 새로운 Anagram을 담아야 하기 때문에 매번 초기화되야 한다. 따라서 비교할 for문 안에서 초기화해준다.
 - 혹은 Parr과 함께 초기화한 후 `Arrays.fill(Sarr, 0)`을 활용해서 for문이 돌기 전에 전체값을 0으로 채워주면 된다.
 
@@ -162,12 +160,64 @@ class T15_FindAllAnagramsString {
 }
 ```
 
-### 2.3 유의사항
+### 2.3 그림으로 이해하는 코드
+
+```java
+int[] Sarr = new int[26];
+int[] Parr = new int[26];
+
+// 초기화
+for(int i = 0; i<P.length();i++) {
+    Sarr[S.charAt(i) - 'a']++; // 0~2자리값으로 초기화
+    Parr[P.charAt(i) - 'a']++; // 전체 값 배열화
+}
+```
+
+- Sarr 초기화
+![image](https://user-images.githubusercontent.com/66978721/110209789-a5cef300-7ed1-11eb-9bd3-6d85a8f10024.png)
+
+
+- Parr 초기화
+
+![image](https://user-images.githubusercontent.com/66978721/110209782-9b145e00-7ed1-11eb-96f4-2457e98f89b8.png)
+
+
+
+- Sliding Window : Start = 0, End = 3
+
+![image](https://user-images.githubusercontent.com/66978721/110209832-f8101400-7ed1-11eb-89c4-e0a4975733aa.png)
+
+
+- Sliding Window : Start = 1, End = 4
+![image](https://user-images.githubusercontent.com/66978721/110209859-11b15b80-7ed2-11eb-8582-bacf65abc1f4.png)
+
+
+- Sliding Window : Start = 2, End = 5
+![image](https://user-images.githubusercontent.com/66978721/110209868-20980e00-7ed2-11eb-9571-b6c0a9b649ad.png)
+
+
+- Sliding Window : Start = 3, End = 6
+![image](https://user-images.githubusercontent.com/66978721/110209876-2f7ec080-7ed2-11eb-9f76-5dbf3fa42514.png)
+
+- Sliding Window : Start = 4, End = 7
+![image](https://user-images.githubusercontent.com/66978721/110209881-3ad1ec00-7ed2-11eb-9361-dc48271f9bc6.png)
+
+
+- 같은 방식으로 `Start = 5, End = 8` , `Start = 6, End = 9`까지 돌고 `if (end == S.length()) break;` 조건으로 인해 while문을 빠져나온다.
+
+
+### 2.4 유의사항
 
 - 연산자 우선순위에 유의해야 한다.
 - `A = 1, B = 1, C = 1`일 때, `{(A++) + (B++)} + (C++)`의 결과는 `3`이다.
 - 그래서 `Sarr[S.charAt(start++) - 'a']--` 에서도 `start`의 값은 _연산 후에 증가_ 한다.
+- 참고 : 
+![image](https://user-images.githubusercontent.com/66978721/110209930-8c7a7680-7ed2-11eb-8eb8-5e7159246bb9.png)
+
+
 - while문의 break point를 설정하지 않으면 에러가 발생한다.
+
+
 - **`배열1.equals(배열2)`와 `Arrays.equals(배열1, 배열2)`의 차이점은?** 
 ![image](https://user-images.githubusercontent.com/66978721/110207150-ed9b4d80-7ec4-11eb-9371-a2b5b821acfa.png)
 
