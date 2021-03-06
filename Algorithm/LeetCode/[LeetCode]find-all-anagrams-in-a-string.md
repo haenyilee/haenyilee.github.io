@@ -173,33 +173,52 @@ for(int i = 0; i<P.length();i++) {
 }
 ```
 
-- Sarr 초기화
+- Sarr 초기화 <br>
 ![image](https://user-images.githubusercontent.com/66978721/110209789-a5cef300-7ed1-11eb-9bd3-6d85a8f10024.png)
 
 
-- Parr 초기화
+- Parr 초기화<br>
 
 ![image](https://user-images.githubusercontent.com/66978721/110209782-9b145e00-7ed1-11eb-96f4-2457e98f89b8.png)
 
 
+```java
+// Sliding Window
+int start = 0, end = P.length();
 
-- Sliding Window : Start = 0, End = 3
+while(true) {
+
+    // 배열 비교
+    if(Arrays.equals(Sarr,Parr)) {
+        result2.add(start);
+    }
+
+    // Break Point
+    if (end == S.length()) break;
+
+    // start의 글자는 빼고, end의 글자는 추가하기
+    Sarr[S.charAt(start++) - 'a']--;
+    Sarr[S.charAt(end++) - 'a']++;
+}
+```
+
+- Sliding Window : Start = 0, End = 3<br>
 
 ![image](https://user-images.githubusercontent.com/66978721/110209832-f8101400-7ed1-11eb-89c4-e0a4975733aa.png)
 
 
-- Sliding Window : Start = 1, End = 4
+- Sliding Window : Start = 1, End = 4<br>
 ![image](https://user-images.githubusercontent.com/66978721/110209859-11b15b80-7ed2-11eb-8582-bacf65abc1f4.png)
 
 
-- Sliding Window : Start = 2, End = 5
+- Sliding Window : Start = 2, End = 5<br>
 ![image](https://user-images.githubusercontent.com/66978721/110209868-20980e00-7ed2-11eb-9571-b6c0a9b649ad.png)
 
 
-- Sliding Window : Start = 3, End = 6
+- Sliding Window : Start = 3, End = 6<br>
 ![image](https://user-images.githubusercontent.com/66978721/110209876-2f7ec080-7ed2-11eb-9f76-5dbf3fa42514.png)
 
-- Sliding Window : Start = 4, End = 7
+- Sliding Window : Start = 4, End = 7<br>
 ![image](https://user-images.githubusercontent.com/66978721/110209881-3ad1ec00-7ed2-11eb-9361-dc48271f9bc6.png)
 
 
