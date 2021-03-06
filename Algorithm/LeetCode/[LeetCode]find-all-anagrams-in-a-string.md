@@ -12,6 +12,31 @@
 ## 1. 배열 방에 특정위치를 셋팅해서 구한방법
 
 ### 1.1 풀이
+- 배열 방에 특정위치를 아스키코드값을 이용해서 유니크하게 셋팅해서 구하는 방법이다.
+
+- 아스키코드
+![image](https://user-images.githubusercontent.com/66978721/110206429-e4a87d00-7ec0-11eb-9de6-4a28fdc5633a.png)
+    - a는 이진법(decimal)으로 97이다.
+    - (a – a) = (97 – 97) = 0
+    - (b – a) = (98 – 97) = 1
+    - (z – a) = (122 – 97) = 25 
+
+
+- 따라서 `String P = "cba"`를 아스키코드값으로 만든 알파벳 소문자 방(`int[] Parr`)에 저장하면 아래와 같다.
+![image](https://user-images.githubusercontent.com/66978721/110206490-4cf75e80-7ec1-11eb-87c9-db6ac01c0ddd.png)
+
+- 풀이과정
+    - 소문자 알파벳을 아스키코드를 활용해 유니크한 배열로 만든다.
+    - `String S, P`를 유니크한 알파벳 배열에 담는다.
+    - `String S = "cbaebabacd"`를 P의 길이만큼 Anagram으로 만든 뒤 아스키 코드로 만든 방에 담는다.
+    - `S.length()-P.length()+1`까지 순회하면서 Anagram이 P와 일치하는지 확인한다.
+    - `Sarr`과 `Parr`을 방의 크기만큼 for문을 돌려 각 방의 값이 일치하는지 비교한다.
+    ![image](https://user-images.githubusercontent.com/66978721/110206739-f428c580-7ec2-11eb-8d31-09b7a6121b94.png)
+    ![image](https://user-images.githubusercontent.com/66978721/110206776-1cb0bf80-7ec3-11eb-8b83-dbb0746ea01f.png)
+    ![image](https://user-images.githubusercontent.com/66978721/110206783-2803eb00-7ec3-11eb-9ddd-ce91beb90685.png)
+
+
+
 
 ### 1.2 코드
 
@@ -73,11 +98,14 @@ class T15_1_FindAllAnagramsString {
 ### 1.3 유의사항
 - Sarr는 매번 초기화되야 하기 때문에 비교할 for문 안에서 초기화해준다.
 - 또는 `Arrays.fill(Sarr, 0);`을 활용해서 for문이 돌기 전에 전체값을 0으로 채워주면 된다.
+- 아스키코드의 합으로 비교하면 안되는 이유는?
+![image](https://user-images.githubusercontent.com/66978721/110206810-5681c600-7ec3-11eb-9c4d-254206ae2e7f.png)
+
 
 ## 2. sliding Window방식 : O(N)
 
 ### 2.1 풀이
-- 앞의 문자는 빼고 뒤의 문자는 더해주는 방식으로 anagram을 찾는다.
+- 1번의 방식과 유사하지만, 이중 for문이 아닌 앞의 문자는 빼고 뒤의 문자는 더해주는 방식으로 anagram을 찾기 때문에 좀 더 효율적이다.
 - 배열을 비교할 때, `Arrays.equals(arr1, arr2)` 인터페이스를 사용한다.
 
 ### 2.2 코드
