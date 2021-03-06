@@ -165,10 +165,8 @@ class T15_FindAllAnagramsString {
 
 - 연산자 우선순위에 유의해야 한다.
 - `A = 1, B = 1, C = 1`일 때, `{(A++) + (B++)} + (C++)`의 결과는 `3`이다.
-- 그래서 `Sarr[S.charAt(start++) - 'a']--` 에서도 start의 값은 
-연산 후{:.text-red} 
-에 증가한다.
+- 그래서 `Sarr[S.charAt(start++) - 'a']--` 에서도 `start`의 값은 **연산 후에 증가**한다.
+- while문의 break point를 설정하지 않으면 에러가 발생한다.
 
 ## 참고
-
 - [bcp0109님 풀이](https://bcp0109.tistory.com/entry/LeetCode-Medium-Find-All-Anagrams-in-a-String-Java)
