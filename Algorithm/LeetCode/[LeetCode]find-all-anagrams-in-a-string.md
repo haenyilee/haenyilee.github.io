@@ -230,14 +230,14 @@ while(true) {
 - 연산자 우선순위에 유의해야 한다.
 - `A = 1, B = 1, C = 1`일 때, `{(A++) + (B++)} + (C++)`의 결과는 `3`이다.
 - 그래서 `Sarr[S.charAt(start++) - 'a']--` 에서도 `start`의 값은 _연산 후에 증가_ 한다.
-- 참고 : 
+- 참고 : <br>
 ![image](https://user-images.githubusercontent.com/66978721/110209930-8c7a7680-7ed2-11eb-8eb8-5e7159246bb9.png)
 
 
 - while문의 break point를 설정하지 않으면 에러가 발생한다.
 
 
-- **`배열1.equals(배열2)`와 `Arrays.equals(배열1, 배열2)`의 차이점은?** 
+- **`equals`와 `Arrays.equals`의 차이점은?** 
 ![image](https://user-images.githubusercontent.com/66978721/110207150-ed9b4d80-7ec4-11eb-9371-a2b5b821acfa.png)
 
 
