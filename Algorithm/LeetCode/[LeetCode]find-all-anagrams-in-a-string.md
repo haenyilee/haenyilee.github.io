@@ -169,7 +169,7 @@ class T15_FindAllAnagramsString {
 - 그래서 `Sarr[S.charAt(start++) - 'a']--` 에서도 `start`의 값은 _연산 후에 증가_ 한다.
 - while문의 break point를 설정하지 않으면 에러가 발생한다.
 - **`배열1.equals(배열2)`와 `Arrays.equals(배열1, 배열2)`의 차이점은?** 
-![image](https://user-images.githubusercontent.com/66978721/110207033-8bdae380-7ec4-11eb-94aa-35df771fba44.png)
+![image](https://user-images.githubusercontent.com/66978721/110207150-ed9b4d80-7ec4-11eb-9371-a2b5b821acfa.png)
 
 
 ## 참고
