@@ -226,10 +226,16 @@ while(true) {
 
 
 ### 2.4 유의사항
+- 컴퓨터는 기본적으로 왼쪽부터 수행된다.
+- 그래서 `Sarr[S.charAt(start++) - 'a']--` 에서
+
+`S.charAt(start) - 'a'`를 k라고 하면,
+`Sarr[k]--` 이후
+`start = start +1` 순으로 수행된다.
+
 
 - 연산자 우선순위에 유의해야 한다.
-- `A = 1, B = 1, C = 1`일 때, `{(A++) + (B++)} + (C++)`의 결과는 `3`이다.
-- 그래서 `Sarr[S.charAt(start++) - 'a']--` 에서도 `start`의 값은 _연산 후에 증가_ 한다.
+- `A = 1, B = 1, C = 1`일 때, `{(A++) + (B++)} + (C++)`의 결과는 `3`
 - 참고 : <br>
 ![image](https://user-images.githubusercontent.com/66978721/110209930-8c7a7680-7ed2-11eb-8eb8-5e7159246bb9.png)
 
